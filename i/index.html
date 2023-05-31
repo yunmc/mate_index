@@ -213,9 +213,9 @@
             api:'https://test-api-mate.flyai.com/'
         },
         created() {
-            if(window.location.host == 'www.matelink.com'){
+            // if(window.location.host == 'www.matelink.com'){
                 this.api = 'https://api.matelink.com/'
-            }
+            // }
             this.id = this.getQueryString('id')
             this.isIos = this.isIosAgent();
             this.shareValid();
