@@ -1,0 +1,565 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>MateLink</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.azureedge.net/cdn/css/style.css" />
+    <script src="https://cdn-mate.azureedge.net/cdn/js/rem.js"></script>
+    <link rel="shortcut icon" href="https://cdn-mate.azureedge.net/cdn/image/logo.ico" type="image/x-icon"/>
+    <script>
+        function IsPC() {
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+            "SymbianOS", "Windows Phone",
+            "iPad", "iPod"];
+            var flagPc = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flagPc = false;
+                    break;
+            }
+        }
+            return flagPc;
+        }
+        if(IsPC()){
+            window.location.href="./index.html"
+        }
+        </script>
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+        .pc{
+            display: none;
+        }
+        .mobild{
+            display: none;
+        }
+        @media (min-width: 800px)  {
+        body,html{
+            /* background: #1A1E28; */
+            background: #1A1E28 url(https://cdn-mate.azureedge.net/cdn/image/home-bg.webp) no-repeat;
+            background-size:100% auto;
+            min-width: 1360px;
+            min-height: 800px;
+        }
+        #app{
+
+        }
+
+        .main{
+            /* width: 1360px;
+            position: fixed;
+            top: 0;
+            height: 100%;
+            left: 50%;
+            margin-left: -680px; */
+        }
+        .mateLink{
+            position: fixed;
+            left: 80px;
+            top: 45px;
+            width: 190px;
+        }
+        .footer{
+            width: 1360px;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 18px;
+            color: rgba(181, 177, 255, 0.5);
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            bottom: 64px;
+            margin-left: -680px;
+            transform:scale(0.65);
+        }
+        .footer a{
+            color: rgba(181, 177, 255, 0.5);
+        }
+        .footer a:hover{
+            color: #5694FF;
+        }
+        .footer p{
+            margin-right: 75px;
+        }
+        .content{
+            width: 1360px;
+            margin: 0 auto;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .center{
+            width: 1360px;
+            align-items: center;
+            justify-content: space-between;
+            transform:scale(0.65);
+        }
+        .left img{
+            display: block;
+        }
+        .logo{
+            width: 187px;
+            margin-bottom: 50px;
+        }
+        .chatwithCelebrities{
+            width: 714px;
+            margin-bottom: 25px;
+        }
+        .liveLikeaStar{
+            width: 540px;
+        }
+        .desc{
+            color: #C3C1DE;
+            font-size: 30px;
+            margin-top: 70px;
+            width: 650px;
+            line-height: 40px;
+        }
+        .desc p{
+            margin-bottom: 50px;
+        }
+        .down{
+            padding-top: 40px;
+        }
+        .down img{
+            width: 286px;
+            display: block;
+            align-items: center;
+            justify-content: flex-start;
+            margin-right: 25px;
+            cursor: pointer;
+        }
+        .swiper{
+            width: 451px;
+            height: 944px;
+            background: url(https://cdn-mate.azureedge.net/cdn/image/home-mobile-bg.webp) no-repeat;
+            background-size: 100% 100%;
+            padding: 6px;
+            /* border-radius: 90px; */
+            overflow: hidden;
+            transform-style:preserve-3d;
+        }
+        .my-swipe{
+            background:#1A1E28;
+            border-radius: 70px !important;
+            transform-style:preserve-3d;
+        }
+        .my-swipe img{
+            width: 439px;
+            height: 932px;
+            /* border-radius: 70px !important; */
+        }
+        .right{
+            position: relative;
+        }
+        .arr-left{
+            position: absolute;
+            width: 48px;
+            top: 50%;
+            left: -76px;
+            margin-top: -24px;
+            cursor: pointer;
+
+        }
+        .arr-right{
+            position: absolute;
+            width: 48px;
+            top: 50%;
+            right: -76px;
+            margin-top: -24px;
+            cursor: pointer;
+        }
+        @media screen and (max-height:1000px) {
+            .footer{
+                bottom: 30px;
+            }
+        }
+        @media screen and (min-height:900px) {
+            .center{
+                transform:scale(0.68);
+            }
+            .footer{
+                transform:scale(0.68);
+            }
+        }
+        @media screen and (min-height:1000px) {
+            .center{
+                transform:scale(0.7);
+            }
+            .footer{
+                transform:scale(0.7);
+            }
+        }
+        @media screen and (min-height:1100px) {
+            .center{
+                transform:scale(0.8);
+            }
+            .footer{
+                transform:scale(0.8);
+            }
+        }
+        @media screen and (min-height:1200px) {
+            .center{
+                transform:scale(0.9);
+            }
+            .footer{
+                transform:scale(0.9);
+            }
+        }
+        @media screen and (min-height:1300px) {
+            .center{
+                transform:scale(1);
+            }
+            .footer{
+                transform:scale(1);
+            }
+        }
+        .pc{
+            display: block;
+        }
+    }
+
+    @media (max-width: 799px)  {
+        .mobild{
+            display: block;
+        }
+
+#app {
+    width: 100%;
+    height: 100%;
+    background: url(https://cdn-mate.azureedge.net/cdn/image/bg.png) no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 1.36rem;
+    display: block;
+    position: fixed;
+    left: .4267rem;
+    top: .4267rem;;
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 110;
+}
+.footer p{
+    color: rgba(181, 177, 255, 0.5);
+
+}
+.footer a{
+            color: rgba(181, 177, 255, 0.5);
+        }
+        .footer a:hover{
+            color: #5694FF;
+        }
+.btn{
+    width: 4.8rem;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.22rem;
+}
+.record {
+    text-align: center;
+    color: #666666;
+    font-size: .2133rem;
+    line-height: 0.4444rem;
+    margin-bottom: 0.3rem;
+    transform:scale(0.8);
+}
+
+.record .flex {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+}
+.tips {
+    width: 4.7733rem;
+    display: block;
+    margin: 0 auto;
+    margin-top: 1.12rem;
+    /* margin-bottom: .5333rem; */
+}
+
+.main{
+    position: relative;
+    width: 100%;
+}
+.content{
+    width: 5.9733rem;
+    height: 11.24rem;
+    overflow: hidden;
+    background: url(https://cdn-mate.azureedge.net/cdn/image/home-m-bg.png) no-repeat;
+            background-size: 100% 100%;
+    border-radius: 0.56rem;
+    margin: 0 auto;
+    position: relative;
+    padding: 0.24rem;
+}
+/* .bg{
+    width: 5.9733rem;
+    height: 11.84rem;
+    border-radius: 0.56rem;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transform-style:preserve-3d;
+} */
+.silde{
+    height: 10.76rem;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 0.56rem;
+    transform-style:preserve-3d;
+}
+.banner {
+    width: 100%;
+    height: 100%;
+    /* width: 5.6rem;
+    height: 11.8666rem; */
+    display: block;
+    /* border-radius: 0.56rem; */
+}
+
+.left {
+    position: absolute;
+    width: 1.0666rem;
+    height: 1.0666rem;
+    background: url(https://cdn-mate.azureedge.net/cdn/image/left.png) no-repeat;
+    background-size: 100% 100%;
+    left: 0.64rem;
+    top: 50%;
+    margin-top: -0.5333rem;
+}
+
+.right {
+    position: absolute;
+    width: 1.0666rem;
+    height: 1.0666rem;
+    background: url(https://cdn-mate.azureedge.net/cdn/image/right.png) no-repeat;
+    background-size: 100% 100%;
+    right:0.64rem;
+    top: 50%;
+    margin-top:  -0.5333rem;
+}
+
+.popup {
+    position: fixed;
+    z-index: 1001;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.share {
+    position: absolute;
+    right: 1rem;
+    top: 0.3rem;
+    width: 70%;
+}
+
+}
+
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="main pc">
+            <div class="top">
+                <img class="mateLink" src="https://cdn-mate.azureedge.net/cdn/image/home-MateLink .png" >
+            </div>
+        <div class="content">
+            <div class="center flex" id="center">
+                <div class="left">
+                    <img class="logo" src="https://cdn-mate.azureedge.net/cdn/image/logo.webp" >
+                    <img class="chatwithCelebrities" src="https://cdn-mate.azureedge.net/cdn/image/home-ChatwithCelebrities.png" >
+                    <img class="liveLikeaStar" src="https://cdn-mate.azureedge.net/cdn/image/home-LiveLikeaStar.png" >
+                    <div class="desc">
+                       <p> Come and have a real-time chat with your idol</p>
+                        <p>Create a virtual human that is exclusive to you
+                            （including their voice and personality）</p>
+                    </div>
+                    <div class="down flex">
+                        <img @click="goGoogle" src="https://cdn-mate.azureedge.net/cdn/image/pc-google.webp" alt="">
+                        <img @click="goApple" src="https://cdn-mate.azureedge.net/cdn/image/pc-apple.webp" alt="">
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="swiper">
+                        <van-swipe class="my-swipe" ref="swiper2" :autoplay="autoplay" duration="1000" :show-indicators="false" indicator-color="white">
+                            <van-swipe-item>
+                                <img src="https://cdn-mate.azureedge.net/cdn/image/home-banner1.jpg" />
+                            </van-swipe-item>
+                            <van-swipe-item>
+                                <img src="https://cdn-mate.azureedge.net/cdn/image/home-banner2.jpg" />
+                            </van-swipe-item>
+                            <van-swipe-item>
+                                <img src="https://cdn-mate.azureedge.net/cdn/image/home-banner3.jpg" />
+                            </van-swipe-item>
+                            <van-swipe-item>
+                                <img src="https://cdn-mate.azureedge.net/cdn/image/home-banner4.jpg" />
+                            </van-swipe-item>
+                          </van-swipe>
+                    </div>
+                    <img @click="prevSwipe(2)" class="arr-left" src="https://cdn-mate.azureedge.net/cdn/image/home-arr-left.png" alt="">
+                    <img @click="nextSwipe(2)"  class="arr-right" src="https://cdn-mate.azureedge.net/cdn/image/home-arr-right.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="footer flex" id="footer">
+            <p><a target="_blank" href="https://cdn-mate.azureedge.net/web/agreement.html">User Agreement</a></p>
+            <p><a target="_blank" href="https://cdn-mate.azureedge.net/web/service.html">Privacy Policy</a></p>
+            <p>(c) 2023 MateLink</p>
+            <p>By LIGHTFUL AI TECHNOLOGIES PTE. LTD</p>
+        </div>
+        </div>
+
+        <div class="main mobild">
+            <div>
+                <img class="logo" src="https://cdn-mate.azureedge.net/cdn/image/home-logo.png">
+            <img class="tips" src="https://cdn-mate.azureedge.net/cdn/image/slogan.png">
+            </div>
+            <div class="main">
+                <div class="content">
+                    <div class="bg"></div>
+                    <div class="silde">
+                        <van-swipe class="my-swipe" ref="swiper" :autoplay="autoplay" duration="1000" :show-indicators="false">
+                            <van-swipe-item>
+                                <img class="banner" src="https://cdn-mate.azureedge.net/cdn/image/home-banner1.jpg">
+                            </van-swipe-item>
+                            <van-swipe-item>
+                                <img class="banner" src="https://cdn-mate.azureedge.net/cdn/image/home-banner2.jpg">
+                            </van-swipe-item>
+                            <van-swipe-item>
+                                <img class="banner" src="https://cdn-mate.azureedge.net/cdn/image/home-banner3.jpg">
+                            </van-swipe-item>
+                            <van-swipe-item>
+                                <img class="banner" src="https://cdn-mate.azureedge.net/cdn/image/home-banner4.jpg">
+                            </van-swipe-item>
+                        </van-swipe>
+                    </div>
+                </div>
+
+                <div class="left" @click="prevSwipe(1)"></div>
+                <div class="right" @click="nextSwipe(1)"></div>
+
+            </div>
+            <div class="footer">
+               <img class="btn" @click="goApple"  v-if="isIos" src="https://cdn-mate.azureedge.net/cdn/image/ios.png">
+               <img class="btn"  v-else @click="goGoogle" src="https://cdn-mate.azureedge.net/cdn/image/android.png">
+                <div class="record">
+                    <p><a target="_blank" href="https://cdn-mate.azureedge.net/web/service.html">Privacy Policy</a>&ensp;&ensp;&ensp; <a target="_blank" href="https://cdn-mate.azureedge.net/web/agreement.html">User Agreement</a></p>
+                    <p class="flex">By LIGHTFUL AI TECHNOLOGIES PTE. LTD &ensp;&ensp;(c) 2023 MateLink</p>
+                </div>
+            </div>
+            <!-- <div class="popup" v-if="tips" @click=" tips = false">
+                <img class="share" src="https://www.matelink.com/image/share.png">
+            </div> -->
+        </div>
+
+    </div>
+
+
+</body>
+<script src="https://cdn-mate.azureedge.net/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.azureedge.net/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.azureedge.net/cdn/css/vant-2.1.2.css" />
+<script charset="UTF-8" src="https://cdn-mate.azureedge.net/cdn/js/sensorsdata.min.js"></script>
+<script charset="UTF-8">
+var sensors = window['sensorsDataAnalytic201505'];
+sensors.init({
+  server_url: 'https://log.cece.com/sa?project=XX',
+  heatmap:{scroll_notice_map:'not_collect'},
+  use_client_time:true,
+  send_type:'beacon'
+});
+sensors.quick('autoTrack');
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            autoplay:3000,
+            iosDownload: 'https://apps.apple.com/app/6449399740',
+            andDownload: 'https://play.google.com/store/apps/details?id=com.matelink.appandr',
+            isIos: false,
+            tips: false,
+        },
+        mounted() {
+            this.init();
+        },
+        methods: {
+            goGoogle(){
+                window.location.href = this.andDownload;
+            },
+            goApple(){
+                window.location.href = this.iosDownload;
+            },
+            prevSwipe(n) {
+                this.autoplay = 0
+                if( n == 1){
+                    this.$refs.swiper.prev();
+                }else{
+                    this.$refs.swiper2.prev();
+                }
+                setTimeout(() => {
+                    this.autoplay = 3000
+                }, 1000);
+            },
+            nextSwipe(n) {
+                this.autoplay = 0
+                if( n == 1){
+                    this.$refs.swiper.next();
+                }else{
+                    this.$refs.swiper2.next();
+                }
+                setTimeout(() => {
+                    this.autoplay = 3000
+                }, 1000);
+            },
+            init(){
+                this.isIos = this.isIosAgent();
+                if(!localStorage.getItem('Matelink_id')){
+                    sensors.track('AppUserBrowse', {
+                            userId: Date.now(),
+                    })
+                    localStorage.setItem('Matelink_id', Date.now())
+                }
+            },
+            isIosAgent() {
+                let u = navigator.userAgent;
+                let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                if (isIOS) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+    })
+</script>
+</html>
+	
+    
