@@ -560,16 +560,13 @@ sensors.quick('autoTrack');
                     "message": this.textarea
                 }
                 axios.post(this.api + 'base/index/feedback', params).then(res => {
-                    if(res.data.code == 200){
-                        this.$toast.success({
+                    this.$toast.success({
                         message: 'We have received your message and will reply to you as soon as possible.',
                         className:'success'
                      });
-                        this.name = '';
-                        this.email = '';
-                        this.textarea = '';
-                    }else{
-                    }
+                    this.name = '';
+                    this.email = '';
+                    this.textarea = '';
                 }).catch(err => {
                     this.$toast({
                         message: err
