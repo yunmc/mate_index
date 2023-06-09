@@ -231,9 +231,13 @@
             color: #333333;
             font-size: 24px;
             text-align: left;
+            align-items: center;
+            justify-content: flex-start;
         }
         .label span{
             color: #FC5454;
+            margin-top: 8px;
+            margin-right: 2px;
         }
         .label .msg{
             height: 170px;
@@ -436,19 +440,19 @@
                 </div>
                 <div class="main">
                     <div class="label flex">
-                        <p><span>*</span>Name</p>
+                        <p class="flex"><span>*</span>Name</p>
                         <div class="input">
                             <input type="text" v-model="name" placeholder="Please enter your name">
                         </div>
                     </div>
                     <div class="label flex">
-                        <p><span>*</span>Email</p>
+                        <p class="flex"><span>*</span>Email</p>
                         <div class="input">
                             <input type="text" v-model="email" placeholder="Please enter your email address">
                         </div>
                     </div>
                     <div class="label flex">
-                        <p class="msg"><span>*</span>Message</p>
+                        <p class="msg flex"><span>*</span>Message</p>
                         <div class="textarea">
                             <textarea v-model="textarea" placeholder="We are eager to learn about your ideal AI version of yourself! Please feel free to share any relevant links to your social media platforms. Thank you."></textarea>
                         </div>
@@ -462,7 +466,7 @@
 
         <div class="tips">
             Don't miss out on this captivating opportunity – join us now and dive into the magic of MateLink!<br /> 
-            Contact information: <span>contactus@matelink.com</span> 💌
+            Contact information: <a href="mailto:jubao@zhihu.com"><span>contactus@matelink.com</span></a> 💌
         </div>
 
         <div class="footer_main">
@@ -481,6 +485,7 @@
 </body>
 <script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
 <script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
 <link rel="stylesheet" href="https://cdn-mate.matelink.com/cdn/css/vant-2.1.2.css" />
 <script charset="UTF-8" src="https://cdn-mate.matelink.com/cdn/js/sensorsdata.min.js"></script>
 <script charset="UTF-8">
@@ -502,6 +507,7 @@ sensors.quick('autoTrack');
             name:'',
             email:'',
             textarea:'',
+            api:'https://api.matelink.com/'
         },
         mounted() {
         },
@@ -525,9 +531,18 @@ sensors.quick('autoTrack');
                      });
                     return false;
                 }
+
                 if(this.email == ''){
                     this.$toast.fail({
                         message: 'Please enter your email address',
+                        className:'error'
+                     });
+                    return false;
+                }
+                let reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+                if(!reg.test(this.email)){
+                    this.$toast.fail({
+                        message: 'Incorrect email format',
                         className:'error'
                      });
                     return false;
@@ -539,16 +554,37 @@ sensors.quick('autoTrack');
                     return false;
                 }
 
-
-                setTimeout(() => {
-                    this.$toast.success({
+                let params={
+                    "name": this.name,
+                    "email": this.email,
+                    "message": this.textarea
+                }
+                axios.post(this.api + 'base/index/feedback', params).then(res => {
+                    if(res.data.code == 200){
+                        this.$toast.success({
                         message: 'We have received your message and will reply to you as soon as possible.',
                         className:'success'
                      });
                         this.name = '';
                         this.email = '';
                         this.textarea = '';
-                }, 2000);
+                    }else{
+                    }
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+
+                // setTimeout(() => {
+                //     this.$toast.success({
+                //         message: 'We have received your message and will reply to you as soon as possible.',
+                //         className:'success'
+                //      });
+                //         this.name = '';
+                //         this.email = '';
+                //         this.textarea = '';
+                // }, 2000);
 
             }
         }
