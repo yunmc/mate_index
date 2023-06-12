@@ -270,8 +270,8 @@
         created() {
             console.log(this);
             // var data =JSON.stringify(this);
-            // this.api = 'https://api.matelink.com/'
-            this.api = 'https://api-mate.flyai.com/'
+            this.api = 'https://api.matelink.com/'
+            // this.api = 'https://api-mate.flyai.com/'
             this.id = this.getQueryString('id')
             this.isIos = this.isIosAgent();
             this.shareValid();
@@ -333,8 +333,8 @@
                 }
                 axios.post(this.api + 'aiUser/core/shareValid', params).then(res => {
                     if(res.data.code == 1018){
-                        // this.noClick = true;
-                        // this.show = true;
+                        this.noClick = true;
+                        this.show = true;
                     }else{
                     }
                 }).catch(err => {
