@@ -654,6 +654,7 @@
             background-size: 100% 100%;
             align-items: center;
             justify-content: flex-end;
+            display: flex;
         }
         .h_m_donwload img{
             width: 3.04rem;
@@ -860,7 +861,7 @@
         </div>
 
 
-        <div class="h_m_donwload flex">
+        <div v-show="isDownload" class="h_m_donwload flex">
             <img v-if="isIos" @click="goApple"  src="./image/h_m_download_apple.webp" alt="">
             <img v-else @click="goGoogle" src="./image/h_m_download_googel.webp" alt="">
         </div>
@@ -894,12 +895,23 @@ sensors.quick('autoTrack');
             textarea:'',
             api:'https://api.matelink.com/',
             autoplay:3000,
-            isIos: false
+            isIos: false,
+            isDownload:false
         },
         mounted() {
             this.isIos = this.isIosAgent();
+            window.addEventListener('scroll',this.handleScroll)
         },
         methods: {
+            handleScroll(){
+                //或者使用document.querySelector('.class或者#id').scrollTop
+                this.scroll = document.documentElement.scrollTop||document.body.scrollTop
+                if(this.scroll > 800){
+                    this.isDownload = true;
+                }else{
+                    this.isDownload = false;
+                }
+            },
             isIosAgent() {
                 let u = navigator.userAgent;
                 let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
