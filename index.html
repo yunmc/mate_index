@@ -40,6 +40,8 @@
             left: 0;
             z-index: 100;
             background-size: 100% 100%;
+        }
+        .backdrop{
             backdrop-filter: blur(317px);
         }
         .header img{
@@ -68,7 +70,7 @@
             background-size: 100% 100%;
             align-items: center;
             justify-content: center;
-            margin-top: -150px;
+            margin-top: -100px;
         }
         .download{
             margin-top: 155px;
@@ -176,19 +178,20 @@
         }
         .customize .list .com{
             width: 380px;
-            height: 202px;
+            height: 232px;
             background: #36375A;
-            border-radius: 8px;
+            border-radius: 30px;
             text-align: center;
             color: #FFFFFF;
             font-size: 18px;
             line-height: 24px;
         }
         .customize .list .com img{
-            margin: 16px 0;
+            margin: 34px 0 12px ;
         }
         .customize .list .com p{
             width: 300px;
+            line-height: 27px;
             margin: 0 auto;
         }
         .info{
@@ -224,7 +227,14 @@
             margin-right: 2px;
         }
         .label .msg{
-            height: 170px;
+            height: 200px;
+        }
+        .label .msg p{
+            height: 20px;
+            margin-top: 27px;
+        }
+        .main .label:last-child{
+            align-items: initial;
         }
         .submit{
             width: 289px;
@@ -585,8 +595,9 @@
             border-radius: .5333rem;
         }
         .tips{
-            margin: 0 auto;
-            width: 8.6133rem;
+            padding: 0 .6933rem;
+            /* margin: 0 auto; */
+            /* width: 8.6133rem; */
             padding-top: .8rem;
             padding-bottom: 1.3867rem;
             font-size: .32rem;
@@ -666,7 +677,7 @@
 
 <body>
     <div id="app" v-cloak>
-        <div class="header">
+        <div :class="isHeader ? 'header backdrop':'header'">
             <div class="min-w">
                 <img src="https://cdn-mate.matelink.com/web/new_image/logo.png" alt="">
             </div>
@@ -789,7 +800,9 @@
                             </div>
                         </div>
                         <div class="label flex">
-                            <p class="msg flex"><span>*</span>Message</p>
+                            <div class="msg flex">
+                                <p class="flex"><span>*</span>Message</p>
+                            </div>
                             <div class="textarea">
                                 <textarea v-model="textarea" placeholder="We are eager to learn about your ideal AI version of yourself! Please feel free to share any relevant links to your social media platforms. Thank you."></textarea>
                             </div>
@@ -896,7 +909,8 @@ sensors.quick('autoTrack');
             api:'https://api.matelink.com/',
             autoplay:3000,
             isIos: false,
-            isDownload:false
+            isDownload:false,
+            isHeader: false
         },
         mounted() {
             this.isIos = this.isIosAgent();
@@ -904,12 +918,16 @@ sensors.quick('autoTrack');
         },
         methods: {
             handleScroll(){
-                //或者使用document.querySelector('.class或者#id').scrollTop
                 this.scroll = document.documentElement.scrollTop||document.body.scrollTop
                 if(this.scroll > 800){
                     this.isDownload = true;
                 }else{
                     this.isDownload = false;
+                }
+                if(this.scroll > 200){
+                    this.isHeader = true;
+                }else{
+                    this.isHeader = false;
                 }
             },
             isIosAgent() {
