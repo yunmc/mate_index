@@ -9,9 +9,9 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="facebook-domain-verification" content="jr5vf2khga4ylvketm1k8sr79rokwa" />
-    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
-    <script src="https://cdn-mate.flyai.com/cdn/js/rem.js"></script>
-    <link rel="shortcut icon" href="https://cdn-mate.flyai.com/web/new_image/logo.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.matelink.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+    <link rel="shortcut icon" href="https://cdn-mate.matelink.com/web/new_image/logo.ico" type="image/x-icon"/>
     <style type="text/css">
         [v-cloak] {
             display: none;
@@ -40,6 +40,8 @@
             left: 0;
             z-index: 100;
             background-size: 100% 100%;
+        }
+        .backdrop{
             backdrop-filter: blur(317px);
         }
         .header img{
@@ -64,11 +66,11 @@
         .content{
             height: 1080px;
             width: 100%;
-            background: url(./image/h_new_top_bg.webp) no-repeat;
+            background: url(https://cdn-mate.matelink.com/cdn/image/h_new_top_bg.webp) no-repeat;
             background-size: 100% 100%;
             align-items: center;
             justify-content: center;
-            margin-top: -150px;
+            margin-top: -100px;
         }
         .download{
             margin-top: 155px;
@@ -82,9 +84,9 @@
         }
         .portrait{
             position: absolute;
-            right: -205px;
+            right: -385px;
             bottom: 0;
-            width: 965px;
+            width: 1129px;
         }
         .product{
             padding-top: 110px;
@@ -96,7 +98,7 @@
         .page_1 .title{
             width: 325px;
             height: 300px;
-            background: url(./image/h_new_01.webp) no-repeat;
+            background: url(https://cdn-mate.matelink.com/cdn/image/h_new_01.webp) no-repeat;
             background-size: 100% 100%;
             color: #ffffff;
             margin-left: 80px;
@@ -125,7 +127,7 @@
         .page_2 .title{
             width: 362px;
             height: 300px;
-            background: url(./image/h_new_02.webp) no-repeat;
+            background: url(https://cdn-mate.matelink.com/cdn/image/h_new_02.webp) no-repeat;
             background-size: 100% 100%;
             color: #ffffff;
             margin-right: 88px;
@@ -147,7 +149,7 @@
         .page_3 .title{
             width: 348px;
             height: 300px;
-            background: url(./image/h_new_03.webp) no-repeat;
+            background: url(https://cdn-mate.matelink.com/cdn/image/h_new_03.webp) no-repeat;
             background-size: 100% 100%;
             color: #ffffff;
             margin-right: 88px;
@@ -176,19 +178,20 @@
         }
         .customize .list .com{
             width: 380px;
-            height: 202px;
+            height: 232px;
             background: #36375A;
-            border-radius: 8px;
+            border-radius: 30px;
             text-align: center;
             color: #FFFFFF;
             font-size: 18px;
             line-height: 24px;
         }
         .customize .list .com img{
-            margin: 16px 0;
+            margin: 34px 0 12px ;
         }
         .customize .list .com p{
             width: 300px;
+            line-height: 27px;
             margin: 0 auto;
         }
         .info{
@@ -224,7 +227,14 @@
             margin-right: 2px;
         }
         .label .msg{
-            height: 170px;
+            height: 200px;
+        }
+        .label .msg p{
+            height: 20px;
+            margin-top: 27px;
+        }
+        .main .label:last-child{
+            align-items: initial;
         }
         .submit{
             width: 289px;
@@ -412,7 +422,7 @@
         }
         .content{
             height: 18.56rem;
-            background: url(./image/h_m_bg.webp) no-repeat;
+            background: url(https://cdn-mate.matelink.com/cdn/image/h_m_bg.webp) no-repeat;
             background-size: 100% 100%;
             display: block;
             margin-top: -0px;
@@ -585,8 +595,9 @@
             border-radius: .5333rem;
         }
         .tips{
-            margin: 0 auto;
-            width: 8.6133rem;
+            padding: 0 .6933rem;
+            /* margin: 0 auto; */
+            /* width: 8.6133rem; */
             padding-top: .8rem;
             padding-bottom: 1.3867rem;
             font-size: .32rem;
@@ -650,10 +661,11 @@
             position: fixed;
             bottom: 1.0667rem;
             left: .4267rem;
-            background: url(./image/h_m_donwload.webp) no-repeat;
+            background: url(https://cdn-mate.matelink.com/cdn/image/h_m_donwload.webp) no-repeat;
             background-size: 100% 100%;
             align-items: center;
             justify-content: flex-end;
+            display: flex;
         }
         .h_m_donwload img{
             width: 3.04rem;
@@ -665,7 +677,7 @@
 
 <body>
     <div id="app" v-cloak>
-        <div class="header">
+        <div :class="isHeader ? 'header backdrop':'header'">
             <div class="min-w">
                 <img src="https://cdn-mate.matelink.com/web/new_image/logo.png" alt="">
             </div>
@@ -673,19 +685,19 @@
         <div class="content flex">
             <div class="min_main">
                 <div class="top_left">
-                    <img class="logo mobile" src="./image/h_m_logo.png" alt="">
-                    <img width="621" class="h_new_top_text" src="./image/h_new_top_text.webp" alt="">
+                    <img class="logo mobile" src="https://cdn-mate.matelink.com/cdn/image/h_m_logo.png" alt="">
+                    <img width="621" class="h_new_top_text" src="https://cdn-mate.matelink.com/cdn/image/h_new_top_text.webp" alt="">
                     <div class="download flex">
-                        <img width="286" @click="goGoogle" src="./image/download-googel.webp" alt="">
-                        <img width="257" @click="goApple" src="./image/download-apple.webp" alt="">
+                        <img width="286" @click="goGoogle" src="https://cdn-mate.matelink.com/cdn/image/download-googel.webp" alt="">
+                        <img width="257" @click="goApple" src="https://cdn-mate.matelink.com/cdn/image/download-apple.webp" alt="">
                     </div>
                 </div>
                 
-                <img class="portrait mobile" src="./image/h_m_portrait.webp" alt="">
-                <img class="portrait pc" src="./image/h_new_top_portrait2.webp" alt="">
+                <img class="portrait mobile" src="https://cdn-mate.matelink.com/cdn/image/h_m_portrait.webp" alt="">
+                <img class="portrait pc" src="https://cdn-mate.matelink.com/cdn/image/h_new_top_portrait.webp" alt="">
             </div> 
               
-            <img class="arrow mobile" src="./image/h_m_arrow.webp" alt="">       
+            <img class="arrow mobile" src="https://cdn-mate.matelink.com/cdn/image/h_m_arrow.webp" alt="">       
         </div>
 
         <div class="product pc">
@@ -697,14 +709,14 @@
                     </div>
     
                     <div class="pic">
-                        <img width="600" style="margin-top: -70px;" src="./image/h_new_page1.webp" alt="">
+                        <img width="600" style="margin-top: -70px;" src="https://cdn-mate.matelink.com/cdn/image/h_new_page1.webp" alt="">
                     </div>
                 </div>
 
                 <div class="page_2 flex">
                         
                     <div class="pic">
-                        <img width="600" src="./image/h_new_page2.webp" alt="">
+                        <img width="600" src="https://cdn-mate.matelink.com/cdn/image/h_new_page2.webp" alt="">
                     </div>
 
                     <div class="title">
@@ -720,7 +732,7 @@
                     </div>
 
                     <div class="pic">
-                        <img width="820" src="./image/h_new_page3.webp" alt="">
+                        <img width="820" src="https://cdn-mate.matelink.com/cdn/image/h_new_page3.webp" alt="">
                     </div>
                 </div>
 
@@ -730,17 +742,17 @@
 
         <div class="swiper mobile">
             <div class="title">
-                <img src="./image/h_m_product.webp" alt="">
+                <img src="https://cdn-mate.matelink.com/cdn/image/h_m_product.webp" alt="">
             </div>
-            <van-swipe class="my-swipe" ref="swiper"  duration="1000" :show-indicators="true" indicator-color="white">
+            <van-swipe class="my-swipe" ref="swiper"  :autoplay="3000" duration="1000" :show-indicators="true" indicator-color="white">
                 <van-swipe-item>
-                    <img src="./image/h_m_banner_1.webp" />
+                    <img src="https://cdn-mate.matelink.com/cdn/image/h_m_banner_1.webp" />
                 </van-swipe-item>
                 <van-swipe-item>
-                    <img src="./image/h_m_banner_2.webp" />
+                    <img src="https://cdn-mate.matelink.com/cdn/image/h_m_banner_2.webp" />
                 </van-swipe-item>
                 <van-swipe-item>
-                    <img src="./image/h_m_banner_3.webp" />
+                    <img src="https://cdn-mate.matelink.com/cdn/image/h_m_banner_3.webp" />
                 </van-swipe-item>
             </van-swipe>
         </div>
@@ -750,19 +762,19 @@
             <div class="customize">
                 <div class="min-w">
                     <div class="title">
-                        <img width="276" src="./image/h_new_Howtocustomize.webp" alt="">
+                        <img width="276" src="https://cdn-mate.matelink.com/cdn/image/h_new_Howtocustomize.webp" alt="">
                     </div>
                     <div class="list flex">
                         <div class="com">
-                            <img width="100" src="./image/h_new_icon_1.webp" alt="">
+                            <img width="100" src="https://cdn-mate.matelink.com/cdn/image/h_new_icon_1.webp" alt="">
                             <p>Easily share a 10-second snippet of your voice.</p>
                         </div>
                         <div class="com">
-                            <img width="100" src="./image/h_new_icon_2.webp" alt="">
+                            <img width="100" src="https://cdn-mate.matelink.com/cdn/image/h_new_icon_2.webp" alt="">
                             <p>Upload a beloved AI avatar image of your choice.</p>
                         </div>
                         <div class="com">
-                            <img width="100" src="./image/h_new_icon_3.webp" alt="">
+                            <img width="100" src="https://cdn-mate.matelink.com/cdn/image/h_new_icon_3.webp" alt="">
                             <p>Delight in customizing your AI even further with personalized settings!</p>
                         </div>
                     </div>
@@ -772,7 +784,7 @@
             <div class="info">
                 <div class="min-w">
                     <div class="title">
-                        <img width="284" src="./image/h_new_BecomeNextAI.webp" alt="">
+                        <img width="284" src="https://cdn-mate.matelink.com/cdn/image/h_new_BecomeNextAI.webp" alt="">
                     </div>
                     <div class="main">
                         <div class="label flex">
@@ -788,16 +800,18 @@
                             </div>
                         </div>
                         <div class="label flex">
-                            <p class="msg flex"><span>*</span>Message</p>
+                            <div class="msg flex">
+                                <p class="flex"><span>*</span>Message</p>
+                            </div>
                             <div class="textarea">
                                 <textarea v-model="textarea" placeholder="We are eager to learn about your ideal AI version of yourself! Please feel free to share any relevant links to your social media platforms. Thank you."></textarea>
                             </div>
                         </div>
                         <div class="submit" style="opacity: 0.5;" v-if="name == '' || email == '' || textarea == ''">
-                            Become an ai with us
+                            Become an AI with us
                         </div>
                         <div v-else class="submit" @click="submit">
-                            Become an ai with us
+                            Become an AI with us
                         </div>
                     </div>
                 </div>
@@ -812,19 +826,19 @@
         <div class="company pc">
             <div class="min-w">
                 <div class="title">
-                    <img width="342" src="./image/h_new_company.webp" alt="">
+                    <img width="342" src="https://cdn-mate.matelink.com/cdn/image/h_new_company.webp" alt="">
                 </div>
                
                     <div class="list right flex">  
-                        <img width="1160" class="company_banner_1" src="./image/h_new_company_banner_1.webp" alt="">
+                        <img width="1160" class="company_banner_1" src="https://cdn-mate.matelink.com/cdn/image/h_new_company_banner_1.webp" alt="">
                         <p>Lightful AI (LIGHTFUL AI TECHNOLOGIES PTE. LTD) is a promising startup company dedicated to the investigation and exploration of the artificial intelligence domain.<br /><br />The team members come from prestigious institutions such as the University of Pennsylvania and Peking University. With numerous core AI experts and talents in the field of positive psychology, they have dedicated many years to extensive research in the psychological and emotional domains, amassing a comprehensive collection of pan-psychological data.</p>
                     </div>
                     <div class="list left flex">
-                        <img width="940" class="company_banner_2" src="./image/h_new_company_banner_2.webp" alt="">
+                        <img width="940" class="company_banner_2" src="https://cdn-mate.matelink.com/cdn/image/h_new_company_banner_2.webp" alt="">
                         <p>The company's flagship product, MateLink, is built on an exclusive AI technology capable of flawlessly imitating someone's voice. With MateLink, users can engage in real-time interactions and personalized conversations with celebrities and influencers , enjoying multi-round conversations. Unleash your creativity by designing unique virtual characters from scratch using intuitive AI tools.</p>
                     </div>
                     <div class="list right flex">
-                        <img width="1560" class="company_banner_3" src="./image/h_new_company_banner_3.webp" alt="">
+                        <img width="1560" class="company_banner_3" src="https://cdn-mate.matelink.com/cdn/image/h_new_company_banner_3.webp" alt="">
                         <p>Share your AI character with friends, play, and chat together. Create AI Avatars of your best friends, family members, or even idols, and chat with them freely without limitations. Connect with them whenever you want, wherever you are.
                             The company aims to alleviate mental stress and enhance happiness worldwide by providing influential celebrities and influencers with large-scale AI services, promoting meaningful connections and support for people everywhere.</p>
                     </div>
@@ -845,7 +859,7 @@
 
         <div class="mobile footer_m">
             <div class="title">
-                <img class="logo mobile" src="./image/h_m_logo.png" alt="">
+                <img class="logo mobile" src="https://cdn-mate.matelink.com/cdn/image/h_m_logo.png" alt="">
             </div>
             <div class="footer_m_top">
                 <p><a target="_blank" href="./company.html">Company Introduction</a></p>
@@ -860,19 +874,19 @@
         </div>
 
 
-        <div class="h_m_donwload flex">
-            <img v-if="isIos" @click="goApple"  src="./image/h_m_download_apple.webp" alt="">
-            <img v-else @click="goGoogle" src="./image/h_m_download_googel.webp" alt="">
+        <div v-show="isDownload" class="h_m_donwload flex">
+            <img v-if="isIos" @click="goApple"  src="https://cdn-mate.matelink.com/cdn/image/h_m_download_apple.webp" alt="">
+            <img v-else @click="goGoogle" src="https://cdn-mate.matelink.com/cdn/image/h_m_download_googel.webp" alt="">
         </div>
     </div>
 
 
 </body>
-<script src="https://cdn-mate.flyai.com/cdn/js/vue.min.js"></script>
-<script src="https://cdn-mate.flyai.com/cdn/js/vant-2.1.2.min.js"></script>
-<script src="https://cdn-mate.flyai.com/cdn/js/axios.js"></script>
-<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
-<script charset="UTF-8" src="https://cdn-mate.flyai.com/cdn/js/sensorsdata.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.matelink.com/cdn/css/vant-2.1.2.css" />
+<script charset="UTF-8" src="https://cdn-mate.matelink.com/cdn/js/sensorsdata.min.js"></script>
 <script charset="UTF-8">
 var sensors = window['sensorsDataAnalytic201505'];
 sensors.init({
@@ -894,12 +908,28 @@ sensors.quick('autoTrack');
             textarea:'',
             api:'https://api.matelink.com/',
             autoplay:3000,
-            isIos: false
+            isIos: false,
+            isDownload:false,
+            isHeader: false
         },
         mounted() {
             this.isIos = this.isIosAgent();
+            window.addEventListener('scroll',this.handleScroll)
         },
         methods: {
+            handleScroll(){
+                this.scroll = document.documentElement.scrollTop||document.body.scrollTop
+                if(this.scroll > 800){
+                    this.isDownload = true;
+                }else{
+                    this.isDownload = false;
+                }
+                if(this.scroll > 200){
+                    this.isHeader = true;
+                }else{
+                    this.isHeader = false;
+                }
+            },
             isIosAgent() {
                 let u = navigator.userAgent;
                 let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
