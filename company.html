@@ -1,0 +1,260 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>MateLink</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="facebook-domain-verification" content="jr5vf2khga4ylvketm1k8sr79rokwa" />
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.flyai.com/cdn/js/rem.js"></script>
+    <link rel="shortcut icon" href="https://cdn-mate.flyai.com/web/new_image/logo.ico" type="image/x-icon"/>
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+        body,html{
+            background: #000000;
+        }
+        #app{
+            background: linear-gradient(180deg, #1A1E28 0%, #0F1F2F 99%);
+        }
+        .company{
+            padding-bottom: 1.0667rem;
+            overflow: hidden;
+        }
+        .company .title{
+            margin-top: 1.0133rem;
+            margin-bottom: .64rem;
+        }
+        .company .title img{
+            width: 6.2667rem;
+            display: block;
+            margin: 0 auto;
+        }
+        .company .lists{
+            padding: 0 .6933rem;
+        }
+        .company .lists p{
+            color: #FFFFFF;
+            font-size: .3733rem;
+            line-height: .5867rem;
+            margin-bottom: .5333rem;
+        }
+        .company .lists img{
+            width: 100%;
+            display: block;
+            margin-bottom: .5333rem;
+        }
+        .footer_m{
+            width: 100%;
+            background: #000000;
+        }
+        .footer_m .logo{
+            width: 4.2133rem;
+            margin-left: .8533rem;
+        }
+        .footer_m .title{
+            padding-top: 2.4rem;
+            margin-bottom: .9333rem;
+        }
+        .footer_m_top{
+            margin: 0 .8533rem;
+            color: #8C80FF;
+            font-size: .32rem;
+            padding-bottom: .8rem;
+            border-bottom: 1px solid rgba(255, 255, 255 , 0.18);
+        }
+        .footer_m_top p ,  .footer_m_bottom p{
+            margin-bottom: .5067rem;
+        }
+        .footer_m_top a , .footer_m_bottom a{
+            color: #8C80FF;
+        }
+        .footer_m_bottom{
+            color: rgba(255, 255, 255 , 0.7);;
+            font-size: .32rem;
+            margin: 0 .8533rem;
+            padding-top: 1.3333rem;
+            padding-bottom: 3.0667rem;
+        }
+        .h_m_donwload{
+            width: 9.1467rem;
+            height: 1.8667rem;
+            position: fixed;
+            bottom: 1.0667rem;
+            left: .4267rem;
+            background: url(https://cdn-mate.flyai.com/cdn/image/h_m_donwload.webp) no-repeat;
+            background-size: 100% 100%;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .h_m_donwload img{
+            width: 3.04rem;
+            margin-right: .32rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        
+
+
+
+  
+     
+
+        <div class="company">
+            <div class="min-w">
+                <div class="title">
+                    <img width="342" src="https://cdn-mate.flyai.com/cdn/image/h_new_company.webp" alt="">
+                </div>
+                <div class="mobile lists">
+                    <p>Lightful AI (LIGHTFUL AI TECHNOLOGIES PTE. LTD) is a promising startup company dedicated to the investigation and exploration of the artificial intelligence domain.</p>
+                    <img src="https://cdn-mate.flyai.com/cdn/image/h_m_img_1.webp" alt="">
+                    <p>The team members come from prestigious institutions such as the University of Pennsylvania and Peking University. With numerous core AI experts and talents in the field of positive psychology, they have dedicated many years to extensive research in the psychological and emotional domains, amassing a comprehensive collection of pan-psychological data.</p>
+                    <img src="https://cdn-mate.flyai.com/cdn/image/h_m_img_2.webp" alt="">
+                    <p>The company's flagship product, MateLink, is built on an exclusive AI technology capable of flawlessly imitating someone's voice. With MateLink, users can engage in real-time interactions and personalized conversations with celebrities and influencers , enjoying multi-round conversations. Unleash your creativity by designing unique virtual characters from scratch using intuitive AI tools.</p>
+                    <img src="https://cdn-mate.flyai.com/cdn/image/h_m_img_3.webp" alt="">
+                    <p>Share your AI character with friends, play, and chat together. Create AI Avatars of your best friends, family members, or even idols, and chat with them freely without limitations. Connect with them whenever you want, wherever you are.
+                        The company aims to alleviate mental stress and enhance happiness worldwide by providing influential celebrities and influencers with large-scale AI services, promoting meaningful connections and support for people everywhere.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile footer_m">
+            <div class="title">
+                <img class="logo mobile" src="https://cdn-mate.flyai.com/cdn/image/h_m_logo.png" alt="">
+            </div>
+            <div class="footer_m_top">
+                <p><a target="_blank" href="./company.htmll">Company Introduction</a></p>
+                <p><a target="_blank" href="https://cdn-mate.matelink.com/web/agreement.html">User Agreement</a></p>
+                <p><a target="_blank" href="https://cdn-mate.matelink.com/web/service.html">Privacy Policy</a></p>
+            </div>
+            <div class="footer_m_bottom">
+                <p>(c) 2023 MateLink</p>
+                <p>By <a href="javascript:;">LIGHTFUL AI TECHNOLOGIES PTE. LTD</a></p>
+            </div>
+           
+        </div>
+
+        <div class="h_m_donwload flex">
+            <img v-if="isIos" @click="goApple"  src="https://cdn-mate.flyai.com/cdn/image/h_m_download_apple.webp" alt="">
+            <img v-else @click="goGoogle" src="https://cdn-mate.flyai.com/cdn/image/h_m_download_googel.webp" alt="">
+        </div>
+    </div>
+
+
+</body>
+<script src="https://cdn-mate.flyai.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.flyai.com/cdn/js/vant-2.1.2.min.js"></script>
+<script src="https://cdn-mate.flyai.com/cdn/js/axios.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script charset="UTF-8" src="https://cdn-mate.flyai.com/cdn/js/sensorsdata.min.js"></script>
+<script charset="UTF-8">
+var sensors = window['sensorsDataAnalytic201505'];
+sensors.init({
+  server_url: 'https://log.cece.com/sa?project=XX',
+  heatmap:{scroll_notice_map:'not_collect'},
+  use_client_time:true,
+  send_type:'beacon'
+});
+sensors.quick('autoTrack');
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            iosDownload: 'https://apps.apple.com/app/6449399740',
+            andDownload: 'https://play.google.com/store/apps/details?id=com.matelink.appandr',
+            name:'',
+            email:'',
+            textarea:'',
+            api:'https://api.matelink.com/',
+            autoplay:3000,
+            isIos:false
+        },
+        mounted() {
+            this.isIos = this.isIosAgent();
+        },
+        methods: {
+            isIosAgent() {
+                let u = navigator.userAgent;
+                let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                if (isIOS) {
+                    return true
+                } else {
+                    return false
+                }
+            },
+            goGoogle(){
+                window.location.href = this.andDownload;
+            },
+            goApple(){
+                window.location.href = this.iosDownload;
+            },
+            submit(){
+                    this.$toast.loading({
+                        message: 'Loading...',
+                        duration:0,
+                        className:'loading'
+                    });
+                if(this.name == ''){
+                    this.$toast.fail({
+                        message: 'Please enter your name',
+                        className:'error'
+                     });
+                    return false;
+                }
+
+                if(this.email == ''){
+                    this.$toast.fail({
+                        message: 'Please enter your email address',
+                        className:'error'
+                     });
+                    return false;
+                }
+                let reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+                if(!reg.test(this.email)){
+                    this.$toast.fail({
+                        message: 'Incorrect email format',
+                        className:'error'
+                     });
+                    return false;
+                }
+                if(this.textarea == ''){
+                    this.$toast.fail({
+                        message: 'We are eager to learn about your ideal AI version of yourself! Please feel free to share any relevant links to your social media platforms. Thank you.',
+                     });
+                    return false;
+                }
+
+                let params={
+                    "name": this.name,
+                    "email": this.email,
+                    "message": this.textarea
+                }
+                axios.post(this.api + 'base/index/feedback', params).then(res => {
+                    this.$toast.success({
+                        message: 'We have received your message and will reply to you as soon as possible.',
+                        className:'success'
+                     });
+                    this.name = '';
+                    this.email = '';
+                    this.textarea = '';
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+            }
+        }
+    })
+</script>
+</html>
+	
+    
