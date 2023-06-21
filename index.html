@@ -51,6 +51,10 @@
             width: 1200px;
             margin: 0 auto;
         }
+        .header .min-w{
+            align-items: center;
+            justify-content: space-between;
+        }
         .min_main{
             width: 1200px;
             margin: 0 auto;
@@ -291,7 +295,7 @@
             background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
         }
-        ::placeholder {
+        .info ::placeholder {
             color: rgba(255, 255, 255, 0.5);
         }
         .tips{
@@ -404,6 +408,133 @@
             margin-top: -250px;
         }
     } */
+    .login{
+        width: 744px;
+        background: #E6E6E7;
+        border-radius: 30px;
+        padding-bottom: 23px;
+    }
+    .login .title{
+        height: 103px;
+        line-height: 103px;
+        text-align: center;
+        font-size: 32px;
+        color: #000000;
+    }
+    .van-popup{
+        background-color: initial !important;
+    }
+    .login .lable{
+        width: 608px;
+        height: 68px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #6A77E8;
+        border-radius: 16px;
+        margin: 0 auto;
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+    }
+    .login .lable img{
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        cursor: pointer;
+    }
+    .login .lable input{
+        width: 100%;
+        height: 100%;
+        background: none;
+        border: none;
+        font-size: 18px;
+        padding: 0 24px;
+    }
+    .login .prompt{
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 18px;
+        text-align: center;
+    }
+    .login .prompt a{
+        color: #8C80FF;
+    }
+    .login .btn{
+        width: 289px;
+        height: 64px;
+        background: linear-gradient(109deg, #9780FF 18%, #5694FF 76%);
+        margin: 0 auto;
+        margin-top: 18px;
+        border-radius: 391px;
+        margin-bottom: 22px;
+        color: #FFFFFF;
+        line-height: 64px;
+        text-align: center;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    .login ::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+    }
+    .user_login{
+        width: 150px;
+        height: 54px;
+        background: #171B36;
+        border-radius: 18px;
+        color: #FFFFFF;
+        font-size: 24px;
+        text-align: center;
+        line-height: 54px;
+        cursor: pointer;
+    }
+    .user_info{
+        position: relative;
+        height: 100px;
+        width: 70px;
+    }
+    .user_info img{
+        width: 56px;
+        height: 56px;
+        cursor: pointer;
+        margin-top: 22px;
+    }
+    .user_info .signed{
+        width: 223px;
+        height: 132px;
+        border-radius: 18px;
+        background: #171B36;
+        position: absolute;
+        right: 0;
+        padding: 0 20px;
+        display: none;
+        top: 90px;
+    }
+    .user_info:hover .signed{
+        display: block;
+    }
+    .user_info .email{
+        height: 80px;
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+    }
+    .user_info .email p{
+        color: #FFFFFF;
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .user_info .email span{
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 8p;
+    }
+    .user_info .out{
+        color: #5593FF;
+        font-size: 18px;
+        height: 52px;
+        line-height: 52px;
+        cursor: pointer;
+    }
     @media (max-width: 799px)  {
         .mobile{
             display: block;
@@ -678,8 +809,21 @@
 <body>
     <div id="app" v-cloak>
         <div :class="isHeader ? 'header backdrop':'header'">
-            <div class="min-w">
+            <div class="min-w flex">
                 <img src="https://cdn-mate.matelink.com/web/new_image/logo.png" alt="">
+                <div class="user_login" v-if="userInfo == '' " @click="show = true">
+                    Login
+                </div>
+                <div v-else class="user_info">
+                    <img src="https://cdn-mate.flyai.com/cdn/image/h_new_head.png">
+                    <div class="signed">
+                        <div class="email">
+                            <p>Signed in as</p>
+                            <span>{{userInfo}}</span>
+                        </div>
+                        <div class="out" @click="SignOut">Sign out</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="content flex">
@@ -740,11 +884,11 @@
             </div>
         </div>
 
-        <div class="swiper mobile">
+        <div class="swiper mobile" ref="refSwiper">
             <div class="title">
                 <img src="https://cdn-mate.flyai.com/cdn/image/h_m_product.webp" alt="">
             </div>
-            <van-swipe class="my-swipe" ref="swiper"  :autoplay="3000" duration="1000" :show-indicators="true" indicator-color="white">
+            <van-swipe class="my-swipe" ref="swiper" :autoplay="autoplay" duration="1000" :show-indicators="true" indicator-color="white">
                 <van-swipe-item>
                     <img src="https://cdn-mate.flyai.com/cdn/image/h_m_banner_1.webp" />
                 </van-swipe-item>
@@ -781,7 +925,7 @@
                 </div>
             </div>
     
-            <div class="info">
+            <div class="info" ref="section">
                 <div class="min-w">
                     <div class="title">
                         <img width="284" src="https://cdn-mate.flyai.com/cdn/image/h_new_BecomeNextAI.webp" alt="">
@@ -874,10 +1018,45 @@
         </div>
 
 
-        <div v-show="isDownload" class="h_m_donwload flex">
+        <div v-show="isDownload && !isApp" class="h_m_donwload flex">
             <img v-if="isIos" @click="goApple"  src="https://cdn-mate.flyai.com/cdn/image/h_m_download_apple.webp" alt="">
             <img v-else @click="goGoogle" src="https://cdn-mate.flyai.com/cdn/image/h_m_download_googel.webp" alt="">
         </div>
+
+        <van-popup v-model="show">
+            <div class="login">
+                <div class="title">
+                    {{isLogin ? "Let's get started" : "Create your Account"}}
+                </div>
+                <div class="lable">
+                    <input type="text" v-model="username"  placeholder="Email address" />
+                </div>
+                <div class="lable">
+                    <input :type="isShowPwd ? 'text' : 'password'" v-model="password" placeholder="Password" />
+                    <div v-if="isLogin">
+                        <img v-if="isShowPwd" @click="isShowPwd = false" src="https://cdn-mate.flyai.com/cdn/image/h_new_eye.png">
+                        <img v-else  @click="isShowPwd = true"  src="https://cdn-mate.flyai.com/cdn/image/h_new_eye_fill.png">
+                    </div>
+                </div>
+                <div v-if="!isLogin" class="lable">
+                    <input type="password" v-model="re_password" placeholder="Re-Password" />
+                </div>
+                <div class="prompt">
+                    By continuing，you agree to our <a target="_blank" href="https://cdn-mate.matelink.com/web/agreement.html">User Agreement</a> and <a target="_blank" href="https://cdn-mate.matelink.com/web/service.html">Privacy Policy</a>
+                </div>
+                <div class="btn" @click="Continue()">
+                    Continue
+                </div>
+                <div class="prompt" v-if="isLogin">
+                    Don't have an account？ <a href="javascript:;" @click="isLogin = false ; isShowPwd = false">Sign up</a>
+                </div>
+                <div class="prompt" v-else>
+                    Already have an account？ <a href="javascript:;" @click="isLogin = true">Sign in</a>
+                </div>
+            </div>
+        </van-popup>
+
+        
     </div>
 
 
@@ -906,29 +1085,143 @@ sensors.quick('autoTrack');
             name:'',
             email:'',
             textarea:'',
-            api:'https://api.matelink.com/',
-            autoplay:3000,
+            api: 'https://test-api-mate.flyai.com/',
+            autoplay:0,
             isIos: false,
             isDownload:false,
-            isHeader: false
+            isHeader: false,
+            show:false,
+            isLogin: true,
+            isShowPwd: false,
+            username:'',
+            password:'',
+            re_password:'',
+            userInfo:'',
+            isApp: false
         },
         mounted() {
+            if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            }
             this.isIos = this.isIosAgent();
             window.addEventListener('scroll',this.handleScroll)
+            if(localStorage.getItem('userInfo')){
+                this.userInfo = localStorage.getItem('userInfo');
+            }
+            if(window.location.href.split('#').length > 1){
+               setTimeout(() => {
+                this.isApp = true;
+                this.$nextTick(() => {
+                    window.scrollTo(0 , this.$refs.section.offsetTop);
+                });
+               }, 100);
+            }
         },
         methods: {
+            SignOut(){
+                localStorage.clear();
+                this.userInfo = '';
+            },
+            Continue(){
+                if(this.username == ''){
+                    this.$toast.fail({
+                        message: 'Please enter your email address',
+                        className:'error'
+                     });
+                    return false;
+                }
+                let reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+                if(!reg.test(this.username)){
+                    this.$toast.fail({
+                        message: 'Incorrect email format',
+                        className:'error'
+                     });
+                    return false;
+                }
+                if(this.password == ''){
+                    this.$toast.fail({
+                        message: 'Please enter your password',
+                        className:'error'
+                     });
+                    return false;
+                }
+                let params={
+                    "username": this.username,
+                    "password": this.password,
+                }
+
+                if(!this.isLogin){
+                    if(this.re_password == ''){
+                        this.$toast.fail({
+                            message: 'Please confirm the password',
+                            className:'error'
+                        });
+                        return false;
+                    }
+                    if(this.password != this.re_password){
+                        this.$toast.fail({
+                            message: 'Incorrect password twice',
+                            className:'error'
+                        });
+                        return false;
+                    }
+                    params.re_password = this.re_password;
+                }
+                let url = this.isLogin ? 'h5/user/login':'h5/user/register';
+                axios.post(this.api + url, params).then(res => {
+                    if(res.data.code == 200){
+                    if(this.isLogin){
+                        this.show = false; 
+                        this.$toast.success({
+                            message: 'Login succeeded',
+                            className:'success'
+                        });
+                        localStorage.setItem('userInfo', params.username);
+                        this.userInfo = params.username;
+                    }else{
+                        this.$toast.success({
+                            className:'success'
+                        });
+                        this.isLogin = true;
+                        this.Continue();
+                    }
+                }
+                else{
+                    this.$toast({
+                        message: res.data.msg
+                    });
+                }
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+
+            },
             handleScroll(){
                 this.scroll = document.documentElement.scrollTop||document.body.scrollTop
-                if(this.scroll > 800){
-                    this.isDownload = true;
+                if(this.isMoblie()){
+                    if(this.scroll >= this.$refs.refSwiper.offsetTop-20){
+                        this.autoplay = 3000;
+                    } 
+                    if(this.scroll > 800){
+                        this.isDownload = true;
+                    }else{
+                        this.isDownload = false;
+                    }
                 }else{
-                    this.isDownload = false;
-                }
-                if(this.scroll > 200){
-                    this.isHeader = true;
-                }else{
-                    this.isHeader = false;
-                }
+                    if(this.scroll > 200){
+                        this.isHeader = true;
+                    }else{
+                        this.isHeader = false;
+                    }
+                }                    
+            },
+            isMoblie(){
+                let userAgentInfo = navigator.userAgent;
+                let Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'];
+                let getArr = Agents.filter(i => userAgentInfo.includes(i));
+                return getArr.length ? true : false;
             },
             isIosAgent() {
                 let u = navigator.userAgent;

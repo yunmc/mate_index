@@ -338,6 +338,12 @@
                 });
                 axios.post(this.api + 'h5/user/ai_users', params).then(res => {
                     if(res.data.code == 200){
+                        // res.data.data.push({
+                        //     ai_name: "111111111我的小可爱🥰my deer my daling",
+                        //     ai_state: 2,
+                        //     ai_uid: "ai_user_e1878243802f4e40aa42rt55",
+                        //     avatar: "https://cdn-mate.matelink.com/image/avatar/image_878b34d0c52045c8882470a3b8.jpg"
+                        // })
                         this.list = res.data.data;
                         this.data = res.data.data[0];
                         this.ai_uid = res.data.data[0].ai_uid;
