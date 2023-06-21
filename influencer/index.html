@@ -129,6 +129,8 @@
         .content .list .info span{
             color: #FFFFFF;
             font-size: .4267rem;
+            max-width: 4.8rem;
+            line-height: .5333rem;
         }
         .content .list .info p{
             color: #B5B1FF;
@@ -196,14 +198,14 @@
 
             <transition name="fade">
                 <div class="down_item" v-if="show">
-                    <div class="list flex" @click.stop="show = true"> All</div>
+                    <div class="list flex" @click.stop="show = true">{{isEn ? 'All' : '全部'}}</div>
                     <div class="list flex" v-for="item in list" :key="item.id" @click.stop="changeUid(item)"> <img :src="item.avatar">{{item.ai_name}}</div>
                 </div>
             </transition>
         </div>
 
         <div class="general">
-            <div class="title flex">General</div>
+            <div class="title flex">{{isEn ? 'General' : '数据汇总'}} </div>
             <div class="container flex">
                 <div class="list">
                     <div class="img flex">
@@ -211,10 +213,10 @@
                     </div>
                     <div class="desc flex">
                         <p>{{general.hours}}</p>
-                        <span>Hours</span>
+                        <span>{{isEn ? 'Hours' : '小时' }}</span>
                     </div>
                     <div class="desc flex current">
-                        <span>Services</span>
+                        <span>{{isEn ? 'Services' : '服务' }}</span>
                     </div>
                 </div>
                 <div class="list">
@@ -225,7 +227,7 @@
                         <p>{{general.conversations}}</p>
                     </div>
                     <div class="desc flex current">
-                        <span>Contacts</span>
+                        <span>{{isEn ? 'Contacts' : '对话' }} </span>
                     </div>
                 </div>
                 <div class="list">
@@ -236,7 +238,7 @@
                         <p>{{general.messages}}</p>
                     </div>
                     <div class="desc flex current">
-                        <span>Messages</span>
+                        <span>{{isEn ? 'Messages' : '消息' }}</span>
                     </div>
                 </div>
                 <div class="list">
@@ -245,10 +247,10 @@
                     </div>
                     <div class="desc flex">
                         <p>{{general.income}}</p>
-                        <span>Diamonds</span>
+                        <span>{{isEn ? 'Diamonds' : '钻石' }} </span>
                     </div>
                     <div class="desc flex current">
-                        <span>Earnings</span>
+                        <span>{{isEn ? 'Earnings' : '收入' }} </span>
                     </div>
                 </div>
             </div>
@@ -259,7 +261,7 @@
             <div class="content">
                 <div class="list" v-for="item in detail" :key="item.created_time">
                     <div class="info flex">
-                        <span>{{item.ai_name}}</span>
+                        <span>{{isEn ? 'From AI' : '来自' }} {{item.ai_name}}</span>
                         <p><img src="https://cdn-mate.matelink.com/cdn/influencer/masonry.png">+{{item.trans_amount}}</p>
                     </div>
                     <div class="timer flex">
@@ -292,13 +294,18 @@
             detail: [],
             page: 1,
             isPage: true,
-            timerId:''
+            timerId:'',
+            isEn: true
         },
         created() {
             if(window.location.host == 'www.matelink.com'){
                 this.api = 'https://api.matelink.com/'
             }
             this.uid = this.getQueryString('uid')
+            if(this.getQueryString('service')){
+                this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
+            }
+            
             this.get_ai_users();
         },
         mounted() {

@@ -1109,12 +1109,20 @@ sensors.quick('autoTrack');
                 this.userInfo = localStorage.getItem('userInfo');
             }
             if(window.location.href.split('#').length > 1){
+                setTimeout(() => {
+                    this.isApp = true;
+                    this.$nextTick(() => {
+                        console.log(0 , this.$refs.section.offsetTop);
+                        window.scrollTo(0 , this.$refs.section.offsetTop);
+                    });
+               }, 500);
                setTimeout(() => {
-                this.isApp = true;
-                this.$nextTick(() => {
-                    window.scrollTo(0 , this.$refs.section.offsetTop);
-                });
-               }, 100);
+                    this.isApp = true;
+                    this.$nextTick(() => {
+                        console.log(0 , this.$refs.section.offsetTop);
+                        window.scrollTo(0 , this.$refs.section.offsetTop);
+                    });
+               }, 1000);
             }
         },
         methods: {
