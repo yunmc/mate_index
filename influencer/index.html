@@ -227,7 +227,7 @@
                         <p>{{general.conversations}}</p>
                     </div>
                     <div class="desc flex current">
-                        <span>{{isEn ? 'Contacts' : '对话' }} </span>
+                        <span>{{isEn ? 'Contactas' : '对话' }} </span>
                     </div>
                 </div>
                 <div class="list">
@@ -257,7 +257,7 @@
         </div>
 
         <div class="general" style="margin-top:0;">
-            <div class="title flex">Earning Details</div>
+            <div class="title flex">{{isEn ? 'Earnings Details' : '收入明细' }}</div>
             <div class="content">
                 <div class="list" v-for="item in detail" :key="item.created_time">
                     <div class="info flex">
