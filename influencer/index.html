@@ -8,8 +8,8 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
-    <script src="https://cdn-mate.flyai.com/cdn/js/rem.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.matelink.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
 
     <style type="text/css">
         body,html{
@@ -73,7 +73,7 @@
         .container .list{
             width: 4.3733rem;
             height: 4.9067rem;
-            background: url(https://cdn-mate.flyai.com/cdn/influencer/bg.png) no-repeat;
+            background: url(https://cdn-mate.matelink.com/cdn/influencer/bg.png) no-repeat;
             background-size: 100% 100%;
             display: inline-grid;
             margin-bottom: .48rem;
@@ -191,8 +191,8 @@
                 <img :src="data.avatar"> 
                 <span>{{data.ai_name}}</span>
             </div>
-            <img v-if="!show" class="arrow" src="https://cdn-mate.flyai.com/cdn/influencer/arrow_bottom.png">
-            <img v-else class="arrow" src="https://cdn-mate.flyai.com/cdn/influencer/arrow_top.png">
+            <img v-if="!show" class="arrow" src="https://cdn-mate.matelink.com/cdn/influencer/arrow_bottom.png">
+            <img v-else class="arrow" src="https://cdn-mate.matelink.com/cdn/influencer/arrow_top.png">
 
             <transition name="fade">
                 <div class="down_item" v-if="show">
@@ -207,7 +207,7 @@
             <div class="container flex">
                 <div class="list">
                     <div class="img flex">
-                        <img src="https://cdn-mate.flyai.com/cdn/influencer/icon_1.png" alt="">
+                        <img src="https://cdn-mate.matelink.com/cdn/influencer/icon_1.png" alt="">
                     </div>
                     <div class="desc flex">
                         <p>{{general.hours}}</p>
@@ -219,7 +219,7 @@
                 </div>
                 <div class="list">
                     <div class="img flex">
-                        <img src="https://cdn-mate.flyai.com/cdn/influencer/icon_2.png" alt="">
+                        <img src="https://cdn-mate.matelink.com/cdn/influencer/icon_2.png" alt="">
                     </div>
                     <div class="desc flex">
                         <p>{{general.conversations}}</p>
@@ -230,7 +230,7 @@
                 </div>
                 <div class="list">
                     <div class="img flex">
-                        <img src="https://cdn-mate.flyai.com/cdn/influencer/icon_3.png" alt="">
+                        <img src="https://cdn-mate.matelink.com/cdn/influencer/icon_3.png" alt="">
                     </div>
                     <div class="desc flex">
                         <p>{{general.messages}}</p>
@@ -241,7 +241,7 @@
                 </div>
                 <div class="list">
                     <div class="img flex">
-                        <img src="https://cdn-mate.flyai.com/cdn/influencer/icon_4.png" alt="">
+                        <img src="https://cdn-mate.matelink.com/cdn/influencer/icon_4.png" alt="">
                     </div>
                     <div class="desc flex">
                         <p>{{general.income}}</p>
@@ -260,7 +260,7 @@
                 <div class="list" v-for="item in detail" :key="item.created_time">
                     <div class="info flex">
                         <span>{{item.ai_name}}</span>
-                        <p><img src="https://cdn-mate.flyai.com/cdn/influencer/masonry.png">+{{item.trans_amount}}</p>
+                        <p><img src="https://cdn-mate.matelink.com/cdn/influencer/masonry.png">+{{item.trans_amount}}</p>
                     </div>
                     <div class="timer flex">
                         <span>{{item.created_time}}</span>
@@ -274,10 +274,10 @@
 </div>
 
 </body>
-<script src="https://cdn-mate.flyai.com/cdn/js/vue.min.js"></script>
-<script src="https://cdn-mate.flyai.com/cdn/js/vant-2.1.2.min.js"></script>
-<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
-<script src="https://cdn-mate.flyai.com/cdn/js/axios.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.matelink.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
 <script>
     var app = new Vue({
         el: '#app',
@@ -285,7 +285,7 @@
             show: false,
             uid: '',
             ai_uid:'',
-            api: 'https://test-api-mate.flyai.com/',
+            api: 'https://test-api-mate.matelink.com/',
             list: [],
             data: '',
             general: '',
@@ -338,12 +338,6 @@
                 });
                 axios.post(this.api + 'h5/user/ai_users', params).then(res => {
                     if(res.data.code == 200){
-                        // res.data.data.push({
-                        //     ai_name: "111111111我的小可爱🥰my deer my daling",
-                        //     ai_state: 2,
-                        //     ai_uid: "ai_user_e1878243802f4e40aa42rt55",
-                        //     avatar: "https://cdn-mate.matelink.com/image/avatar/image_878b34d0c52045c8882470a3b8.jpg"
-                        // })
                         this.list = res.data.data;
                         this.data = res.data.data[0];
                         this.ai_uid = res.data.data[0].ai_uid;
