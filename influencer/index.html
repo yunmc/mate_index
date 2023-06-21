@@ -194,7 +194,7 @@
                 <span>{{data.ai_name}}</span>
             </div>
             <img v-if="!show" class="arrow" src="https://cdn-mate..matelink..com/cdn/influencer/arrow_bottom.png">
-            <img v-else @click.stop="show = true" class="arrow" src="https://cdn-mate..matelink..com/cdn/influencer/arrow_top.png">
+            <img v-else @click.stop="show = false" class="arrow" src="https://cdn-mate..matelink..com/cdn/influencer/arrow_top.png">
 
             <transition name="fade">
                 <div class="down_item" v-if="show">
