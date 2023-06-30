@@ -1287,7 +1287,7 @@ sensors.quick('autoTrack');
                     "email": this.email,
                     "message": this.textarea
                 }
-                axios.post(this.api + 'base/index/feedback', params).then(res => {
+                axios.post(this.api + 'h5/user/submit_apply', params).then(res => {
                     this.$toast.success({
                         message: 'We have received your message and will reply to you as soon as possible.',
                         className:'success'
