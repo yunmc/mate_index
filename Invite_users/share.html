@@ -1,0 +1,223 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>invites you to join MateLink</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+        body,html{
+            width: 100%;
+            /* height: 100%; */
+            background: url(https://cdn-mate.matelink.com/cdn/vs/v1.0.6/share_bg.jpeg) no-repeat;
+            background-size: 100% 100%;
+        }
+        #app{
+            padding-top: 7.4933rem;
+        }
+        .main{
+            background: url(https://cdn-mate.matelink.com/cdn/vs/v1.0.6/share_main_bg.webp) no-repeat;
+            background-size: 100% 100%;
+            height: 11.9733rem;
+            width: 100%;
+            overflow: hidden;
+        }
+        .top{
+            padding: .4533rem .64rem;
+        }
+        .top .header{
+            width: 1.0667rem;
+            border-radius: 50%;
+            margin-right: .2667rem;
+            display: block;
+            float: left;
+        }
+        .top .tips{
+            width: 7.2rem;
+            display: block;
+            float: left;
+        }
+        .box{
+            clear: both;
+        }
+        .content{
+            width: 8.9333rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.51) 100%);
+            border-radius: .64rem;
+            margin: 0 auto;
+            margin-top: .4533rem;
+            backdrop-filter: blur(10px);
+        }
+        .banner{
+            padding: .5333rem .2667rem;
+            position: relative;
+        }
+        .copy{
+            width: 2.533rem;
+            height: .8rem;
+            position: absolute;
+            right: .32rem;
+            top: .5333rem;
+        }
+        .download{
+            width: 2.8rem;
+            height: .8rem;
+            position: absolute;
+            right: .32rem;
+            top: 3.3667rem;
+        }
+        .code{
+            width: 100%;
+            position: absolute;
+            padding: 0 .64rem;
+            left: 0;
+            top: 1.7067rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .code p{
+            width: 1.0133rem;
+            height: 1.0133rem;
+            background: url(https://cdn-mate.matelink.com/cdn/vs/v1.0.6/share_code_bg.webp) no-repeat;
+            background-size: 100% 100%;
+            border-radius: 50%;
+            font-size: .6933rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="main">
+            <div class="top">
+                <img class="header" :src="data.avatar">
+                <img class="tips"  v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/share_tips_en.webp">
+                <img class="tips" v-else src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/share_tips_cn.webp">
+            </div>
+            <div class="box"></div>
+            <div class="content">
+                <div class="banner">
+                    <img width="100%"  v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/invite_en.png">
+                    <img width="100%" v-else src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/invite_cn.png">
+                    <div class="copy" @click="copy"></div>
+                    <div class="download" @click="toApp()"></div>
+                    <div class="code flex">
+                        <p v-for="item in code">{{item}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/clipboard.min.js"></script>
+<script charset="UTF-8" src="https://cdn-mate.matelink.com/cdn/js/sensors.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            show:false,
+            isEn: true,
+            code:'',
+            data:'',
+            api: 'https://test-api-mate.flyai.com/',
+        },
+        created() {
+            if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            }
+            this.code = this.getQueryString('code')
+            if(this.getQueryString('service')){
+                this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
+                if(!this.isEn){
+                    document.title = '邀请你加入MateLink'
+                }else{
+                    document.title = 'invites you to join MateLink'
+                }
+            }else{
+                document.title = 'invites you to join MateLink'
+            }
+            this.getDateils();
+        },
+        methods: {
+            copy(){
+                var that = this;
+                var clipboard = new ClipboardJS('.copy',{
+                text: function () {
+                    return that.code
+                }
+                });
+                clipboard.on('success', function(e) {
+                    that.$toast({
+                        duration: 3000,
+                        message: that.isEn ? 'Success' : '复制成功'
+                    })
+                });
+                clipboard.on('error', function(e) {
+                    that.$toast.fail(that.isEn ? 'Fail' : '复制失败')
+                });
+            },
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            toApp(){
+                window.location.href = 'https://app.adjust.com/12b21qk0'
+            },
+            getDateils(){
+                let params = {
+                    'invite_code': this.code
+                }
+                this.$toast.loading({
+                    message: 'Loading...',
+                    duration:0,
+                    className:'loading'
+                });
+                axios.post(this.api + 'h5/share/get_invite_userinfo', params).then(res => {
+                    this.$toast.clear()
+                    if(res.data.code == 200){
+                        this.data = res.data.data;
+                        if(this.getQueryString('service')){
+                            this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
+                            if(!this.isEn){
+                                    document.title = this.data.alias+' 邀请你加入MateLink'
+                                }else{
+                                    document.title = this.data.alias+' invites you to join MateLink'
+                                }
+                        }else{
+                            document.title = this.data.alias+' invites you to join MateLink'
+                        }
+                    }else{
+                    }
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+            }
+        }
+    })
+</script>
+</html>
+	
+    

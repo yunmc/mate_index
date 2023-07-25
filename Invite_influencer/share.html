@@ -1,0 +1,182 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Join MateLink Now</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+            background: url(https://cdn-mate.matelink.com/cdn/vs/v1.0.6/influ_bg.webp) no-repeat;
+            background-size: 100% 100%;
+        }
+        #app{
+            
+        }
+        .main{
+            padding-top: .9333rem;
+        }
+        .name{
+            width: 8.72rem;
+            margin: 0 auto;
+            position: relative;
+        }
+        .text{
+            width: 8.72rem;
+            margin: 0 auto;
+            margin-top: .64rem;
+        }
+        .text img{
+            width: 100%;
+        }
+        .btn img{
+            width: 10rem;
+            margin: 0 auto;
+            margin-top: 1.3333rem;
+        }
+        .user{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #541D93;
+            font-size: .5333rem;
+            align-items: center;
+            justify-content: flex-start;
+            font-weight: bold;
+        }
+        .user img{
+            width: 1.0667rem;
+            border-radius: 50%;
+            margin-right: .2667rem;
+        }
+        .user span{
+            margin-right: .2667rem;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="main">
+            <img width="100%" v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/influ_s_banner_en.webp" alt="">
+            <img width="100%" v-else src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/influ_s_banner_cn.webp" alt="">
+        </div>
+        <div class="name">
+            <img width="100%" v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/content_bg.webp" alt="">
+            <div class="user flex">
+                <img :src="data.avatar" alt="" /><span>{{ isEn ? 'My Referral Code':'我的邀请码'}}</span>{{code}}
+            </div>
+        </div>
+        <div class="text">
+            <img v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/text_en.webp" alt="">
+            <img v-else src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/text_cn.webp" alt="">
+        </div>
+
+        <div class="btn">
+            <img v-if="isEn" @click="toApp" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/content_btn_en.webp" alt="">
+            <img v-else @click="toApp" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/content_btn_cn.webp" alt="">
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/clipboard.min.js"></script>
+<script charset="UTF-8" src="https://cdn-mate.matelink.com/cdn/js/sensors.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            show:false,
+            isEn: true,
+            code:'',
+            data:'',
+            api: 'https://test-api-mate.flyai.com/',
+        },
+        created() {
+            if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            }
+            this.code = this.getQueryString('code')
+            if(this.getQueryString('service')){
+                this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
+                if(!this.isEn){
+                    document.title = '现在就加入MateLink'
+                }else{
+                    document.title = 'Join MateLink Now'
+                }
+            }else{
+                document.title = 'Join MateLink Now'
+            }
+            this.getDateils();
+        },
+        methods: {
+            copy(){
+                var that = this;
+                var clipboard = new ClipboardJS('.copy',{
+                text: function () {
+                    return that.code
+                }
+                });
+                clipboard.on('success', function(e) {
+                    that.$toast({
+                        duration: 3000,
+                        message: that.isEn ? 'Success' : '复制成功'
+                    })
+                });
+                clipboard.on('error', function(e) {
+                    that.$toast.fail(that.isEn ? 'Fail' : '复制失败')
+                });
+            },
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            toApp(){
+                window.location.href = 'https://app.adjust.com/12b21qk0'
+            },
+            getDateils(){
+                let params = {
+                    'invite_code': this.code
+                }
+                this.$toast.loading({
+                    message: 'Loading...',
+                    duration:0,
+                    className:'loading'
+                });
+                axios.post(this.api + 'h5/share/get_invite_userinfo', params).then(res => {
+                    this.$toast.clear()
+                    if(res.data.code == 200){
+                        this.data = res.data.data;
+                    }else{
+                    }
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+            }
+        }
+    })
+</script>
+</html>
+	
+    
