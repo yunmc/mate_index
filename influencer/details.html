@@ -89,8 +89,19 @@
             justify-content: center;  
             margin: .2667rem 0; 
         }
-        
-        
+        .null{
+            width: 5.0667rem;
+            margin: 0 auto;
+            margin-top: 3.2rem;
+        }
+        .null img{
+            width: 100%;
+        }
+        .null p{
+            color: rgba(181, 177, 255, 0.3);
+            font-size: .3733rem;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -110,6 +121,10 @@
             </div>
             <div class="login flex" v-if="page > 1 && loading">
                 <van-loading color="#1989fa" />
+            </div>
+            <div class="null" v-if="detail == '' && !loading">
+                <img src="https://cdn-mate.flyai.com/cdn/vs/v1.0.6/null.webp" alt="">
+                <p>{{isEn ? "It's empty":'暂无记录'}}</p>
             </div>
         </div>
        

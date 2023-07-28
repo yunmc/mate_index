@@ -123,6 +123,19 @@
             padding: 0 .5333rem;
             line-height: .64rem;
         }
+        .null{
+            width: 5.0667rem;
+            margin: 0 auto;
+            margin-top: 3.2rem;
+        }
+        .null img{
+            width: 100%;
+        }
+        .null p{
+            color: rgba(181, 177, 255, 0.3);
+            font-size: .3733rem;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -152,6 +165,10 @@
                     <img src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/icon.webp" alt=""> +{{item.free_chat_times}}
                 </div>
             </div>
+        </div>
+        <div class="null" v-if="data == '' && !loading">
+            <img src="https://cdn-mate.flyai.com/cdn/vs/v1.0.6/null.webp" alt="">
+            <p>{{isEn ? "It's empty":'暂无记录'}}</p>
         </div>
 
         <van-popup v-model:show="show" overlay="true" :close-on-click-overlay="true">
@@ -196,7 +213,8 @@
             data: '',
             code :'',
             apiKey:'',
-            uid:''
+            uid:'',
+            loading:true
         },
         created() {
             if(window.location.host == 'www.matelink.com'){
@@ -251,6 +269,7 @@
                 });
                 axios.post(this.api + 'h5/user/invite_record', params).then(res => {
                     this.$toast.clear()
+                    this.loading = false;
                     if(res.data.code == 200){
                         this.data = res.data.data.list;
                         this.code = res.data.data.invite_code;
