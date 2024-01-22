@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Invite for Rewards</title>
+    <title>Referral Friends</title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,107 +19,114 @@
             display: none;
         }
         #app{
-            padding: 0 .64rem;
             padding-bottom: .7467rem;
         }
         .top{
-            color: #FFFFFF;
-            font-size: .4267rem;
-            padding-top: .96rem;
-            align-items: center;
-            justify-content: space-between;
+           width: 100%;
+           margin-bottom: .6933rem;
         }
-        .top div:last-child{
-            color: #B5B1FF;
-        }
-        .code {
-            align-items: center;
-            justify-content: space-between;
-            margin-top: .6933rem;
-        }
-        .code p{
-            width: 1.28rem;
-            height: 1.3867rem;
-            border-radius: .4267rem;
-            overflow: hidden;
-            font-size: .7467rem;
-            color: #FFFFFF;
-            align-items: center;
-            justify-content: center;
-            background: url(https://cdn-mate.matelink.com/cdn/vs/v1.0.6/code_bg.webp) no-repeat;
-            background-size: 100% 100%;
-        }
-        .btn{
-            width: 8.72rem;
-            height: 1.28rem;
-            background: url(https://cdn-mate.matelink.com/cdn/vs/v1.0.6/btn.webp) no-repeat;
-            background-size: 100% 100%;
-            margin-top: .6933rem;
-            align-items: center;
-            justify-content: center;
-            color: #FFFFFF;
-            font-size: .4267rem;
-        }
-        .tips{
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: .4267rem;
-            font-size: .3733rem;
-        }
-        .title{
-            margin-top: 1.44rem;
-            color: #ffffff;
-            font-size: .4267rem;
+        .top img{
+            width: 100%;
         }
         .main{
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: .32rem;
-            margin-top: .32rem;
+            padding: 0 .4267rem;
         }
-        .free{
-            align-items: center;
-            justify-content: flex-end;
-            color: #B5B1FF;
-        }
-        .list{
-            height: 1.92rem;
-            margin: 0 .4267rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .list .name{
+        .successfully{
             color: #FFFFFF;
-            font-size: .4267rem;
+            font-size: .4533rem;
+            align-items: center;
+            justify-content: center;
+            height: 1.0133rem;
         }
-        .list .name span{
-            color: rgba(255, 255, 255, 0.5);
+        .successfully span{
+            font-size: .64rem;
+            font-weight: bold;
+            height: 38px;
+            padding:0 .2133rem;
+            background: #2C3241;
+            border-radius: .1333rem;
+            margin: 0 .1333rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn{
+            width: 9.04rem;
+            height: 1.28rem;
+            background: url(./image/btn.png) no-repeat;
+            background-size: 100% 100%;
+            color: #FFFFFF;
+            font-size: .48rem;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            margin-top: .5333rem;
+        }
+        .code{
+            margin-top: 24px;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .code p{
+            color: rgba(181, 177, 255, 1);
+            margin-left: .1333rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .code img{
+            width: .3733rem;
+            margin-left: .08rem;
+        }
+        .qa{
+            margin-top: .96rem;
+        }
+        .qa p{
+            font-size: .4267rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: .2667rem;
+        }
+        .qa span{
             font-size: .3733rem;
-            margin-top: .2133rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: .64rem;
             display: block;
         }
-        .free img{
-            width: .6667rem;
-            margin-right: .16rem;
+        .main .rules{
+            margin-top: .5333rem;
+            color: #B5B1FF;
+            font-size: .3733rem;
+            text-decoration: underline;
+            text-align: center;
         }
+       
         .van-popup{
             background: none !important;
         }
         .popup{
-            width: 7.4133rem;
+            width: 8rem;
             border-radius: .5333rem;
             background: #2C3241;
             padding-bottom: .64rem;
+            overflow: hidden;
+            position: relative;
         }
-        .rules{
-            padding-top: .64rem;
+        .popup img{
+            width: .48rem;
+            position: absolute;
+            right: .5067rem;
+            top: .5067rem;
+        }
+        .popup .rules{
+            padding-top: .48rem;
             margin-bottom: .32rem;
             color: #FFFFFF;
-            font-size: .5333rem;
+            font-size: .48rem;
             text-align: center;
         }
         .desc{
             font-size: .3733rem;
-            color: #FFFFFF;
+            color:rgba(255, 255, 255, 0.8);
             padding: 0 .5333rem;
             line-height: .64rem;
         }
@@ -141,55 +148,42 @@
 
 <body>
     <div id="app" v-cloak>
-        <div class="top flex">
-            <div>{{isEn ? 'My Referral Code' : '我的邀请码'}}</div>
-            <div @click="show= true">{{isEn ? 'Rules' : '活动规则'}}</div>
-        </div>
-        <div class="code flex">
-            <p class="flex" v-for="item in code" :key="item">{{item}}</p>
-        </div>
-
-        <div class="btn flex" @click="webShare">{{isEn ? 'Copy and Invitate Now' : '复制邀请码分享'}} </div>
-        <div class="tips">{{isEn ? 'Earn 10 free chat chances for each friend invited' : '每邀请一位好友，即可获得10次免费聊天次数'}} </div>
-
-        <div class="title">
-            {{isEn ? 'Invitation Record' : '邀请记录'}}
+        <div class="top">
+            <img src="./image/top.png" />
         </div>
         <div class="main">
-            <div class="list flex" v-for="item in data" ::key="item.created_time">
-                <div class="name">
-                    <p>{{item.alias}}</p>
-                    <span>{{item.created_time}}</span>
-                </div>
-                <div class="free flex">
-                    <img src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/icon.webp" alt=""> +{{item.free_chat_times}}
-                </div>
+            <div class="successfully flex">
+                You have referred<span class="flex">3</span>friends successfully
+            </div>
+            <div class="btn flex">
+                Refer Now
+            </div>
+            <div class="code flex">
+                My referral code
+                <p class="flex">weswed <img src="./image/copy.png" /></p>
+            </div>
+            <div class="qa">
+                <p>How to referal new friends？</p>
+                <span>Step1:Click the referral  button to send the link to your friends .</span>
+                <span>Step2:Click the link to complete download and complete the registration according to the steps on the page. </span>
+                <span>Step3:Enter the personal center, click to input the invitation code, and fill in your invitation code.</span>
+            </div>
+            <div class="rules" @click="show =true">
+                Rules
             </div>
         </div>
-        <div class="null" v-if="data == '' && !loading">
-            <img src="https://cdn-mate.flyai.com/cdn/vs/v1.0.6/null.webp" alt="">
-            <p>{{isEn ? "It's empty":'暂无记录'}}</p>
-        </div>
-
         <van-popup v-model:show="show" overlay="true" :close-on-click-overlay="true">
             <div class="popup">
-                <div class="rules" v-if="isEn">Rules</div>
-                <div class="rules" v-else>活动规则</div>
-                <div class="desc"  v-if="isEn">
-                    1.Referral Code is a code used for binding invitees and inviters.<br />
-                    2.Each user will automatically get a referral code for free after registration. <br />
-                    3.Each Referral Code is unique and can't be modified.<br />
-                    4.Each user can invite up to 10 new users.<br />
-                    5. Invitees need to fill in the inviter's invitation code within 24 hours.<br />
-                    5. MateLink reserves the right of final interpretation of this activity.<br />
-                </div>
-                <div class="desc" v-else>
-                    1. 邀请码用于绑定用户之间邀请关系<br />
-                    2.每个用户在注册成功将自动免费获得一个邀请码。<br />
-                    3.邀请码不会重复，不可更改<br />
-                    4.每个人可邀请10位新用户<br />
-                    5.被邀请者需要在24小时内填写邀请者的邀请码<br />
-                    6.MateLink对此次活动享有最终解释权<br />
+                <img @click="show =false" src="./image/close.png">
+                <div class="rules">Rules</div>
+                <div class="desc">
+                    Activity Period: 1/15/2024-6/30/2024<br />
+                    Rules: <br />
+                    1. Users you invite must register within the specified activity period.<br />
+                    2. The device used for registration must be new.<br />
+                    3. The invitation code entered by new users should be your referral code.<br />
+                    4. Any invitations identified as fraudulent by the system will not be rewarded.
+                    Matelink reserves the right to final interpretation of this activity. If you have any questions, please contact Matelink official 
                 </div>
             </div>
       </van-popup>
@@ -223,9 +217,6 @@
             if(this.getQueryString('apiKey')){
                 this.apiKey = this.getQueryString('apiKey')
             }
-            if(this.getQueryString('uid')){
-                this.uid = this.getQueryString('uid')
-            }
             if(this.getQueryString('service')){
                 this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
                 if(!this.isEn){
@@ -242,32 +233,23 @@
                 return null;
             },
             webShare() {
-                sensors.track('Invite_node_click', {
-                    node_name: this.isEn ? 'Copy and Invitate Now' : '复制邀请码分享'
-                });
                 try {
-                    var str = ''
-                    if(!this.isEn){
-                        str='&service=zh-CN'
-                    }
                     var shareInfo = {'url' : window.location.origin+'/Invite_users/share.html?code='+this.code+str}
                     shareUrl.postMessage(JSON.stringify(shareInfo)); 
                 } catch (error) {
                     
                 }
-
             },
             getDateils(){
                 let params = {
-                    'apiKey': this.apiKey,
-                    'uid' : this.uid
+                    'apiKey': this.apiKey
                 }
                 this.$toast.loading({
                     message: 'Loading...',
                     duration:0,
                     className:'loading'
                 });
-                axios.post(this.api + 'h5/user/invite_record', params).then(res => {
+                axios.post(this.api + 'h5/share/invite_detail', params).then(res => {
                     this.$toast.clear()
                     this.loading = false;
                     if(res.data.code == 200){

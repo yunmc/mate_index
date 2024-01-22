@@ -1,0 +1,196 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>FAQ</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        #app{
+            padding: 0 .4267rem;
+        }
+        .top{
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            width: 9.3867rem;
+            margin-top: .6933rem;
+        }
+        .top span{
+            width: 2.08rem;
+            height: .96rem;
+            border-radius: .96rem;
+            background: #2C3241;
+            color: #FFFFFF;
+            font-size: .32rem;
+            margin-right: .2667rem;
+            margin-bottom: .3733rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .top .current{
+            background: linear-gradient(52deg, #6B3AFF 16%, #BC36DD 85%);
+        }
+        .collapse{
+            margin-top: .64rem;
+        }
+        .van-collapse{
+            border-radius: .32rem;
+            background: #232B3C;
+        }
+        .van-cell,.van-collapse-item__content{
+            background: none !important;
+        }
+        /* .van-collapse-item--border::after */
+        .van-collapse::after {
+            border: 0 !important;
+        }
+        .van-collapse-item::after{
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        .van-cell::after {
+            display: none !important;
+        }
+        .van-cell{
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-size: .4267rem !important;
+            font-weight: bold !important;
+            padding: .32rem .3733rem !important;
+        }
+        .van-collapse-item__content{
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: .3733rem !important;
+            line-height: .6667rem !important;
+            padding: 0 .3733rem .3733rem !important;
+        }
+        .van-icon{
+            font-weight: bold !important;
+            color:rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .tips{
+            color: #B5B1FF;
+            font-size: 12px;
+            text-decoration: underline;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: .96rem;
+            left: 0;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="top flex">
+            <template v-for="item in tabs" :key="item.name">
+                <span :class="item.name == checked ? 'current' : '' " @click="checked = item.name">
+                    {{item.name}}
+                </span>
+            </template>
+        </div>
+        <div class="collapse">
+            <van-collapse v-model="checked" accordion>
+                <van-collapse-item title="标题1" name="1">You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.</van-collapse-item>
+                <van-collapse-item title="标题2" name="2">You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.</van-collapse-item>
+                <van-collapse-item title="标题3" name="3">You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.</van-collapse-item>
+              </van-collapse>
+        </div>
+
+        <div class="tips">More support</div>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script charset="UTF-8" src="https://cdn-mate.matelink.com/cdn/js/sensors.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+             tabs:[
+                {'name':'Hot'},
+                {'name':'Character'},
+                {'name':'Subscribe'},
+                {'name':'Create'},
+                {'name':'Chat'},
+                {'name':'Group'},
+                {'name':'Other'}
+             ],
+             checked:'Hot',
+             list:{
+                Hot:[
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page'
+                    },
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page'
+                    },
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page'
+                    },
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page'
+                    },
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.'
+                    },
+                ],
+                Character:[
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page'
+                    },
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page'
+                    },
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page'
+                    },
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page'
+                    },
+                    {
+                        'q':'Q :How can i follow the character?',
+                        'a':'You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.'
+                    },
+                ]
+             }
+        },
+        created() {
+
+        },
+        methods: {
+        }
+           
+    })
+</script>
+</html>
+	
+    
