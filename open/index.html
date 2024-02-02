@@ -1,0 +1,60 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Influencer Hub</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.flyai.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        .open{
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 1.6667rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="open">
+            <van-button type="primary" @click="openApp">打开APP</van-button>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn-mate.flyai.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.flyai.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.flyai.com/cdn/js/axios.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        created() {
+        },
+        methods: {
+            openApp() {
+                window.location.href = 'matelink://'
+            }
+        }
+    })
+</script>
+</html>
+	
+    

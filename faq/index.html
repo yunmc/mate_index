@@ -81,7 +81,7 @@
             color:rgba(255, 255, 255, 0.9) !important;
         }
         
-        .tips{
+        .tips a{
             color: #B5B1FF;
             font-size: 12px;
             text-decoration: underline;
@@ -98,21 +98,21 @@
 <body>
     <div id="app" v-cloak>
         <div class="top flex">
-            <template v-for="item in tabs" :key="item.name">
-                <span :class="item.name == checked ? 'current' : '' " @click="checked = item.name">
-                    {{item.name}}
+            <template v-for="item in data" :key="item.name">
+                <span :class="item.title == checked ? 'current' : '' " @click="checked = item.title">
+                    {{item.title}}
                 </span>
             </template>
         </div>
-        <div class="collapse">
-            <van-collapse v-model="checked" accordion>
-                <van-collapse-item title="标题1" name="1">You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.</van-collapse-item>
-                <van-collapse-item title="标题2" name="2">You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.</van-collapse-item>
-                <van-collapse-item title="标题3" name="3">You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.</van-collapse-item>
-              </van-collapse>
+        <div class="collapse" v-for="item in data">
+                <van-collapse v-model="item.checked" v-if="checked == item.title" accordion>
+                    <template v-for="(item2, index) in item.list" :key="index">
+                        <van-collapse-item :title="item2.Question" :name="index">{{item2.Answer}}</van-collapse-item>
+                    </template>
+                </van-collapse>
         </div>
 
-        <div class="tips">More support</div>
+        <div class="tips"><a href="https://discord.com/invite/jxMqGZy9vJ">More support</a></div>
     </div>
 </div>
 
@@ -126,62 +126,136 @@
     var app = new Vue({
         el: '#app',
         data: {
-             tabs:[
-                {'name':'Hot'},
-                {'name':'Character'},
-                {'name':'Subscribe'},
-                {'name':'Create'},
-                {'name':'Chat'},
-                {'name':'Group'},
-                {'name':'Other'}
-             ],
-             checked:'Hot',
-             list:{
-                Hot:[
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page'
-                    },
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page'
-                    },
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page'
-                    },
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page'
-                    },
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.'
-                    },
-                ],
-                Character:[
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page'
-                    },
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page'
-                    },
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page'
-                    },
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page'
-                    },
-                    {
-                        'q':'Q :How can i follow the character?',
-                        'a':'You can follow the character in the AI personal Page.You can follow the character in the AI personal PageYou can follow the character in the AI personal Page.'
-                    },
-                ]
-             }
+            checked:'Character',
+            data:[
+                {
+                    title:'Character',
+                    checked:0,
+                    list:[
+                        {
+                            Question:'Character forgot what we said before.',
+                            Answer:'Stay tuned! We are optimizing our Ai and it will store memories in the future.'
+                        },
+                        {
+                            Question:'Character called me by the wrong name or gender.',
+                            Answer:'Emphasize your message to Ai, and if this type of problem occurs again, please send us your User iD'
+                        },
+                        {
+                            Question:'How to increase "Intimacy" with the character.',
+                            Answer:'Chatting and unlocking pictures can increase the affinity value'
+                        },
+                        {
+                            Question:'There doesn’t have the character who I was looking for.',
+                            Answer:'Please email or Discord us to let us know which character you want, or you can create your own.'
+                        },
+                    ]
+                },
+                {
+                    title:'Chat',
+                    checked:0,
+                    list:[
+                        {
+                            Question:"Can't get any picture during the chat.",
+                            Answer:'Ask them in a more explicit tone, such as"send me your picture""I want some photos"...'
+                        },
+                        {
+                            Question:'The Ai character sends "Sorry" to me.',
+                            Answer:'There may be a server crash, please wait 1 to 2 minutes before sending a message.In the meantime, please send us your user ID.'
+                        },
+                        {
+                            Question:'How to delete chat history.',
+                            Answer:'Press and hold the chat dialog to bring up the delete button'
+                        },
+                    ]
+                },
+                {
+                    title:'TOP UP',
+                    checked:0,
+                    list:[
+                        {
+                            Question:"Rewards did not arrive.",
+                            Answer:"Sometimes there has a few minutes’  delay, but if it didn't arrive in 10 minutes, please contact us immediately."
+                        },
+                        {
+                            Question:'What are the benefits of a subscription?',
+                            Answer:'Subscribing not only grants you 1500 free Matecoins, but also offers you access to Group chats, Dating, RPGs, and other more benefits.'
+                        },
+                        {
+                            Question:'When is the next discounted package going live?',
+                            Answer:'Stay Tuned!'
+                        },
+                    ]
+                },
+                {
+                    title:'AI Create',
+                    checked:0,
+                    list:[
+                        {
+                            Question:"How to delete Ai characters?",
+                            Answer:"AI characters cannot be deleted now and we are developing this function. If you're unsatisfied with a character, you can temporarily adjust it by modifying its AI information at present."
+                        },
+                        {
+                            Question:'How many characters can I create?',
+                            Answer:"Currently, there's no limit on creating characters, but in the future, some characters and features might be exclusive to Pro members."
+                        },
+                        {
+                            Question:'Difference between the "public" and "private"?',
+                            Answer:'Private characters are exclusive to you for one-on-one chats. When a character goes public, it becomes accessible for everyone to chat with. Future public characters could potentially share profits with the platform.'
+                        },
+                        {
+                            Question:'Why has my "public" character turned "private"?',
+                            Answer:'If your public character contains inappropriate content, receives user complaints, has low-quality or highly repetitive images, it may be reverted to private.'
+                        },
+                        {
+                            Question:'How to "Public" my character?',
+                            Answer:'Choose to make your character public during creation, or convert a private character to public via editing settings on its personal page.'
+                        },
+                    ]
+                },
+                {
+                    title:'Image',
+                    checked:0,
+                    list:[
+                        {
+                            Question:'Why can’t I generates "Ai" image',
+                            Answer:'You can only make it when your "Intimacy" number exceeds 1.'
+                        },
+                        {
+                            Question:`Can't get "more sexy" image.`,
+                            Answer:'Increase the "intimacy" value to get a higher level photo.'
+                        },
+                    ]
+                },
+                {
+                    title:'Function',
+                    checked:0,
+                    list:[
+                        {
+                            Question:`What's the difference between "Dating" and " Regular Chat".`,
+                            Answer:`There are more "Great photos" in "Dating" mode.`
+                        },
+                        {
+                            Question:`How to pass each "Stroy" part?`,
+                            Answer:`Raise the character's "Desire" to 100 in 20 rounds of dialog, with Desire Levels increasing with each round of "Dialog".`
+                        },
+                        {
+                            Question:`How many free times in each the "Stroy" mode.`,
+                            Answer:`Each "Stroy" part has three free challenges, and each entry after 3 requires a ticket(100 coins).`
+                        }
+                    ]
+                },
+                {
+                    title:'Other',
+                    checked:0,
+                    list:[
+                        {
+                            Question:`Write down other suggestions.`,
+                            Answer:`"Click the 'Feedback' button to report your issues, or get in touch with us on social media, or via feedback@matelink.com."`
+                        }
+                    ]
+                },
+            ],
+                
         },
         created() {
 

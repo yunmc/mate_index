@@ -153,14 +153,14 @@
         </div>
         <div class="main">
             <div class="successfully flex">
-                You have referred<span class="flex">3</span>friends successfully
+                You have referred<span class="flex">{{data.invited_num}}</span>friends successfully
             </div>
-            <div class="btn flex">
+            <div class="btn flex" @click="webShare">
                 Refer Now
             </div>
             <div class="code flex">
                 My referral code
-                <p class="flex">weswed <img src="./image/copy.png" /></p>
+                <p class="flex">{{data.invite_code}} <img @click="copyToClipboard(data.invite_code)" src="./image/copy.png" /></p>
             </div>
             <div class="qa">
                 <p>How to referal new friends？</p>
@@ -204,7 +204,9 @@
             show:false,
             isEn: true,
             api: 'https://test-api-mate.flyai.com/',
-            data: '',
+            data: {
+                invited_num:0
+            },
             code :'',
             apiKey:'',
             uid:'',
@@ -217,12 +219,6 @@
             if(this.getQueryString('apiKey')){
                 this.apiKey = this.getQueryString('apiKey')
             }
-            if(this.getQueryString('service')){
-                this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
-                if(!this.isEn){
-                    document.title = '邀请好友得奖励'
-                }
-            }
             this.getDateils();
         },
         methods: {
@@ -234,7 +230,7 @@
             },
             webShare() {
                 try {
-                    var shareInfo = {'url' : window.location.origin+'/Invite_users/share.html?code='+this.code+str}
+                    var shareInfo = {'url' : this.data.share_url}
                     shareUrl.postMessage(JSON.stringify(shareInfo)); 
                 } catch (error) {
                     
@@ -252,9 +248,9 @@
                 axios.post(this.api + 'h5/share/invite_detail', params).then(res => {
                     this.$toast.clear()
                     this.loading = false;
+                    console.log('res',res);
                     if(res.data.code == 200){
-                        this.data = res.data.data.list;
-                        this.code = res.data.data.invite_code;
+                        this.data = res.data.data.share_info;
                     }else{
                     }
                 }).catch(err => {
@@ -262,6 +258,17 @@
                         message: err
                     });
                 })
+            },
+            copyToClipboard(text) {
+                var textarea = document.createElement('textarea');
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = 0;
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                this.$toast.success('success');
             }
         }
     })
