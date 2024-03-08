@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "Q332W74JUN.com.matelink.app",
+                "paths": ["*"]
+            }
+        ]
+    }
+}

@@ -1,0 +1,411 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Influencer Hub</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.matelink.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        .flex{
+            display: flex;
+            display: -webkit-flex;
+        }
+        #app{
+            padding: .4267rem;
+        }
+        .user_info{
+            position: relative;
+            /* overflow: hidden; */
+            width: 9.1467rem;
+            margin-top: 1.1733rem;
+        }
+        .top{
+            width: 9.1467rem;
+            height: 4.8533rem;
+            border-radius: .32rem;
+            position: relative;
+            background: rgba(255, 255, 255, 0.04) url(https://cdn-mate.matelink.com/cdn/vs/v1.0.6/top_bg.webp) no-repeat left bottom;
+            background-size: 100% auto;
+            /* overflow: hidden; */
+        }
+        .diamond{
+            position: absolute;
+            width: 3.84rem;
+            right: 0;
+            top: -1.2rem;
+            z-index: 10;
+        }
+        .user_info .rules{
+            color: #7A74B0;
+            font-size: .4267rem;
+            position: absolute;
+            left: 0;
+            top: -0.64rem;
+        }
+        .user{
+            padding: 0 .4267rem;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: .6933rem;
+            position: relative;
+            z-index: 10;
+        }
+        .user img{
+            width: 1.12rem;
+            border-radius: 50%;
+            margin-right: .2133rem;
+        }
+        .user .name img{
+            width: .3733rem;
+            margin-left: .16rem;
+        }
+        .user .name{
+            color: #fff;
+            font-size: .48rem;
+        }
+        .user .name span{
+            display: block;
+            margin-bottom: .16rem;
+            word-break:break-all;
+        }
+        .user .name .ratio{
+            color: rgba(255, 255, 255, 0.8);
+            font-size: .32rem;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .user .name .tips{
+            position: relative;
+        }
+        .user .name .ratio .illustrate{
+            background: rgba(204, 196, 219, 0.4);
+            width: 5.4933rem;
+            padding: .32rem .2133rem;
+            color: #000000;
+            font-size: .2667rem;
+            line-height: .3733rem;
+            position: absolute;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-radius: .2133rem;
+            left: .2133rem;
+            top: .4267rem;
+        }
+        .illustrate p{
+            font-size: .32rem;
+            line-height: .4267rem;
+            margin-bottom: .1067rem;
+        }
+        .illustrate span{
+            font-size: .2667rem;
+            line-height: .3733rem;
+        }
+        .detail{
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 .4267rem;
+            margin-top: .8rem;
+        }
+        .detail .list{
+            color: #FFFFFF;
+            text-align: center;
+        }
+        .list p{
+            font-size: .6933rem;
+            line-height: .7467rem;
+            margin-bottom: .2133rem;
+            font-weight: bold;
+        }
+        .list span{
+            font-size: .4267rem;
+            line-height: .5867rem;
+        }
+        .get_details p{
+            opacity: 0;
+        }
+        .get_details span{
+            font-size: .2933rem;
+            color: #B5B1FF;
+        }
+        .data{
+            margin-top: .64rem;
+        }
+        .data .title{
+            color: #FFFFFF;
+            font-size: .4267rem;
+            line-height: .5867rem;
+            margin-bottom: .2133rem;
+        }
+        .main{
+            width: 9.1467rem;
+            height: 4.8rem;
+            background: rgba(255, 255, 255, 0.04) url(https://cdn-mate.matelink.com/cdn/vs/v1.0.6/data_bg.webp) no-repeat;
+            background-size: 100% 100%;
+            border-radius: .32rem;
+            overflow: hidden;
+        }
+        .main .content{
+            padding: .6933rem .64rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .main .list{
+            text-align: center;
+        }
+        .main .list .img{
+            width: 1.6rem;
+            height: 2.08rem;
+            margin-bottom: .1067rem;
+            margin: 0 auto;
+        }
+        .main .list img{
+            width: 100%;
+        }
+        .main .list p{
+            color: #FFFFFF;
+            font-size: .64rem;
+            line-height: .64rem;
+            margin-bottom: .16rem;
+        }
+        .main .list span{
+            color: #B5B1FF;
+            font-size: .4267rem;
+            line-height: .4267rem;
+        }
+        .banner{
+            margin-top: .64rem;
+        }
+        .banner img{
+            width: 100%;
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, 
+        .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+        .van-popup--center{
+            top: 40% !important;
+        }
+        .van-popup{
+            background: none !important;
+        }
+        .popup{
+            width: 7.4133rem;
+            border-radius: .5333rem;
+            background: #2C3241;
+            padding-bottom: .64rem;
+        }
+        .popup .rules{
+            padding-top: .64rem;
+            margin-bottom: .32rem;
+            color: #FFFFFF;
+            font-size: .5333rem;
+            text-align: center;
+        }
+        .popup .desc{
+            font-size: .3733rem;
+            color: #FFFFFF;
+            padding: 0 .5333rem;
+            line-height: .64rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak @click.stop="isTips= false">
+        <div class="user_info">
+            <div class="rules" @click="show= true">{{isEn ? 'Rules' : '说明'}}</div>
+            <img class="diamond" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/diamond.webp">
+           <div class="top">
+            <div class="user flex">
+                <img :src="data.avatar" alt="">
+                <div class="name">
+                    <span>{{data.alias}}</span>
+                    <div class="ratio flex">
+                        {{isEn ? 'Ratio':'比例'}}：{{data.ratio}}% 
+                        <div class="tips">
+                            <img @click.stop="isTips = true" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/tips.webp">
+                            <transition name="fade">
+                                <div class="illustrate" v-if="isTips">
+                                    <p>{{isEn ? 'Period for ratio':'比例周期'}}：<br />
+                                        {{data.effect_stm}}—{{data.effect_etm}}</p>
+                                    <span v-if="isEn">
+                                        *Influencer income ratios are tiered based on factors like their influence outside the platform such as follower count, engagement, or industry impact on other platforms, as well as their cooperation and platform data like number of users brought in.
+                                    </span>
+                                    <span v-else>
+                                        根据达人的站外影响力如其他平台的粉丝数、互动量或者行业影响力，以及达人在站内的配合度站内用户数据来定收益比例等级
+                                    </span>
+                                </div>
+                            </transition>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detail flex">
+                <div class="list">
+                    <p>{{data.month_income}}</p>
+                    <span>{{isEn ? 'This month':'当月收益钻石'}}</span>
+                </div>
+                <div class="list">
+                    <p>{{data.total_income}}</p>
+                    <span>{{isEn ? 'Total':'累计收益钻石'}}</span>
+                </div>
+                <div class="list get_details">
+                    <p>&emsp;0</p>
+                    <a :href="href"><span>{{isEn ? 'Earning Details >':'查看明细 >'}}</span></a>
+                </div>
+            </div>
+           </div>
+        </div>
+
+        <div class="data">
+            <div class="title"><span>{{isEn ? 'AI Data':'AI成就'}}</span></div>
+            <div class="main">
+               <div class="content flex">
+                <div class="list">
+                    <div class="img">
+                        <img src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/online.webp">
+                    </div>
+                    <p>{{general.hours}}</p>
+                    <span>{{isEn ? 'Services':'AI服务时长'}}</span>
+                </div>
+                <div class="list">
+                    <div class="img">
+                        <img src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/conversations.webp">
+                    </div>
+                    <p>{{general.conversations}}</p>
+                    <span>{{isEn ? 'Contacts':'对话人数'}}</span>
+                </div>
+                <div class="list">
+                    <div class="img">
+                        <img src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/message.webp">
+                    </div>
+                    <p>{{general.messages}}</p>
+                    <span>{{isEn ? 'Messages':'对话消息数'}}</span>
+                </div>
+               </div>
+            </div>
+        </div>
+
+        <div class="banner">
+            <a :href="toHref" v-if="banner.is_in_celebrity_events">
+                <img :src="'https://cdn-mate.matelink.com/cdn/vs/v1.0.6/banner_'+(isEn ? 'en' : 'cn')+'.webp'" alt="">
+            </a>
+        </div>
+
+        <van-popup v-model:show="show" overlay="true" :close-on-click-overlay="true">
+            <div class="popup">
+                <div class="rules" v-if="isEn">Rules</div>
+                <div class="rules" v-else>说明</div>
+                <div class="desc"  v-if="isEn">
+                    1. ""This month"" data will be refreshed in real-time based on actual data<br />
+                    2. ""Total"" data will be refreshed at 00:00 every day<br />
+                    3. ""AI Data"" will be refresed at 00:00 every day"<br />
+                </div>
+                <div class="desc" v-else>
+                    1. “每月”的数据会根据实际数据实时刷新<br />
+                    2.“所有”的数据会在每日零点刷新<br />
+                    3. “AI数据”的数据会在每日零点刷新"<br />
+                </div>
+            </div>
+      </van-popup>
+    </div>
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.matelink.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            api: 'https://test-api-mate.flyai.com/',
+            isTips: false,
+            general: '',
+            isEn: true,
+            data:'',
+            href:'',
+            banner: '',
+            toHref: '',
+            show: false
+        },
+        created() {
+            if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            }
+            this.uid = this.getQueryString('uid')
+            this.href = './details.html' + window.location.search
+            this.toHref = '/Invite_influencer/index.html' + window.location.search
+            if(this.getQueryString('service')){
+                this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
+                if(!this.isEn){
+                    document.title = '网红中心'
+                }
+            }
+            this.data_summary();
+            this.getStatistics();
+            this.get_celebrity();
+        },
+        methods: {
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            getStatistics(){
+                let params = {
+                    'uid': this.uid,
+                }
+                axios.post(this.api + 'h5/user/celebrity_statistics', params).then(res => {
+                    if(res.data.code == 200){
+                        this.data = res.data.data;
+                    }
+                }).catch(err => {
+                })
+            },
+            data_summary(){
+                let params = {
+                    'uid': this.uid,
+                    'ai_uid': this.ai_uid
+                }
+                axios.post(this.api + 'h5/user/data_summary', params).then(res => {
+                    if(res.data.code == 200){
+                        this.general = res.data.data;
+                        this.$toast.clear();
+                    }
+                }).catch(err => {
+                })
+            },
+            get_celebrity(){
+                let params = {
+                }
+                axios.post(this.api + 'h5/banner/is_in_celebrity_events', params).then(res => {
+                    if(res.data.code == 200){
+                     this.banner = res.data.data;
+                    }
+                }).catch(err => {
+                })
+            },
+            
+        }
+    })
+</script>
+</html>
+	
+    

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SshConfigs">
-    <configs>
-      <sshConfig authType="OPEN_SSH" host="4.227.143.45" id="43369a39-f637-411a-886c-025fb0b16bab" port="22" nameFormat="DESCRIPTIVE" username="matelink" useOpenSSHConfig="true" />
-    </configs>
-  </component>
-</project>

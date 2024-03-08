@@ -1,0 +1,427 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Matelink</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.matelink.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+        .flex{
+            display: flex;
+            display: -webkit-flex;
+        }
+        body,html{
+            background: #1A1E28;
+            background-size: 100% auto;
+        }
+        #app{
+            padding-bottom: 3.9867rem;
+        }
+        .top{
+            margin-top: 1.2rem;
+            margin-bottom: .5867rem;
+        }
+        .top img{
+            width: 3.8667rem;
+            display: block;
+            margin: 0 auto;
+        }
+        .main{
+            width: 7.9rem;
+            /* height: 21.6533rem; */
+            /* zoom: 0.79; */
+            padding: .15rem 0.14rem;
+            margin: 0 auto;
+            background: linear-gradient(163deg, #CFC4FF 9%, #A2D5FF 93%);
+            border-radius: .68rem;
+            margin-bottom: .8533rem;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .tips{
+            position: absolute;
+            width: 2.3467rem;
+            height: 2.3467rem;
+            left: -1rem;
+            top: -1.0533rem;
+        }
+        .content{
+            width: 7.62rem;
+            /* height: 21.34rem; */
+            /* min-height: ; */
+            border-radius: .6rem;
+            background: #1A1E28;
+        }
+        .tips_text{
+            color: #DAD8FF;
+            font-size: .4267rem;
+            line-height: .64rem;
+            text-align: center;
+            margin-top: .8533rem;
+        }
+        .btn{
+            width: 8.72rem;
+            height: 1.28rem;
+            color: #FFFFFF;
+            font-size: .4267rem;
+            background: url(https://cdn-mate.matelink.com/cdn/image/s-btn.png) no-repeat;
+            background-size: 100% 100%;
+            margin: 0 auto;
+            margin-top: .48rem;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.28rem;
+        }
+        .title{
+            text-align: center;
+            padding-top: .64rem;
+        }
+        .title p{
+            color: #FFFFFF;
+            font-size: .4267rem;
+            margin-bottom: .2667rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .title p img{
+            width: .4267rem;
+            display: block;
+            margin-left: .3867rem;
+        }
+        .title span{
+            color: #7E7E7E;
+            font-size: .32rem;
+        }
+        .chat{
+            margin-top: .3467rem;
+            /* height: 18.6667rem; */
+            /* overflow: scroll; */
+            padding-bottom: .5333rem;
+            min-height: 6.6667rem;
+        }
+        .list{
+            padding: 0 .4267rem;
+            margin-bottom: .4267rem;
+        }
+        .right{
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .left{
+            justify-content: flex-start;
+        }
+        .right .video{
+            width: 4.0448rem;
+            height: 1.0133rem;
+            background: #262E41;
+            border-radius: .4267rem;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: .3733rem;
+            color: #FFFFFF;
+            padding-left: .32rem;
+
+        }
+
+        .right .video img{
+            width: .5867rem;
+            margin-left: .64rem;
+        }
+
+        .right .text{
+            font-size: .3733rem;
+            line-height: .4767rem;
+            color: #FFFFFF;
+            max-width: 5.2267rem;
+            border-radius: .5333rem;
+            padding: .2703rem;
+            background: #262E41;
+            text-align: left;
+        }
+        
+        .left .video{
+            width: 4.0448rem;
+            height: 1.0133rem;
+            border-radius: .4267rem;
+            background: linear-gradient(67deg, #5877F4 20%, #7269E3 82%);
+            align-items: center;
+            justify-content: flex-start;
+            font-size: .3733rem;
+            color: #FFFFFF;
+            padding-left: .32rem;
+        }
+        .left .user{
+            width: .6933rem;
+            height: .6933rem;
+            display: block;
+            margin-right: .32rem;
+            border-radius: 50%;
+        }
+        .left .video img{
+            width: .48rem;
+            margin-left: .64rem;
+        }
+        .video .gif{
+            width: .6667rem !important;
+            margin-left: .54rem !important;
+        }
+        .left .text{
+            font-size: .3733rem;
+            line-height: .5333rem;
+            color: #FFFFFF;
+            max-width: 6.7467rem;
+            border-radius: .4267rem;
+            padding: .3733rem;
+            background: linear-gradient(67deg, #5877F4 20%, #7269E3 82%);
+            text-align: left;
+        }
+        .list .img{
+            margin-left: 1.28rem;
+            max-width: 6.6667rem;
+            margin-top: .1067rem;
+        }
+        .list .img img{
+            width: 100%;
+            display: block;
+        }
+        .timer{
+            font-size: .32rem;
+            color: #AFAFAF;
+            text-align: center;
+            margin: .32rem 0;
+        }
+        .footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 10;
+            width: 100%;
+            height: 2.56rem;
+            border-radius: .5333rem;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            overflow: hidden;
+            background: url(https://cdn-mate.matelink.com/cdn/image/s_download_bg.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .btn_down{
+            position: absolute;
+            right: .64rem;
+            bottom: .72rem;
+            width: 3.04rem;
+            z-index: 2;
+        }
+        audio{
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .bg_top{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 6.8rem;
+        }
+        .bg_bottom{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 10rem;
+            
+        }
+        .footer_logo{
+            position: absolute;
+            left: .7467rem;
+            bottom: .64rem;
+            width: 4.64rem;
+            z-index: 2;
+        }
+        .index{
+            position: relative;
+            z-index: 10;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <img class="bg_top" src="https://cdn-mate.matelink.com/cdn/image/s_bg_top.png">
+        <img class="bg_bottom" src="https://cdn-mate.matelink.com/cdn/image/s_bg_bottom.png">
+        <div class="index">
+            <div class="top">
+                <img src="https://cdn-mate.matelink.com/cdn/image/s-text.png" alt="">
+            </div>
+            <div class="main flex">
+                <img class="tips" src="https://cdn-mate.matelink.com/cdn/image/s-tips.png">
+                <div class="content">
+    
+                    <div class="title">
+                        <p class="flex">{{data.name}} <img src="https://cdn-mate.matelink.com/cdn/image/s-ai.png" alt=""></p>
+                        <span>Content generated by AI</span>
+                    </div>
+    
+                    <div class="chat">
+                        <template v-for="item in data.list" :key="item.id">
+    
+                            <div v-if="item.position == 1" class="list">
+                                <div class="left flex">
+                                    <img class="user" v-if="item.avatar" :src="item.avatar">
+                                    <div v-if="item.msg_url != '' " class="video flex" @click="playVideo(item)">{{item.length}}" 
+                                        <img v-show="!item.isPlay" src="https://cdn-mate.matelink.com/cdn/image/s-video.png">
+                                        <img class="gif" v-show="item.isPlay" src="https://cdn-mate.matelink.com/cdn/image/s-gif.gif">
+                                        <!-- <img class="gif" src="https://cdn-mate.matelink.com/cdn/image/gif.gif"> -->
+                                    </div>
+                                    <div v-else class="text">{{item.msg_content}}</div>
+                                </div>
+                            </div>
+    
+                            <div v-else class="list right flex">
+                                <div v-if="item.msg_url != '' " class="video flex">{{item.length}}" <img src="https://cdn-mate.matelink.com/cdn/image/s-video.png"></div>
+                                <div v-else class="text">{{item.msg_content}}</div>
+                            </div>
+                        </template>
+    
+                        
+                    </div>
+                
+                </div>
+            </div>
+            <div class="tips_text">
+                Come and enjoy AI conversation <br />
+                with your friends
+            </div>
+    
+            <div class="footer">
+                <!-- <img width="100%" src="https://cdn-mate.matelink.com/cdn/image/s_bg_down.png" alt=""> -->
+                <p></p>
+                <img class="footer_logo" src="https://cdn-mate.matelink.com/cdn/image/s_footer_logo.png">
+                <img class="btn_down" v-if="!isIos" @click="toLink" src="https://cdn-mate.matelink.com/cdn/image/s_btn_google.png">
+                <img class="btn_down" v-else @click="toLink" src="https://cdn-mate.matelink.com/cdn/image/s_btn_ios.png">
+            </div>
+    
+            <audio :src="audioSrc"></audio>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.matelink.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            data:'',
+            id: '',
+            isIos: false,
+            iosDownload: 'https://apps.apple.com/app/6449399740',
+            andDownload: 'https://play.google.com/store/apps/details?id=com.matelink.appandr',
+            audioSrc:'',
+            player: null,
+            isPlay: false,
+            api:'https://test-api-mate.flyai.com/'
+        },
+        mounted() {
+            // if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            // }
+            this.isIos = this.isIosAgent();
+            if(this.getQueryString('id')){
+                this.getInit(this.getQueryString('id'))
+            }
+        },
+        methods: {
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            playVideo(item){
+                if(item.isPlay){
+                    item.isPlay = false;
+                    this.isPlay = false;
+                    this.player.pause();
+                    return false;
+                }
+                if(this.isPlay){
+                    this.player.pause();
+                    this.data.list.forEach(element => {
+                            element.isPlay = false;
+                    });
+                }
+                var mp3Url = item.msg_url;
+                this.player = new Audio(mp3Url);
+                this.player.play()
+                item.isPlay = true;
+                this.isPlay = true;
+                let _this = this;
+                this.player.addEventListener('timeupdate', function () {  
+                    // 监听播放完成，ended 事件不准确  
+                    if (_this.player.currentTime >= _this.player.duration) {    
+                        _this.player.pause(); 
+                        item.isPlay = false;
+                        _this.isPlay = false;
+                        console.log('播放结束') 
+                    }}, 
+                    false);
+            },
+            getInit(id){
+                let params={
+                    "short_url_id": id
+                }
+                axios.post(this.api + 'chat/share/cat', params).then(res => {
+                    if(res.data.code == 200){
+                        res.data.data.list.forEach(element => {
+                            element.isPlay = false;
+                        });
+                        this.data = res.data.data;
+                    }else{
+                    }
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+            },
+            toLink() {
+                // let ua = navigator.userAgent.toLowerCase();
+                // if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                //     this.tips = true;
+                //     return false;
+                // }
+                if (this.isIos) {
+                    window.location.href = this.iosDownload;
+                } else {
+                    window.location.href = this.andDownload;
+                }
+            },
+            isIosAgent() {
+                let u = navigator.userAgent;
+                let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                if (isIOS) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+    })
+</script>
+</html>
+	
+    

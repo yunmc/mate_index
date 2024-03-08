@@ -1,0 +1,279 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Refer a Friend</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        #app{
+            padding-bottom: .7467rem;
+        }
+        .top{
+           width: 100%;
+           margin-bottom: .6933rem;
+        }
+        .top img{
+            width: 100%;
+        }
+        .main{
+            padding: 0 .4267rem;
+        }
+        .successfully{
+            color: #FFFFFF;
+            font-size: .4533rem;
+            align-items: center;
+            justify-content: center;
+            height: 1.0133rem;
+        }
+        .successfully span{
+            font-size: .64rem;
+            font-weight: bold;
+            height: 38px;
+            padding:0 .2133rem;
+            background: #2C3241;
+            border-radius: .1333rem;
+            margin: 0 .1333rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn{
+            width: 9.04rem;
+            height: 1.28rem;
+            background: url(./image/btn.png) no-repeat;
+            background-size: 100% 100%;
+            color: #FFFFFF;
+            font-size: .48rem;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            margin-top: .5333rem;
+        }
+        .code{
+            margin-top: 24px;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .code p{
+            color: rgba(181, 177, 255, 1);
+            margin-left: .1333rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .code img{
+            width: .3733rem;
+            margin-left: .08rem;
+        }
+        .qa{
+            margin-top: .96rem;
+        }
+        .qa p{
+            font-size: .4267rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: .2667rem;
+        }
+        .qa span{
+            font-size: .3733rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: .64rem;
+            display: block;
+        }
+        .main .rules{
+            margin-top: .5333rem;
+            color: #B5B1FF;
+            font-size: .3733rem;
+            text-decoration: underline;
+            text-align: center;
+        }
+       
+        .van-popup{
+            background: none !important;
+        }
+        .popup{
+            width: 8rem;
+            border-radius: .5333rem;
+            background: #2C3241;
+            padding-bottom: .64rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .popup img{
+            width: .48rem;
+            position: absolute;
+            right: .5067rem;
+            top: .5067rem;
+        }
+        .popup .rules{
+            padding-top: .48rem;
+            margin-bottom: .32rem;
+            color: #FFFFFF;
+            font-size: .48rem;
+            text-align: center;
+        }
+        .desc{
+            font-size: .3733rem;
+            color:rgba(255, 255, 255, 0.8);
+            padding: 0 .5333rem;
+            line-height: .64rem;
+        }
+        .null{
+            width: 5.0667rem;
+            margin: 0 auto;
+            margin-top: 3.2rem;
+        }
+        .null img{
+            width: 100%;
+        }
+        .null p{
+            color: rgba(181, 177, 255, 0.3);
+            font-size: .3733rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="top">
+            <img src="./image/top.png" />
+        </div>
+        <div class="main">
+            <div class="successfully flex">
+                You have referred<span class="flex">{{data.invited_num}}</span>friends successfully
+            </div>
+            <div class="btn flex" @click="webShare">
+                Refer Now
+            </div>
+            <div class="code flex">
+                My referral code
+                <p class="flex">{{data.invite_code}} <img @click="copyToClipboard(data.invite_code)" src="./image/copy.png" /></p>
+            </div>
+            <div class="qa">
+                <p>How to refer new friends？</p>
+                <span>Step1:Click the referral  button to send the link to your friends .</span>
+                <span>Step2:Click the link to complete download and complete the registration according to the steps on the page. </span>
+                <span>Step3:Enter the personal center, click to input the invitation code, and fill in your invitation code.</span>
+            </div>
+            <div class="rules" @click="show =true">
+                Rules
+            </div>
+        </div>
+        <van-popup v-model:show="show" overlay="true" :close-on-click-overlay="true">
+            <div class="popup">
+                <img @click="show =false" src="./image/close.png">
+                <div class="rules">Rules</div>
+                <div class="desc">
+                    Activity Period: 1/15/2024-6/30/2024<br />
+                    Rules: <br />
+                    1. Users you invite must register within the specified activity period.<br />
+                    2. The device used for registration must be new.<br />
+                    3. The invitation code entered by new users should be your referral code.<br />
+                    4. Any invitations identified as fraudulent by the system will not be rewarded.
+                    Matelink reserves the right to final interpretation of this activity. If you have any questions, please contact Matelink official 
+                </div>
+            </div>
+      </van-popup>
+
+    </div>
+</div>
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script charset="UTF-8" src="https://cdn-mate.matelink.com/cdn/js/sensors.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            show:false,
+            isEn: true,
+            api: 'https://test-api-mate.flyai.com/',
+            data: {
+                invited_num:0
+            },
+            code :'',
+            apiKey:'',
+            uid:'',
+            loading:true
+        },
+        created() {
+            if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            }
+            if(this.getQueryString('apiKey')){
+                this.apiKey = this.getQueryString('apiKey')
+            }
+            this.getDateils();
+        },
+        methods: {
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            webShare() {
+                try {
+                    var shareInfo = {'url' : this.data.share_url}
+                    shareUrl.postMessage(JSON.stringify(shareInfo)); 
+                } catch (error) {
+                    
+                }
+            },
+            getDateils(){
+                let params = {
+                    'apiKey': this.apiKey
+                }
+                this.$toast.loading({
+                    message: 'Loading...',
+                    duration:0,
+                    className:'loading'
+                });
+                axios.post(this.api + 'h5/share/invite_detail', params).then(res => {
+                    this.$toast.clear()
+                    this.loading = false;
+                    console.log('res',res);
+                    if(res.data.code == 200){
+                        this.data = res.data.data.share_info;
+                    }else{
+                    }
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+            },
+            copyToClipboard(text) {
+                var textarea = document.createElement('textarea');
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = 0;
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                this.$toast.success('success');
+            }
+        }
+    })
+    288+588+288+288+108+588+288+588+288+588+88+288+8
+</script>
+</html>
+	
+    

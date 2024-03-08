@@ -1,0 +1,235 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Earning Details</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.matelink.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        .flex{
+            display: flex;
+            display: -webkit-flex;
+        }
+        #app{
+            padding: 0 .4267rem;
+        }
+        
+        .general{
+            overflow: hidden;
+        }
+        .general .title{
+            color: #ffffff;
+            font-size: .48rem;
+            height: .6667rem;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .content{
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: .32rem;
+            overflow: hidden;
+            padding: 0 .4267rem;
+            margin-top: .32rem;
+            margin-bottom: .32rem;
+            padding-top: .1067rem;
+        }
+        .content .list{
+            /* height: 2.0267rem; */
+            align-items: center;
+            justify-content: space-between;  
+            padding: .4267rem 0;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+        .content .list:last-child{
+            border-bottom: 0;
+        }
+        .content .list .info{
+            align-items: center;
+            justify-content: space-between;  
+            /* margin-top: .5333rem; */
+        }
+        .content .list .info span{
+            color: #FFFFFF;
+            font-size: .3733rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: .3733rem;
+        }
+        .content .list .info p{
+            color: #FFFFFF;
+            font-size: .4267rem;
+            margin-bottom: .2133rem;
+            line-height: .4267rem;
+        }
+        .content .list .timer p img{
+            width: .56rem;
+            margin-right: .0533rem;
+        }
+        .content .timer{
+            align-items: center;
+            justify-content: space-between;  
+            margin-top: .2133rem;
+            font-size: .4267rem;
+            color: #B5B1FF;
+        }
+        .login{
+            align-items: center;
+            justify-content: center;  
+            margin: .2667rem 0; 
+        }
+        .null{
+            width: 5.0667rem;
+            margin: 0 auto;
+            margin-top: 3.2rem;
+        }
+        .null img{
+            width: 100%;
+        }
+        .null p{
+            color: rgba(181, 177, 255, 0.3);
+            font-size: .3733rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="general">
+            <div class="content">
+                <div class="list flex" v-for="item in detail" :key="item.created_time">
+                    <div class="info">
+                        <p>{{item.alias}}</p>
+                        <span>{{item.created_time}}</span>
+                    </div>
+                    <div class="timer flex">
+                        <p><img src="https://cdn-mate.matelink.com/cdn/influencer/masonry.png">+{{item.trans_amount}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="login flex" v-if="page > 1 && loading">
+                <van-loading color="#1989fa" />
+            </div>
+            <div class="null" v-if="detail == '' && !loading">
+                <img src="https://cdn-mate.flyai.com/cdn/vs/v1.0.6/null.webp" alt="">
+                <p>{{isEn ? "It's empty":'暂无记录'}}</p>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.matelink.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            show: false,
+            uid: '',
+            ai_uid:'',
+            api: 'https://test-api-mate.flyai.com/',
+            list: [],
+            data: '',
+            general: '',
+            detail: [],
+            page: 1,
+            isPage: true,
+            timerId:'',
+            isEn: true,
+            loading: true
+        },
+        created() {
+            if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            }
+            this.uid = this.getQueryString('uid')
+            if(this.getQueryString('service')){
+                this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
+                if(!this.isEn){
+                    document.title = '查看明细'
+                }
+            }
+            this.income_detail();
+        },
+        mounted() {
+            var _that = this;
+            window.onscroll = () => {
+            const offsetHeight = document.documentElement.offsetHeight;
+            const screenHeight = window.screen.height;
+            const scrollY = window.scrollY
+            const gap = offsetHeight - screenHeight - scrollY;
+            if (gap < 100 && _that.isPage) {
+                clearTimeout(_that.timerId);
+                _that.timerId =  setTimeout(function(){
+                    if(_that.isPage){
+                        _that.page++;
+                        _that.income_detail();
+                    }
+                },200);
+                
+            }
+        }
+        },
+        methods: {
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            income_detail(){
+                if(this.page == 1){
+                    this.$toast.loading({
+                        message: 'Loading...',
+                        duration:0,
+                        className:'loading'
+                    });
+                }
+                this.isPage = false;
+                let params = {
+                    'uid': this.uid,
+                    'ai_uid': this.ai_uid,
+                    "page": this.page,
+                    "page_size":10
+                }
+                axios.post(this.api + 'h5/user/income_detail', params).then(res => {
+                    this.isPage = true;
+                    if(res.data.code == 200){
+                        if(params.page == 1){
+                            this.detail = [];
+                        }
+                        if(res.data.data.list == ''){
+                            this.isPage = false; 
+                            this.loading = false;
+                        }
+                        res.data.data.list.forEach(element => {
+                            this.detail.push(element)
+                        });
+                        this.$toast.clear();
+                    }
+                    
+                }).catch(err => {
+                })
+            }
+        }
+    })
+</script>
+</html>
+	
+    

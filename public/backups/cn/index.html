@@ -1,0 +1,1008 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>MateLink</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="facebook-domain-verification" content="jr5vf2khga4ylvketm1k8sr79rokwa" />
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.flyai.com/cdn/js/rem.js"></script>
+    <link rel="shortcut icon" href="https://cdn-mate.flyai.com/web/new_image/logo.ico" type="image/x-icon"/>
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+        body,html{
+            background: #000000;
+        }
+        #app{
+            background: linear-gradient(180deg, #1A1E28 0%, #0F1F2F 99%);
+        }
+        .mobile{
+            display: none;
+        }
+        .pc{
+            display: block;
+        }
+        .header{
+            height: 100px;
+            width: 100%;
+            background-size: 100% 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-size: 100% 100%;
+        }
+        .backdrop{
+            backdrop-filter: blur(317px);
+        }
+        .header img{
+            height: 64px;
+        }
+        .min-w{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .min_main{
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            height: 1080px;
+        }
+        .top_left{
+            margin-top: 380px;
+            position: relative;
+            z-index: 2;
+            /* margin-left: -100px; */
+        }
+        .content{
+            height: 1080px;
+            width: 100%;
+            background: url(https://cdn-mate.flyai.com/cdn/image/h_new_top_bg.webp) no-repeat;
+            background-size: 100% 100%;
+            align-items: center;
+            justify-content: center;
+            margin-top: -100px;
+        }
+        .download{
+            margin-top: 155px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .download img{
+            border-radius: 15px;
+            margin-right: 96px;
+            cursor: pointer;
+        }
+        .portrait{
+            position: absolute;
+            right: -385px;
+            bottom: 0;
+            width: 1129px;
+        }
+        .product{
+            padding-top: 110px;
+            background: #171B36;
+        }
+        .page_1{
+            justify-content: space-between;
+        }
+        .page_1 .title{
+            width: 325px;
+            height: 300px;
+            background: url(https://cdn-mate.flyai.com/cdn/image/h_new_01.webp) no-repeat;
+            background-size: 100% 100%;
+            color: #ffffff;
+            margin-left: 80px;
+        }
+        .page_1 .title p{
+            padding-top: 160px;
+            font-weight: bold;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        .page_1 .title span{
+            font-size: 18px;
+            line-height: 27px;
+            display: block;
+            width: 450px;
+        }
+
+        .page_2{
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 100px;
+        }
+        .page_2 .pic{
+            margin-left: 80px;
+        }
+        .page_2 .title{
+            width: 362px;
+            height: 300px;
+            background: url(https://cdn-mate.flyai.com/cdn/image/h_new_02.webp) no-repeat;
+            background-size: 100% 100%;
+            color: #ffffff;
+            margin-right: 88px;
+            margin-top: 20px;
+        }
+        .page_2 .title span{
+            font-size: 18px;
+            line-height: 27px;
+            display: block;
+            width: 450px;
+            margin-top: 160px;
+        }
+
+        .page_3 {
+            margin-top: 100px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .page_3 .title{
+            width: 348px;
+            height: 300px;
+            background: url(https://cdn-mate.flyai.com/cdn/image/h_new_03.webp) no-repeat;
+            background-size: 100% 100%;
+            color: #ffffff;
+            margin-right: 88px;
+            margin-top: 20px;
+        }
+        .page_3 .title span{
+            font-size: 18px;
+            line-height: 27px;
+            display: block;
+            width: 400px;
+            margin-top: 160px;
+        }
+
+        .customize{
+            width: 100%;
+            background: #1A1A2A;
+            padding-top: 92px;
+        }
+        .customize .title{
+            text-align: center;
+            padding-bottom: 32px;
+        }
+        .customize .list{
+            align-items: center;
+            justify-content: space-between;
+        }
+        .customize .list .com{
+            width: 380px;
+            height: 232px;
+            background: #36375A;
+            border-radius: 30px;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 18px;
+            line-height: 24px;
+        }
+        .customize .list .com img{
+            margin: 34px 0 12px ;
+        }
+        .customize .list .com p{
+            width: 300px;
+            line-height: 27px;
+            margin: 0 auto;
+        }
+        .info{
+            background: #1A1A2A;
+            text-align: center;
+        }
+        .info .title{
+            padding-top: 74px;
+            margin-bottom: 32px;
+        }
+        .main{
+            background: radial-gradient(50% 50% at 50% 50%, #22223B 0%, #36375A 100%);
+            border-radius: 30px;
+            overflow: hidden;
+            padding-top: 20px;
+        }
+        .label{
+            margin-top: 32px;
+            align-items: center;
+            justify-content: center;
+        }
+        .label p{
+            width: 120px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 24px;
+            text-align: left;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .label span{
+            color: #FC5454;
+            margin-top: 8px;
+            margin-right: 2px;
+        }
+        .label .msg{
+            height: 200px;
+        }
+        .label .msg p{
+            height: 20px;
+            margin-top: 27px;
+        }
+        .main .label:last-child{
+            align-items: initial;
+        }
+        .submit{
+            width: 289px;
+            height: 64px;
+            background: linear-gradient(109deg, #9780FF 18%, #5694FF 76%);
+            border-radius: 391px;
+            text-align: center;
+            line-height: 64px;
+            font-size: 24px;
+            color: #ffffff;
+            margin: 0 auto;
+            margin-top: 44px;
+            margin-bottom: 54px;
+            cursor: pointer;
+        }
+        .input {
+            width: 920px;
+            height: 72px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        .input:hover{
+            border: 2px solid #6A77E8;
+        }
+        .input input{
+            width: 100%;
+            height: 100%;
+            border: 0;
+            font-size: 18px;
+            padding-left: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        .textarea{
+            width: 920px;
+            height: 200px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        .textarea:hover{
+            border: 2px solid #6A77E8;
+        }
+        .textarea textarea{
+            width: 888px;
+            height: 200px;
+            border: 0;
+            font-size: 18px;
+            line-height: 27px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .tips{
+            /* padding: 32px 0; */
+            padding-top: 42px;
+            padding-bottom: 80px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 27px;
+            color: #FFFFFF;
+            background: #1A1A2A;
+        }
+        .tips span{
+            color: #5694FF;
+        }
+
+        .company{
+            width: 100%;
+            background: #171B36;
+            overflow: hidden;
+            padding-bottom: 89px;
+        }
+        .company .title{
+            margin-top: 110px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .company .list{
+            width: 100%;
+            height: 400px;
+            position: relative;
+            color: #FFFFFF;
+            font-size: 20px;
+            line-height: 32px;
+            margin-bottom: 40px;
+        }
+        .company .right{
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .company .left{
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .company .list p{
+            width: 680px;
+            position: relative;
+            z-index: 1;
+        }
+        .company .list p:last-child{
+            width: 752px;
+        }
+        .company_banner_1{
+            position: absolute;
+            top: 0;
+            right: 432px;
+        }
+        .company_banner_2{
+            position: absolute;
+            top: 0;
+            right: 32px;
+        }
+        .company_banner_3{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .footer_main{
+            background: #000000;
+        }
+        .footer{
+            height: 146px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 18px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer a{
+            color: #8C80FF;
+        }
+        .footer .hight{
+            color: #B5B1FF;
+        }
+        .van-toast{
+            background: #2C3241 !important;
+            padding:16px !important;
+            max-width: 506px !important;
+            color: #FFFFFF !important;
+            font-size: 24px !important;
+            line-height: 36px !important;
+            min-width: 400px !important;
+        }
+        .van-toast__text{
+            min-width: 100px;   
+        }
+        .loading{
+            min-width: 100px !important;   
+        }
+        .error{
+            min-width: 250px !important;   
+        }
+        .success{
+            min-width: 410px !important;   
+        }
+        .h_m_donwload{
+            display: none;
+        }
+    /* @media (min-height: 800px)  {
+        .min_main{
+            margin-top: -250px;
+        }
+    } */
+    @media (max-width: 799px)  {
+        .mobile{
+            display: block;
+        }
+        .pc{
+            display: none;
+        }
+        .min-w{
+            width: auto;
+        }
+        body, html{
+            width: 100%;
+        }
+        .header{
+            display: none;
+        }
+        .content{
+            height: 18.56rem;
+            background: url(https://cdn-mate.flyai.com/cdn/image/h_m_bg.webp) no-repeat;
+            background-size: 100% 100%;
+            display: block;
+            margin-top: -0px;
+        }
+        .min_main{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+        .h_new_top_text{
+            width: 6.18rem;
+            margin-left: .6933rem;
+        }
+        .portrait{
+            width: 4.9867rem;
+            right: 0;
+            bottom: initial;
+            top: 1.2267rem;
+        }
+        .top_left{
+            margin-top: 2.7467rem;
+        }
+        .download{
+            justify-content: space-between;
+            margin-top: 5.7867rem;
+            padding: 0 .64rem;
+        }
+        .download img{
+            margin: 0;
+            border-radius: .16rem;
+        }
+        .download img:first-child{
+            width: 4.32rem;
+        }
+        .download img:last-child{
+            width: 3.8933rem;
+        }
+        .logo{
+            display: block;
+            width: 4.2133rem;
+            margin-left: .7467rem;
+            margin-bottom: 1.2rem;
+        }
+        .arrow{
+            width: 1.1733rem;
+            display: block;
+            margin: 0 auto;
+            margin-top: 1.66rem;
+        }
+        .swiper{
+            background: #171B36;
+            padding-bottom: 2rem;
+            overflow: hidden;
+        }
+        .swiper .title{
+            padding-top: 1.44rem;
+            padding-bottom: 1.28rem;
+        }
+        .swiper img{
+            width: 5.84rem;
+            display: block;
+            margin: 0 auto;
+        }
+        .swiper .van-swipe-item img{
+            width: 8.6133rem !important;
+        }
+        .van-swipe{
+            overflow: initial !important;
+        }
+        .van-swipe__indicators{
+            bottom: -1.1733rem !important;
+        }
+        .van-swipe__indicator--active{
+            width: 15px !important;
+            background: linear-gradient(122deg, #9780FF 16%, #5694FF 79%);
+            border-radius: 5px !important;
+        }
+        .customize{
+            padding-top: 1.44rem;
+        }
+        .customize .title{
+            margin-bottom: .5867rem;
+            padding: 0;
+        }
+        .customize .title img{
+            width: 5.0667rem;
+        }
+        .customize .list{
+            flex-direction:column;
+        }
+        .customize .list .com{
+            width: 8.6133rem;
+            height: 2.1333rem;
+            border-radius: .32rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: .5333rem;
+        }
+        .customize .list .com:last-child{
+            height: 3.1467rem;
+        }
+        .customize .list .com img{
+            width: 1.6rem;
+            margin: 0;
+            margin-left: .3733rem;
+        }
+        .customize .list .com p{
+            width: 5.8933rem;
+            font-size: .3733rem;
+            line-height: .5867rem;
+            text-align: left;
+            opacity: 0.8;
+        }
+        .info .title{
+            padding-top: .8rem;
+            margin-bottom: .5867rem;
+        }
+        .info .title img{
+            width: 5.2267rem;
+        }
+        .main{
+            width: 8.6133rem;
+            margin: 0 auto;
+            padding-top: .5333rem;
+            border-radius: .32rem;
+        }
+        .main .label{
+            padding: 0 .32rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0;
+            margin-bottom: .2667rem;
+        }
+        .label .msg{
+            height: auto;
+            margin-top: -4rem;
+        }
+        .main .label p{
+            font-size: .4267rem;
+            width: auto;
+        }
+        .input{
+            width: 5.4933rem;
+            height: 1.1733rem;
+            border-radius: .2133rem;
+        }
+        .textarea{
+            width: 5.4933rem;
+            height: 5.3333rem;
+            border-radius: .2133rem;
+        }
+        .input input{
+            font-size: .32rem;
+            padding-left: .2667rem;
+        }
+        .textarea textarea{
+            width: 5.4933rem;
+            height: 5.3333rem;
+            font-size: .32rem;
+            padding-left: .2667rem;
+        }
+        .submit{
+            width: 4.8267rem;
+            height: 1.0667rem;
+            line-height: 1.0667rem;
+            font-size: .4rem;
+            margin-top: .7467rem;
+            margin-bottom: .8rem;
+            border-radius: .5333rem;
+        }
+        .tips{
+            padding: 0 .6933rem;
+            /* margin: 0 auto; */
+            /* width: 8.6133rem; */
+            padding-top: .8rem;
+            padding-bottom: 1.3867rem;
+            font-size: .32rem;
+            line-height: .5rem;
+        }
+        .company{
+            padding-bottom: 1.6rem;
+        }
+        .company .title{
+            margin-top: 1.0133rem;
+            margin-bottom: .64rem;
+        }
+        .company .title img{
+            width: 6.2667rem;
+        }
+        .company .lists{
+            padding: 0 .6933rem;
+        }
+        .company .lists p{
+            color: #FFFFFF;
+            font-size: .3733rem;
+            line-height: .5867rem;
+            margin-bottom: .5333rem;
+        }
+        .company .lists img{
+            width: 100%;
+            display: block;
+            margin-bottom: .5333rem;
+        }
+        .footer_m{
+            width: 100%;
+            background: #000000;
+        }
+        .footer_m .title{
+            padding-top: 2.4rem;
+            margin-bottom: .9333rem;
+        }
+        .footer_m_top{
+            margin: 0 .8533rem;
+            color: #8C80FF;
+            font-size: .32rem;
+            padding-bottom: .8rem;
+            border-bottom: 1px solid rgba(255, 255, 255 , 0.18)
+        }
+        .footer_m_top p ,  .footer_m_bottom p{
+            margin-bottom: .5067rem;
+        }
+        .footer_m_top a , .footer_m_bottom a{
+            color: #8C80FF;
+        }
+        .footer_m_bottom{
+            color: rgba(255, 255, 255 , 0.7);;
+            font-size: .32rem;
+            margin: 0 .8533rem;
+            padding-top: 1.3333rem;
+            padding-bottom: 3.0667rem;
+        }
+        .h_m_donwload{
+            width: 9.1467rem;
+            height: 1.8667rem;
+            position: fixed;
+            bottom: 1.0667rem;
+            left: .4267rem;
+            background: url(https://cdn-mate.flyai.com/cdn/image/h_m_donwload.webp) no-repeat;
+            background-size: 100% 100%;
+            align-items: center;
+            justify-content: flex-end;
+            display: flex;
+        }
+        .h_m_donwload img{
+            width: 3.04rem;
+            margin-right: .32rem;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div :class="isHeader ? 'header backdrop':'header'">
+            <div class="min-w">
+                <img src="https://cdn-mate.matelink.com/web/new_image/logo.png" alt="">
+            </div>
+        </div>
+        <div class="content flex">
+            <div class="min_main">
+                <div class="top_left">
+                    <img class="logo mobile" src="https://cdn-mate.flyai.com/cdn/image/h_m_logo.png" alt="">
+                    <img width="621" class="h_new_top_text" src="https://cdn-mate.flyai.com/cdn/image/h_new_top_text.webp" alt="">
+                    <div class="download flex">
+                        <img width="286" @click="goGoogle" src="https://cdn-mate.flyai.com/cdn/image/download-googel.webp" alt="">
+                        <img width="257" @click="goApple" src="https://cdn-mate.flyai.com/cdn/image/download-apple.webp" alt="">
+                    </div>
+                </div>
+                
+                <img class="portrait mobile" src="https://cdn-mate.flyai.com/cdn/image/h_m_portrait.webp" alt="">
+                <img class="portrait pc" src="https://cdn-mate.flyai.com/cdn/image/h_new_top_portrait.webp" alt="">
+            </div> 
+              
+            <img class="arrow mobile" src="https://cdn-mate.flyai.com/cdn/image/h_m_arrow.webp" alt="">       
+        </div>
+
+        <div class="product pc">
+            <div class="min-w">
+                <div class="page_1 flex">
+                    <div class="title">
+                        <p>Product Introduction</p>
+                        <span>MateLink, utilizing state-of-the-art ultra-realistic two-way audio technology, brings you the perfect reproduction of influential celebrities' voices. With MateLink, you can now engage in captivating conversations with renowned personalities you adore.</span>
+                    </div>
+    
+                    <div class="pic">
+                        <img width="600" style="margin-top: -70px;" src="https://cdn-mate.flyai.com/cdn/image/h_new_page1.webp" alt="">
+                    </div>
+                </div>
+
+                <div class="page_2 flex">
+                        
+                    <div class="pic">
+                        <img width="600" src="https://cdn-mate.flyai.com/cdn/image/h_new_page2.webp" alt="">
+                    </div>
+
+                    <div class="title">
+                        <span>The AI Avatar of your favorite celebrities and influencers is here to forge an extraordinary connection, providing you with enchanting companionship day and night. They will always be by your side, offering a comforting presence whenever you need it.</span>
+                    </div>
+
+                </div>
+
+                <div class="page_3 flex">
+
+                    <div class="title">
+                        <span>Unlock the incredible power of creating your very own AI persona, perfectly replicating your unique voice and style!</span>
+                    </div>
+
+                    <div class="pic">
+                        <img width="820" src="https://cdn-mate.flyai.com/cdn/image/h_new_page3.webp" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="swiper mobile">
+            <div class="title">
+                <img src="https://cdn-mate.flyai.com/cdn/image/h_m_product.webp" alt="">
+            </div>
+            <van-swipe class="my-swipe" ref="swiper"  :autoplay="3000" duration="1000" :show-indicators="true" indicator-color="white">
+                <van-swipe-item>
+                    <img src="https://cdn-mate.flyai.com/cdn/image/h_m_banner_1.webp" />
+                </van-swipe-item>
+                <van-swipe-item>
+                    <img src="https://cdn-mate.flyai.com/cdn/image/h_m_banner_2.webp" />
+                </van-swipe-item>
+                <van-swipe-item>
+                    <img src="https://cdn-mate.flyai.com/cdn/image/h_m_banner_3.webp" />
+                </van-swipe-item>
+            </van-swipe>
+        </div>
+
+  
+        <div class="">
+            <div class="customize">
+                <div class="min-w">
+                    <div class="title">
+                        <img width="276" src="https://cdn-mate.flyai.com/cdn/image/h_new_Howtocustomize.webp" alt="">
+                    </div>
+                    <div class="list flex">
+                        <div class="com">
+                            <img width="100" src="https://cdn-mate.flyai.com/cdn/image/h_new_icon_1.webp" alt="">
+                            <p>Easily share a 10-second snippet of your voice.</p>
+                        </div>
+                        <div class="com">
+                            <img width="100" src="https://cdn-mate.flyai.com/cdn/image/h_new_icon_2.webp" alt="">
+                            <p>Upload a beloved AI avatar image of your choice.</p>
+                        </div>
+                        <div class="com">
+                            <img width="100" src="https://cdn-mate.flyai.com/cdn/image/h_new_icon_3.webp" alt="">
+                            <p>Delight in customizing your AI even further with personalized settings!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="info">
+                <div class="min-w">
+                    <div class="title">
+                        <img width="284" src="https://cdn-mate.flyai.com/cdn/image/h_new_BecomeNextAI.webp" alt="">
+                    </div>
+                    <div class="main">
+                        <div class="label flex">
+                            <p class="flex"><span>*</span>Name</p>
+                            <div class="input">
+                                <input type="text" v-model="name" placeholder="Please enter your name">
+                            </div>
+                        </div>
+                        <div class="label flex">
+                            <p class="flex"><span>*</span>Email</p>
+                            <div class="input">
+                                <input type="text" v-model="email" placeholder="Please enter your email address">
+                            </div>
+                        </div>
+                        <div class="label flex">
+                            <div class="msg flex">
+                                <p class="flex"><span>*</span>Message</p>
+                            </div>
+                            <div class="textarea">
+                                <textarea v-model="textarea" placeholder="We are eager to learn about your ideal AI version of yourself! Please feel free to share any relevant links to your social media platforms. Thank you."></textarea>
+                            </div>
+                        </div>
+                        <div class="submit" style="opacity: 0.5;" v-if="name == '' || email == '' || textarea == ''">
+                            Become an AI with us
+                        </div>
+                        <div v-else class="submit" @click="submit">
+                            Become an AI with us
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="tips">
+                Don't miss out on this captivating opportunity – join us  now and dive into the magic of MateLink!<br /> 
+                Contact information: <a href="mailto:contactus@matelink.com"><span>contactus@matelink.com</span></a> 💌
+            </div>
+        </div>
+
+        <div class="company pc">
+            <div class="min-w">
+                <div class="title">
+                    <img width="342" src="https://cdn-mate.flyai.com/cdn/image/h_new_company.webp" alt="">
+                </div>
+               
+                    <div class="list right flex">  
+                        <img width="1160" class="company_banner_1" src="https://cdn-mate.flyai.com/cdn/image/h_new_company_banner_1.webp" alt="">
+                        <p>Lightful AI (LIGHTFUL AI TECHNOLOGIES PTE. LTD) is a promising startup company dedicated to the investigation and exploration of the artificial intelligence domain.<br /><br />The team members come from prestigious institutions such as the University of Pennsylvania and Peking University. With numerous core AI experts and talents in the field of positive psychology, they have dedicated many years to extensive research in the psychological and emotional domains, amassing a comprehensive collection of pan-psychological data.</p>
+                    </div>
+                    <div class="list left flex">
+                        <img width="940" class="company_banner_2" src="https://cdn-mate.flyai.com/cdn/image/h_new_company_banner_2.webp" alt="">
+                        <p>The company's flagship product, MateLink, is built on an exclusive AI technology capable of flawlessly imitating someone's voice. With MateLink, users can engage in real-time interactions and personalized conversations with celebrities and influencers , enjoying multi-round conversations. Unleash your creativity by designing unique virtual characters from scratch using intuitive AI tools.</p>
+                    </div>
+                    <div class="list right flex">
+                        <img width="1560" class="company_banner_3" src="https://cdn-mate.flyai.com/cdn/image/h_new_company_banner_3.webp" alt="">
+                        <p>Share your AI character with friends, play, and chat together. Create AI Avatars of your best friends, family members, or even idols, and chat with them freely without limitations. Connect with them whenever you want, wherever you are.
+                            The company aims to alleviate mental stress and enhance happiness worldwide by providing influential celebrities and influencers with large-scale AI services, promoting meaningful connections and support for people everywhere.</p>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="footer_main pc">
+            <div class="min-w">
+                <div class="flex footer">
+                    <span><a target="_blank" href="https://cdn-mate.matelink.com/web/agreement.html">User Agreement</a></span>
+                    <span><a target="_blank" href="https://cdn-mate.matelink.com/web/service.html">Privacy Policy</a></span>
+                    <span>(c) 2023 MateLink</span>
+                    <span>By <a href="javascript:;">LIGHTFUL AI TECHNOLOGIES PTE. LTD</a></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile footer_m">
+            <div class="title">
+                <img class="logo mobile" src="https://cdn-mate.flyai.com/cdn/image/h_m_logo.png" alt="">
+            </div>
+            <div class="footer_m_top">
+                <p><a target="_blank" href="./company.html">Company Introduction</a></p>
+                <p><a target="_blank" href="https://cdn-mate.matelink.com/web/agreement.html">User Agreement</a></p>
+                <p><a target="_blank" href="https://cdn-mate.matelink.com/web/service.html">Privacy Policy</a></p>
+            </div>
+            <div class="footer_m_bottom">
+                <p>(c) 2023 MateLink</p>
+                <p>By <a href="javascript:;">LIGHTFUL AI TECHNOLOGIES PTE. LTD</a></p>
+            </div>
+           
+        </div>
+
+
+        <div v-show="isDownload" class="h_m_donwload flex">
+            <img v-if="isIos" @click="goApple"  src="https://cdn-mate.flyai.com/cdn/image/h_m_download_apple.webp" alt="">
+            <img v-else @click="goGoogle" src="https://cdn-mate.flyai.com/cdn/image/h_m_download_googel.webp" alt="">
+        </div>
+    </div>
+
+
+</body>
+<script src="https://cdn-mate.flyai.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.flyai.com/cdn/js/vant-2.1.2.min.js"></script>
+<script src="https://cdn-mate.flyai.com/cdn/js/axios.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script charset="UTF-8" src="https://cdn-mate.flyai.com/cdn/js/sensorsdata.min.js"></script>
+<script charset="UTF-8">
+var sensors = window['sensorsDataAnalytic201505'];
+sensors.init({
+  server_url: 'https://log.cece.com/sa?project=XX',
+  heatmap:{scroll_notice_map:'not_collect'},
+  use_client_time:true,
+  send_type:'beacon'
+});
+sensors.quick('autoTrack');
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            iosDownload: 'https://apps.apple.com/app/6449399740',
+            andDownload: 'https://play.google.com/store/apps/details?id=com.matelink.appandr',
+            name:'',
+            email:'',
+            textarea:'',
+            api:'https://api.matelink.com/',
+            autoplay:3000,
+            isIos: false,
+            isDownload:false,
+            isHeader: false
+        },
+        mounted() {
+            this.isIos = this.isIosAgent();
+            window.addEventListener('scroll',this.handleScroll)
+        },
+        methods: {
+            handleScroll(){
+                this.scroll = document.documentElement.scrollTop||document.body.scrollTop
+                if(this.scroll > 800){
+                    this.isDownload = true;
+                }else{
+                    this.isDownload = false;
+                }
+                if(this.scroll > 200){
+                    this.isHeader = true;
+                }else{
+                    this.isHeader = false;
+                }
+            },
+            isIosAgent() {
+                let u = navigator.userAgent;
+                let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                if (isIOS) {
+                    return true
+                } else {
+                    return false
+                }
+            },
+            goGoogle(){
+                window.location.href = this.andDownload;
+            },
+            goApple(){
+                window.location.href = this.iosDownload;
+            },
+            submit(){
+                    this.$toast.loading({
+                        message: 'Loading...',
+                        duration:0,
+                        className:'loading'
+                    });
+                if(this.name == ''){
+                    this.$toast.fail({
+                        message: 'Please enter your name',
+                        className:'error'
+                     });
+                    return false;
+                }
+
+                if(this.email == ''){
+                    this.$toast.fail({
+                        message: 'Please enter your email address',
+                        className:'error'
+                     });
+                    return false;
+                }
+                let reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+                if(!reg.test(this.email)){
+                    this.$toast.fail({
+                        message: 'Incorrect email format',
+                        className:'error'
+                     });
+                    return false;
+                }
+                if(this.textarea == ''){
+                    this.$toast.fail({
+                        message: 'We are eager to learn about your ideal AI version of yourself! Please feel free to share any relevant links to your social media platforms. Thank you.',
+                     });
+                    return false;
+                }
+
+                let params={
+                    "name": this.name,
+                    "email": this.email,
+                    "message": this.textarea
+                }
+                axios.post(this.api + 'base/index/feedback', params).then(res => {
+                    this.$toast.success({
+                        message: 'We have received your message and will reply to you as soon as possible.',
+                        className:'success'
+                     });
+                    this.name = '';
+                    this.email = '';
+                    this.textarea = '';
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+            }
+        }
+    })
+</script>
+</html>
+	
+    

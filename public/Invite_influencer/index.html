@@ -1,0 +1,255 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Invite & Earn additional income</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.matelink.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        #app{
+            padding: 0 .4267rem;
+            padding-bottom: .7467rem;
+        }
+        .banner{
+            position: relative;
+        }
+        .code{
+            color: #FFFFFF;
+            font-size: .5333rem;
+            padding-left: .64rem;
+            margin-top: .64rem;
+        }
+        .code span{
+            color: #D2D0FF;
+            margin-right: .16rem;
+        }
+        .btn{
+            width: 4.7667rem;
+            margin-top: .48rem;
+            margin-left: .28rem;
+        }
+        .influ_phone{
+            position: absolute;
+            right: -0.14rem;
+            bottom: -0.24rem;
+            width: 3.6267rem;
+        }
+        .content{
+            margin-top: .48rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .number{
+            position: absolute;
+            left: 0.1rem;
+            top: .8rem;
+            text-align: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .number p{
+            padding-top: .68rem;
+            color: #FFFFFF;
+            font-size: .7467rem;
+            overflow: hidden;
+        }
+        .number span{
+            color: rgba(255, 255, 255, 0.6);
+            font-size: .32rem;
+            line-height: .48rem;
+            display: block;
+            width: 8.32rem;
+            margin: 0 auto;
+            margin-top: .3733rem;
+        }
+        .number .cn{
+            margin-top: .64rem;
+        }
+        .content img{
+            width: 9.52rem;
+            margin-left: -0.3733rem;
+        }
+        .main{
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: .32rem;
+        }
+        .title{
+            color: #ACACAC;
+            font-size: .48rem;
+            line-height: .8533rem;
+            margin-top: .8rem;
+            margin-bottom: .16rem;
+        }
+        .free{
+            align-items: center;
+            justify-content: flex-end;
+            color: #B5B1FF;
+            font-size: .4267rem;
+        }
+        .list{
+            height: 1.92rem;
+            margin: 0 .4267rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .list .name{
+            color: #FFFFFF;
+            font-size: .4267rem;
+        }
+        .list .name span{
+            color: rgba(255, 255, 255, 0.5);
+            font-size: .3733rem;
+            margin-top: .2133rem;
+            display: block;
+        }
+        .free img{
+            width: .6667rem;
+            margin-right: .16rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="banner">
+            <img width="100%"  v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/influ_banner_en.webp" alt="">
+            <img width="100%"  v-else src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/influ_banner_cn.webp" alt="">
+            <div class="code">
+                <span>Code</span> {{data.invite_code}}
+            </div>
+            <img class="btn" @click="webShare" v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/influ_btn_en.webp">
+            <img class="btn" @click="webShare" v-else src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/influ_btn_cn.webp">
+            <img class="influ_phone" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/influ_phone.webp" alt="">
+        </div>
+        <div class="content">
+            <img v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/content_1_en.webp" alt="">
+            <img v-else src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/content_1_cn.webp" alt="">
+            <div class="number">
+                <p>{{data.earnings}} 💎</p>
+                <span v-if="isEn">*This reward shows the total accumulated referral earnings to date. Referral rewards are settled monthly.</span>
+                <span class="cn" v-else>*该奖励为邀请产生的累计收益数字，按月结算邀请奖励</span>
+            </div>
+        </div>
+        <div class="content">
+            <img v-if="isEn" src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/content_2_en.webp" alt="">
+            <img v-else src="https://cdn-mate.matelink.com/cdn/vs/v1.0.6/content_2_cn.webp" alt="">
+        </div>
+        <div class="title">Invitation Record</div>
+        <div class="main">
+            <div class="list flex" v-for="item in list" ::key="item.created_time">
+                <div class="name">
+                    <p>{{item.alias}}</p>
+                    <span>{{item.created_time}}</span>
+                </div>
+                <div class="free flex">
+                    Certified
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script charset="UTF-8" src="https://cdn-mate.matelink.com/cdn/js/sensors.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            show:false,
+            isEn: true,
+            api: 'https://test-api-mate.flyai.com/',
+            data: '',
+            list :'',
+            apiKey:'',
+            uid:''
+        },
+        created() {
+            if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            }
+            if(this.getQueryString('apiKey')){
+                this.apiKey = this.getQueryString('apiKey')
+            }
+            if(this.getQueryString('uid')){
+                this.uid = this.getQueryString('uid')
+            }
+            if(this.getQueryString('service')){
+                this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
+                if(!this.isEn){
+                    document.title = '邀请好友成为网红'
+                }
+            }
+            this.getDateils();
+        },
+        methods: {
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            webShare() {
+                sensors.track('Invite_node_click', {
+                    node_name: this.isEn ? 'Share & Invite' : '分享&邀请'
+                });
+                try {
+                    var str = ''
+                    if(!this.isEn){
+                        str='&service=zh-CN'
+                    }
+                    var shareInfo = {'url' : window.location.origin+'/Invite_influencer/share.html?code='+this.data.invite_code}
+                    shareUrl.postMessage(JSON.stringify(shareInfo)); 
+                } catch (error) {
+                    
+                }
+
+            },
+            getDateils(){
+                let params = {
+                    'apiKey': this.apiKey,
+                    'uid' : this.uid
+                }
+                this.$toast.loading({
+                    message: 'Loading...',
+                    duration:0,
+                    className:'loading'
+                });
+                axios.post(this.api + 'h5/user/celebrity_invite_desc', params).then(res => {
+                    this.$toast.clear()
+                    if(res.data.code == 200){
+                        this.list = res.data.data.list;
+                        this.data = res.data.data;
+                    }else{
+                    }
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+            }
+        }
+    })
+</script>
+</html>
+	
+    

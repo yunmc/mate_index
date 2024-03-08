@@ -1,0 +1,417 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Influencer Hub</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.flyai.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        .flex{
+            display: flex;
+            display: -webkit-flex;
+        }
+        #app{
+            padding:.4267rem;
+        }
+        .top{
+            border-radius: .6667rem;
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.04);
+            width: 9.1467rem;
+            height: 1.0667rem;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        .uesr{
+            margin-left: .3467rem;
+            color: #ffffff;
+            font-size: .3733rem;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .uesr img{
+            width: .64rem;
+            margin-right: .2667rem;
+            border-radius: 50%;
+        }
+        .arrow{
+            margin-right: .2133rem;
+            width: .6933rem;
+            height: .6933rem;
+        }
+        .general{
+            margin-top: .4267rem;
+            overflow: hidden;
+        }
+        .general .title{
+            color: #ffffff;
+            font-size: .48rem;
+            height: .6667rem;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .container{
+            margin-top: .32rem;
+            align-items: center;
+            justify-content: flex-start;
+            flex-flow:row wrap;
+            width: 10rem;
+        }
+        .container .list{
+            width: 4.3733rem;
+            height: 4.9067rem;
+            background: url(https://cdn-mate.flyai.com/cdn/influencer/bg.png) no-repeat;
+            background-size: 100% 100%;
+            display: inline-grid;
+            margin-bottom: .48rem;
+            margin-right: .4rem;
+        }
+        .container .list .img{
+            height: 2.3467rem;
+            align-items: center;
+            justify-content: center;
+            margin-top: .32rem;
+            margin-bottom: .64rem;
+            
+        }
+        .container .list img{
+            width: 2.3467rem;
+        }
+        .container .desc {
+            color: #FFFFFF;
+            font-size: .3733rem; 
+            align-items: baseline;
+            justify-content: space-between;  
+            padding: 0 .4267rem;
+            height: .5333rem;
+            margin-bottom: .2667rem;
+        }
+        .container .desc p{
+            font-size: .64rem;
+        }
+        .container .current{
+            color: #B5B1FF;
+            margin-bottom: .4267rem;
+        }
+        .content{
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: .32rem;
+            overflow: hidden;
+            padding: 0 .4267rem;
+            margin-top: .32rem;
+        }
+        .content .list{
+            /* height: 2.0267rem; */
+            padding: .5333rem 0;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+        .content .list:last-child{
+            border-bottom: 0;
+        }
+        .content .list .info{
+            align-items: center;
+            justify-content: space-between;  
+            /* margin-top: .5333rem; */
+        }
+        .content .list .info span{
+            color: #FFFFFF;
+            font-size: .4267rem;
+            max-width: 4.8rem;
+            line-height: .5333rem;
+        }
+        .content .list .info p{
+            color: #B5B1FF;
+            font-size: .4267rem;
+        }
+        .content .list .info p img{
+            width: .56rem;
+            margin-right: .0533rem;
+        }
+        .content .timer{
+            align-items: center;
+            justify-content: space-between;  
+            margin-top: .2133rem;
+            font-size: .3733rem;
+            color: rgba(255, 255, 255, 0.5);
+
+        }
+        .down_item{
+            background: #23243B;
+            box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3);
+            width: 9.1467rem;
+            position: absolute;
+            padding: 0 .32rem;
+            top: 1.0167rem;
+            left: 0;
+            border-radius: .48rem;
+        }
+        .down_item .list{
+            height: 1.1733rem;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: .3733rem;
+            align-items: center;
+            justify-content: flex-start;  
+        }
+        .down_item .list:last-child{
+            border-bottom: 0;
+        }
+        .down_item .list img{
+            width: .64rem;
+            margin-right: .2667rem;
+            border-radius: 50%;
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, 
+        .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div @click.stop="show= false">
+        <div class="top flex" @click.stop="show = true">
+            <div class="uesr flex">
+                <img :src="data.avatar"> 
+                <span>{{data.ai_name}}</span>
+            </div>
+            <img v-if="!show" class="arrow" src="https://cdn-mate.flyai.com/cdn/influencer/arrow_bottom.png">
+            <img v-else @click.stop="show = false" class="arrow" src="https://cdn-mate.flyai.com/cdn/influencer/arrow_top.png">
+
+            <transition name="fade">
+                <div class="down_item" v-if="show">
+                    <div class="list flex" @click.stop="show = true">{{isEn ? 'All' : '全部'}}</div>
+                    <div class="list flex" v-for="item in list" :key="item.id" @click.stop="changeUid(item)"> <img :src="item.avatar">{{item.ai_name}}</div>
+                </div>
+            </transition>
+        </div>
+
+        <div class="general">
+            <div class="title flex">{{isEn ? 'General' : '数据汇总'}} </div>
+            <div class="container flex">
+                <div class="list">
+                    <div class="img flex">
+                        <img src="https://cdn-mate.flyai.com/cdn/influencer/icon_5.png" alt="">
+                    </div>
+                    <div class="desc flex">
+                        <p>{{general.hours}}</p>
+                        <span>{{isEn ? 'Hours' : '小时' }}</span>
+                    </div>
+                    <div class="desc flex current">
+                        <span>{{isEn ? 'Services' : '服务' }}</span>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="img flex">
+                        <img src="https://cdn-mate.flyai.com/cdn/influencer/icon_2.png" alt="">
+                    </div>
+                    <div class="desc flex">
+                        <p>{{general.conversations}}</p>
+                    </div>
+                    <div class="desc flex current">
+                        <span>{{isEn ? 'Contactas' : '对话' }} </span>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="img flex">
+                        <img src="https://cdn-mate.flyai.com/cdn/influencer/icon_3.png" alt="">
+                    </div>
+                    <div class="desc flex">
+                        <p>{{general.messages}}</p>
+                    </div>
+                    <div class="desc flex current">
+                        <span>{{isEn ? 'Messages' : '消息' }}</span>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="img flex">
+                        <img src="https://cdn-mate.flyai.com/cdn/influencer/icon_4.png" alt="">
+                    </div>
+                    <div class="desc flex">
+                        <p>{{general.income}}</p>
+                        <span>{{isEn ? 'Diamonds' : '钻石' }} </span>
+                    </div>
+                    <div class="desc flex current">
+                        <span>{{isEn ? 'Earnings' : '收入' }} </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="general" style="margin-top:0;">
+            <div class="title flex">{{isEn ? 'Earnings Details' : '收入明细' }}</div>
+            <div class="content">
+                <div class="list" v-for="item in detail" :key="item.created_time">
+                    <div class="info flex">
+                        <span>{{isEn ? 'From AI' : '来自' }} {{item.ai_name}}</span>
+                        <p><img src="https://cdn-mate.flyai.com/cdn/influencer/masonry.png">+{{item.trans_amount}}</p>
+                    </div>
+                    <div class="timer flex">
+                        <span>{{item.created_time}}</span>
+                        <p>@{{item.alias}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+</body>
+<script src="https://cdn-mate.flyai.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.flyai.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.flyai.com/cdn/js/axios.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            show: false,
+            uid: '',
+            ai_uid:'',
+            api: 'https://test-api-mate.flyai.com/',
+            list: [],
+            data: '',
+            general: '',
+            detail: [],
+            page: 1,
+            isPage: true,
+            timerId:'',
+            isEn: true
+        },
+        created() {
+            if(window.location.host == 'www.matelink.com'){
+                this.api = 'https://api.matelink.com/'
+            }
+            this.uid = this.getQueryString('uid')
+            if(this.getQueryString('service')){
+                this.isEn = this.getQueryString('service') == 'zh-CN' ? false : true;
+            }
+            
+            this.get_ai_users();
+        },
+        mounted() {
+            var _that = this;
+            window.onscroll = () => {
+            const offsetHeight = document.documentElement.offsetHeight;
+            const screenHeight = window.screen.height;
+            const scrollY = window.scrollY
+            const gap = offsetHeight - screenHeight - scrollY;
+            if (gap < 100 && _that.isPage) {
+                clearTimeout(_that.timerId);
+                _that.timerId =  setTimeout(function(){
+                    if(_that.isPage){
+                        _that.income_detail();
+                        _that.page++;
+                    }
+                },200);
+                
+            }
+        }
+        },
+        methods: {
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            get_ai_users(){
+                let params = {
+                    'uid': this.uid
+                }
+                this.$toast.loading({
+                        message: 'Loading...',
+                        duration:0,
+                        className:'loading'
+                });
+                axios.post(this.api + 'h5/user/ai_users', params).then(res => {
+                    if(res.data.code == 200){
+                        if(res.data.data == ''){
+                            this.$toast.clear();
+                        }
+                        this.list = res.data.data;
+                        this.data = res.data.data[0];
+                        this.ai_uid = res.data.data[0].ai_uid;
+                        this.income_detail();
+                        this.data_summary();
+                    }
+                    
+                }).catch(err => {
+                })
+            },
+            changeUid(item){
+                this.ai_uid = item.ai_uid;
+                this.data = item;
+                this.show  = false;
+                this.$toast.loading({
+                        message: 'Loading...',
+                        duration:0,
+                        className:'loading'
+                });
+                this.page = 1;
+                this.detail = [];
+                this.income_detail();
+                this.data_summary();
+            },
+            income_detail(){
+                console.log(this.page);
+                this.isPage = false;
+                let params = {
+                    'uid': this.uid,
+                    'ai_uid': this.ai_uid,
+                    "page": this.page,
+                    "page_size":20
+                }
+                axios.post(this.api + 'h5/user/income_detail', params).then(res => {
+                    this.isPage = true;
+                    if(res.data.code == 200){
+                        if(params.page == 1){
+                            this.detail = [];
+                        }
+                        res.data.data.list.forEach(element => {
+                            this.detail.push(element)
+                        });
+                        this.$toast.clear();
+                    }
+                    
+                }).catch(err => {
+                })
+            },
+            data_summary(){
+                let params = {
+                    'uid': this.uid,
+                    'ai_uid': this.ai_uid
+                }
+                axios.post(this.api + 'h5/user/data_summary', params).then(res => {
+                    if(res.data.code == 200){
+                        this.general = res.data.data;
+                        this.$toast.clear();
+                    }
+                }).catch(err => {
+                })
+            },
+        }
+    })
+</script>
+</html>
+	
+    

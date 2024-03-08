@@ -1,0 +1,270 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>FAQ</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.flyai.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        #app{
+            padding: 0 .4267rem;
+        }
+        .top{
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            width: 9.3867rem;
+            margin-top: .6933rem;
+        }
+        .top span{
+            width: 2.08rem;
+            height: .96rem;
+            border-radius: .96rem;
+            background: #2C3241;
+            color: #FFFFFF;
+            font-size: .32rem;
+            margin-right: .2667rem;
+            margin-bottom: .3733rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .top .current{
+            background: linear-gradient(52deg, #6B3AFF 16%, #BC36DD 85%);
+        }
+        .collapse{
+            margin-top: .64rem;
+        }
+        .van-collapse{
+            border-radius: .32rem;
+            background: #232B3C;
+        }
+        .van-cell,.van-collapse-item__content{
+            background: none !important;
+        }
+        /* .van-collapse-item--border::after */
+        .van-collapse::after {
+            border: 0 !important;
+        }
+        .van-collapse-item::after{
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        .van-cell::after {
+            display: none !important;
+        }
+        .van-cell{
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-size: .4267rem !important;
+            font-weight: bold !important;
+            padding: .32rem .3733rem !important;
+        }
+        .van-collapse-item__content{
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: .3733rem !important;
+            line-height: .6667rem !important;
+            padding: 0 .3733rem .3733rem !important;
+        }
+        .van-icon{
+            font-weight: bold !important;
+            color:rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .tips a{
+            color: #B5B1FF;
+            font-size: 12px;
+            text-decoration: underline;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: .96rem;
+            left: 0;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="top flex">
+            <template v-for="item in data" :key="item.name">
+                <span :class="item.title == checked ? 'current' : '' " @click="checked = item.title">
+                    {{item.title}}
+                </span>
+            </template>
+        </div>
+        <div class="collapse" v-for="item in data">
+                <van-collapse v-model="item.checked" v-if="checked == item.title" accordion>
+                    <template v-for="(item2, index) in item.list" :key="index">
+                        <van-collapse-item :title="item2.Question" :name="index">{{item2.Answer}}</van-collapse-item>
+                    </template>
+                </van-collapse>
+        </div>
+
+        <div class="tips"><a href="https://discord.com/invite/jxMqGZy9vJ">More support</a></div>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.flyai.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script charset="UTF-8" src="https://cdn-mate.matelink.com/cdn/js/sensors.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            checked:'Character',
+            data:[
+                {
+                    title:'Character',
+                    checked:0,
+                    list:[
+                        {
+                            Question:'Character forgot what we said before.',
+                            Answer:'Stay tuned! We are optimizing our Ai and it will store memories in the future.'
+                        },
+                        {
+                            Question:'Character called me by the wrong name or gender.',
+                            Answer:'Emphasize your message to Ai, and if this type of problem occurs again, please send us your User iD'
+                        },
+                        {
+                            Question:'How to increase "Intimacy" with the character.',
+                            Answer:'Chatting and unlocking pictures can increase the affinity value'
+                        },
+                        {
+                            Question:'There doesn’t have the character who I was looking for.',
+                            Answer:'Please email or Discord us to let us know which character you want, or you can create your own.'
+                        },
+                    ]
+                },
+                {
+                    title:'Chat',
+                    checked:0,
+                    list:[
+                        {
+                            Question:"Can't get any picture during the chat.",
+                            Answer:'Ask them in a more explicit tone, such as"send me your picture""I want some photos"...'
+                        },
+                        {
+                            Question:'The Ai character sends "Sorry" to me.',
+                            Answer:'There may be a server crash, please wait 1 to 2 minutes before sending a message.In the meantime, please send us your user ID.'
+                        },
+                        {
+                            Question:'How to delete chat history.',
+                            Answer:'Press and hold the chat dialog to bring up the delete button'
+                        },
+                    ]
+                },
+                {
+                    title:'TOP UP',
+                    checked:0,
+                    list:[
+                        {
+                            Question:"Rewards did not arrive.",
+                            Answer:"Sometimes there has a few minutes’  delay, but if it didn't arrive in 10 minutes, please contact us immediately."
+                        },
+                        {
+                            Question:'What are the benefits of a subscription?',
+                            Answer:'Subscribing not only grants you 1500 free Matecoins, but also offers you access to Group chats, Dating, RPGs, and other more benefits.'
+                        },
+                        {
+                            Question:'When is the next discounted package going live?',
+                            Answer:'Stay Tuned!'
+                        },
+                    ]
+                },
+                {
+                    title:'AI Create',
+                    checked:0,
+                    list:[
+                        {
+                            Question:"How to delete Ai characters?",
+                            Answer:"AI characters cannot be deleted now and we are developing this function. If you're unsatisfied with a character, you can temporarily adjust it by modifying its AI information at present."
+                        },
+                        {
+                            Question:'How many characters can I create?',
+                            Answer:"Currently, there's no limit on creating characters, but in the future, some characters and features might be exclusive to Pro members."
+                        },
+                        {
+                            Question:'Difference between the "public" and "private"?',
+                            Answer:'Private characters are exclusive to you for one-on-one chats. When a character goes public, it becomes accessible for everyone to chat with. Future public characters could potentially share profits with the platform.'
+                        },
+                        {
+                            Question:'Why has my "public" character turned "private"?',
+                            Answer:'If your public character contains inappropriate content, receives user complaints, has low-quality or highly repetitive images, it may be reverted to private.'
+                        },
+                        {
+                            Question:'How to "Public" my character?',
+                            Answer:'Choose to make your character public during creation, or convert a private character to public via editing settings on its personal page.'
+                        },
+                    ]
+                },
+                {
+                    title:'Image',
+                    checked:0,
+                    list:[
+                        {
+                            Question:'Why can’t I generates "Ai" image',
+                            Answer:'You can only make it when your "Intimacy" number exceeds 1.'
+                        },
+                        {
+                            Question:`Can't get "more sexy" image.`,
+                            Answer:'Increase the "intimacy" value to get a higher level photo.'
+                        },
+                    ]
+                },
+                {
+                    title:'Function',
+                    checked:0,
+                    list:[
+                        {
+                            Question:`What's the difference between "Dating" and " Regular Chat".`,
+                            Answer:`There are more "Great photos" in "Dating" mode.`
+                        },
+                        {
+                            Question:`How to pass each "Stroy" part?`,
+                            Answer:`Raise the character's "Desire" to 100 in 20 rounds of dialog, with Desire Levels increasing with each round of "Dialog".`
+                        },
+                        {
+                            Question:`How many free times in each the "Stroy" mode.`,
+                            Answer:`Each "Stroy" part has three free challenges, and each entry after 3 requires a ticket(100 coins).`
+                        }
+                    ]
+                },
+                {
+                    title:'Other',
+                    checked:0,
+                    list:[
+                        {
+                            Question:`Write down other suggestions.`,
+                            Answer:`"Click the 'Feedback' button to report your issues, or get in touch with us on social media, or via feedback@matelink.com."`
+                        }
+                    ]
+                },
+            ],
+                
+        },
+        created() {
+
+        },
+        methods: {
+        }
+           
+    })
+</script>
+</html>
+	
+    

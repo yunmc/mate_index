@@ -1,0 +1,426 @@
+      
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Matelink</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn-mate.matelink.com/cdn/css/style.css" />
+    <script src="https://cdn-mate.matelink.com/cdn/js/rem.js"></script>
+
+    <style type="text/css">
+        body,html{
+            background: #1A1E28;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        .flex{
+            display: flex;
+            display: -webkit-flex;
+        }
+        .top{
+            margin-top: .7467rem;
+            justify-content: flex-start;
+        }
+        .header{
+            width: 1.5467rem;
+            height: 1.5467rem;
+            overflow: hidden;
+            margin-left: .64rem;
+        }
+        .header img{
+            width: 100%;
+            height: 100%;
+        }
+        .desc{
+            background: linear-gradient(130deg, #6176FC 18%, #7269E3 86%);
+            box-shadow: 0px 4px 10px 0px rgba(11, 4, 35, 0.3);
+            width: 6.32rem;
+            height: 2.9333rem;
+            border-radius: .5333rem;
+            margin-left: .2133rem;
+            font-size: .3733rem;
+            line-height: .5333rem;
+            color: #ffffff;
+            align-items: center;
+            padding: .4267rem;
+        }
+        .tips{
+            margin-left: .8533rem;
+            font-size: .3733rem;
+            line-height: .5867rem;
+            margin-top: 1.28rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .tips span{
+            color: #B5B1FF;
+        }
+        .content{
+            width: 9.1467rem;
+            padding: .5333rem .4267rem;
+            margin: 0 auto;
+            background: #232B3C;
+            border-radius: .64rem;
+            margin-top: 1.28rem;
+        }
+        .content p{
+            color: #ffffff;
+            font-size: .4267rem;
+            line-height: .5867rem;
+            margin-bottom: .2133rem;
+        }
+        .content span{
+            color: rgba(255, 255, 255, 0.5);
+            font-size: .4267rem;
+            line-height: .5867rem;
+        }
+        .btn{
+            width: 8.72rem;
+            height: 1.28rem;
+            background: url(https://cdn-mate.matelink.com/cdn/image/i-btn.png) no-repeat;
+            background-size: 100% 100%;
+            margin: 0 auto;
+            margin-top: 1.0667rem;
+            color: #FFFFFF;
+            font-size: .4267rem;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: .64rem;
+            text-align: center;
+            line-height: 1.28rem;
+        }
+        .btn3{
+            color: #FFFFFF;
+            font-size: .4267rem;
+            margin: 0 auto;
+            margin-top: 1.0667rem;
+            width: 8.72rem;
+            height: 1.28rem;
+            background: linear-gradient(103deg, #9780FF 18%, #5694FF 75%);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: .64rem;
+            text-align: center;
+            line-height: 1.28rem;
+        }
+        .btn2{
+            width: 8.72rem;
+            height: 1.28rem;
+            margin: 0 auto;
+            margin-top: 1.0667rem;
+            color: #FFFFFF;
+            font-size: .4267rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn2 p{
+            width: 4.2667rem;
+            height: 1.28rem;
+            border-radius: .64rem;
+            background: linear-gradient(115deg, #9780FF 17%, #5694FF 77%);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            margin: 0 .0933rem;
+        }
+        .btn2 p:first-child{
+            background: url(https://cdn-mate.matelink.com/cdn/image/i-btn-bg.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .btn p{
+            position: relative;
+            z-index: 10;
+        }
+        .btn span{
+            display: inline-block;
+            /* width: 4.5333rem; */
+        }
+        .bg{
+            position: absolute;
+            left: -100%;
+            top: 0;
+            background: linear-gradient(103deg, #9780FF 18%, #5694FF 75%);
+            width: 100%;
+            height: 1.28rem;
+            border-radius: .64rem;
+            z-index: 5;
+        }
+        .popup_top{
+            width: 7.04rem;
+            height: 4.0533rem;
+            border-radius: .5333rem;
+            background: #4D546D;
+            color: #ffffff;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup_top p{
+            width: 4.8rem;
+            font-size: .3733rem;
+            text-align: center;
+            line-height: .5333rem;
+            margin: .5333rem 0;
+        }
+        .van-popup{
+            background: none !important;
+        }
+        .popup_btn{
+            align-items: center;
+            justify-content: center;
+            width: 7.04rem;
+            height: 1.28rem;
+            margin-top: 1.2267rem;
+            border-radius: .6667rem;
+            font-size: .4267rem;
+            color: #ffffff;
+            background: linear-gradient(106deg, #9780FF 18%, #5694FF 76%);
+            backdrop-filter: blur(30px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="top flex">
+            <div class="header">
+                <img src="https://cdn-mate.matelink.com/cdn/image/i-icon.png">
+            </div>
+            <div class="desc flex">
+                I'm creating an AI copy of you on MateLink. Help me record a voice message to complete the setting.
+            </div>
+        </div>
+
+        <div class="content">
+            <p>You can read the following sentence prepared by your friend, or you can read something on your own.</p>
+            <span>I saw Susie sitting in a shoe shine shop. Where she sits she shines, and where she shines she sits.</span>
+        </div>
+
+
+        <div v-if="isOk" class="btn3 flex" @click="toLink">
+            <p> {{tips[2]}}</p>
+        </div>
+
+        <template v-else>
+            <div v-if="!isMake" class="btn flex" @click="startRecord">
+                <p v-if="num == 0"> {{tips[0]}}</p>
+                <p v-else> <span>Recording，</span>{{Math.ceil(10-num/20)}}s left</p>
+                 <div class="bg" :style="{left:  - (100 - (num/2)) + '%'}"></div>
+             </div>
+             <div v-else class="btn2 flex">
+                 <p class="flex" @click="resetting">Re-record</p>
+                 <p class="flex" @click="upAudio">Upload</p>
+              </div>
+        </template>
+
+        
+
+
+          <van-popup v-model:show="show" overlay="true" :close-on-click-overlay="false">
+                <div class="popup">
+                    <div class="popup_top flex">
+                        <div>
+                            <p>The current link has timed out and expired.</p>
+                            <p>Please ask for a new one from your inviter/friend.</p>
+                        </div>
+                    </div>
+                    <div class="popup_btn flex" @click=" show = false">Confirm</div>
+                </div>
+          </van-popup>
+          
+    </div>
+
+
+</body>
+<script src="https://cdn-mate.matelink.com/cdn/js/vue.min.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/vant-2.1.2.min.js"></script>
+<link rel="stylesheet" href="https://cdn-mate.matelink.com/cdn/css/vant-2.1.2.css" />
+<script src="https://cdn-mate.matelink.com/cdn/js/axios.js"></script>
+<script src="https://cdn-mate.matelink.com/cdn/js/recorder.mp3.min.js"></script>
+<script>
+    var recorder;
+    var app = new Vue({
+        el: '#app',
+        data: {
+            timer: null,
+            num: 0,
+            tips:['Click the button to start recording.', 'Recording，remaining' , 'Great job! Download Matelink'],
+            rec:'',
+            id:'',
+            isIos: false,
+            iosDownload: 'https://apps.apple.com/app/6449399740',
+            andDownload: 'https://play.google.com/store/apps/details?id=com.matelink.appandr',
+            noClick: false,
+            show: false,
+            isPopup: true,
+            isMake: false,
+            file: '',
+            isOk: false,
+            api:'https://test-api-mate.flyai.com/'
+        },
+        created() {
+            console.log(this);
+            // var data =JSON.stringify(this);
+            this.api = 'https://api.matelink.com/'
+            // this.api = 'https://api-mate.flyai.com/'
+            this.id = this.getQueryString('id')
+            this.isIos = this.isIosAgent();
+            this.shareValid();
+        },
+        methods: {
+            getQueryString(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                let r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            resetting(){
+                this.timer = null;
+                this.num = 0;
+                this.file = '',
+                this.isMake = false;
+                // this.rec.cancel();
+            },
+            getRecorderManager(success) {//初始化
+				Recorder.ConnectEnableWorklet = true
+				this.rec = Recorder({
+					type: "mp3",
+					// sampleRate: 16000,
+					// bitRate: 16,
+					onProcess: (buffers, powerLevel, bufferDuration, bufferSampleRate, newBufferIdx, asyncEnd) => {
+						//录音实时回调，大约1秒调用12次本回调，buffers为开始到现在的所有录音pcm数据块(16位小端LE)
+						//可实时绘制波形（extensions目录内的waveview.js、wavesurfer.view.js、frequency.histogram.view.js插件功能）
+						//可利用extensions/sonic.js插件实时变速变调，此插件计算量巨大，onProcess需要返回true开启异步模式
+						//可实时上传（发送）数据，配合Recorder.SampleData方法，将buffers中的新数据连续的转换成pcm上传，或使用mock方法将新数据连续的转码成其他格式上传，可以参考文档里面的：Demo片段列表 -> 实时转码并上传-通用版；基于本功能可以做到：实时转发数据、实时保存数据、实时语音识别（ASR）等
+					}
+				});
+				this.rec.open(() => { //打开麦克风授权获得相关资源
+                    // alert('授权')
+					//rec.start() 此处可以立即开始录音，但不建议这样编写，因为open是一个延迟漫长的操作，通过两次用户操作来分别调用open和start是推荐的最佳流程
+					success && success();
+				}, (msg, isUserNotAllow) => { //用户拒绝未授权或不支持
+					//  alert('用户拒绝未授权或不支持')
+				});
+			},
+			start() {//开始录音
+				this.rec.start()
+			},
+			stop() {//停止录音
+				this.rec.stop((blob, duration) => {
+					let localUrl = URL.createObjectURL(blob)
+					const recorder = {
+						data: blob,
+						duration,
+						localUrl,
+					}
+                    this.file = recorder.data;
+                    // this.upAudio(this.file);
+					// console.log(recorder);
+				})
+			},
+            shareValid(){
+                let params = {
+                    'short_url_id': this.id
+                }
+                axios.post(this.api + 'aiUser/core/shareValid', params).then(res => {
+                    if(res.data.code == 1018){
+                        this.noClick = true;
+                        this.show = true;
+                    }else{
+                    }
+                }).catch(err => {
+                    this.$toast({
+                        message: err
+                    });
+                })
+            },
+            upAudio(){
+                let params = new FormData();
+                if(this.file){
+                    params.append('file',this.file);
+                }
+                params.append('short_url_id',this.id);
+                params.append('file_type','audio');
+                params.append('file_source','source');
+                params.append('ext','mp3');
+                this.$toast.loading({
+                    message: 'Loading...',
+                    duration:0,
+                    className:'loading'
+                });
+                axios.post(this.api + 'aiUser/core/shareClone', params).then(res => {
+                    this.$toast.clear()
+                    this.isOk = true;
+                    // this.noClick = true;
+                    // this.show = true;
+                }).catch(err => {
+                    this.$toast.clear()
+                    this.isOk = true;
+                    // this.noClick = true;
+                    // this.show = true;
+                })
+            },
+			close(){
+				//完全关闭
+				if (this.rec) {
+					this.rec.close();
+				}
+			},
+            toLink() {
+                if (this.isIos) {
+                    window.location.href = this.iosDownload;
+                } else {
+                    window.location.href = this.andDownload;
+                }
+            },
+            isIosAgent() {
+                let u = navigator.userAgent;
+                let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                if (isIOS) {
+                    return true
+                } else {
+                    return false
+                }
+            },
+            startRecord(){
+                if(this.noClick){
+                    this.show = true;
+                    return false;
+                }
+                if(this.num == 200){
+                    this.toLink();
+                }
+                if(this.num != 0){
+                    return false;
+                }
+                this.isPopup = false;
+                this.getRecorderManager(()=>{
+                    this.start();
+                    this.timer = setInterval(() => {
+                        if(this.num >= 200){
+                            this.stop()
+                            this.isMake = true;
+                            clearInterval(this.timer);
+                            this.num = 200;
+                            return false;
+                        }
+                        this.num++;
+                    }, 50);
+                });
+
+            }
+        }
+    })
+</script>
+</html>
+	
+    
