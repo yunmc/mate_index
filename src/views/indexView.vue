@@ -108,12 +108,12 @@
                     >
                         <div position-absolute w-76 h-34 r-18 t-18 fs-14 center color-fff class="chat"> Chat <img m-l-3 square-12 src="@/assets/images/fly.webp" /> </div>
                         <NImage width="262" height="420" preview-disabled object-fit="cover" :src="item.introduce_image" />
-                        <div class="bg" position-absolute left-0 p-b-16 bottom-0 p-x-15 color-ffffff>
+                        <div class="bg" position-absolute w-100p left-0 p-b-16 bottom-0 p-x-15 color-ffffff>
                             <img class="play" w-62 src="@/assets/images/paly.webp" />
                             <div fs-21 font-weight-bold m-b-12 line-height-20>
                                 {{ item.name }}
                             </div>
-                            <div fs-12 len-16 m-b-10>
+                            <div fs-12 len-16 m-b-10 class="moment">
                                 {{ item.moment ? item.moment : item.introduce }}
                             </div>
                             <div flex-flex-start-center>
@@ -226,5 +226,12 @@
         animation: subses 0.4s;
         animation-fill-mode: both;
         border: solid 1px #9780ff;
+    }
+    .moment {
+        display: -webkit-box; /* WebKit内核浏览器支持 */
+        -webkit-line-clamp: 3; /* 显示三行 */
+        -webkit-box-orient: vertical; /* 垂直方向展示 */
+        overflow: hidden; /* 超出部分隐藏 */
+        text-overflow: ellipsis; /* 显示省略号 */
     }
 </style>
