@@ -108,7 +108,7 @@
                     >
                         <div position-absolute w-76 h-34 r-18 t-18 fs-14 center color-fff class="chat"> Chat <img m-l-3 square-12 src="@/assets/images/fly.webp" /> </div>
                         <NImage width="262" height="420" preview-disabled object-fit="cover" :src="item.introduce_image" />
-                        <div class="bg" position-absolute w-100p left-0 p-b-16 bottom-0 p-x-15 color-ffffff>
+                        <div position-absolute w-100p left-0 p-b-16 bottom-0 p-x-15 color-ffffff>
                             <img class="play" w-62 src="@/assets/images/paly.webp" />
                             <div fs-21 font-weight-bold m-b-12 line-height-20>
                                 {{ item.name }}
@@ -139,7 +139,7 @@
         border-radius: 12px;
     }
     .bg {
-        background: linear-gradient(180deg, rgba(102, 102, 102, 0) 0%, #666666 100%);
+        // background: linear-gradient(180deg, rgba(102, 102, 102, 0) 0%, #666666 100%);
     }
     .virtualListInst {
         display: grid;
