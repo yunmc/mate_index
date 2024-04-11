@@ -14,7 +14,7 @@ export const useOrderStore = defineStore({
             return new Promise((resolve, reject) => {
                 priceList()
                     .then((response: any) => {
-                        if (response.code == 200) {
+                        if (response?.code == 200) {
                             this.list = response.data.priceList;
                             this.payCoin = this.list[0];
                             // eslint-disable-next-line no-empty

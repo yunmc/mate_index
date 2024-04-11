@@ -62,24 +62,32 @@
     const audio = ref();
     const audioUrl = ref('https://cdn-mate.matelink.com/audio/source/audio_cf355ab59d2044d9bbf91e348a.mp3');
     const onMouseenter = (item: any) => {
-        console.log('11111111');
+        // console.log('11111111');
         item.enterShow = true;
         item.leaveShow = false;
         audioUrl.value = item.voice_introduct;
-        console.log('audioUrl.value', audioUrl.value);
         if (audio.value) {
             audio.value.load();
             audio.value.play();
         }
+        if (video$ref.value[`video#${item.name}`]) {
+            const $video = video$ref.value[`video#${item.name}`];
+            // @todo：mouseenter 事件仍然会提示需要用户交互才能进行播放。
+        }
     };
     const onMouseleave = (item: any) => {
-        console.log('22222222');
+        // console.log('22222222');
         item.enterShow = false;
         item.leaveShow = true;
         if (audio.value.play) {
             audio.value.pause();
         }
         audioUrl.value = '';
+    };
+    const video$ref = ref({} as any);
+    const handle$ref = (e, item) => {
+        if (!e) return;
+        video$ref.value[`video#${item.name}`] = e;
     };
 </script>
 
@@ -107,7 +115,21 @@
                         @click="toDetails(item)"
                     >
                         <div position-absolute w-76 h-34 r-18 t-18 fs-14 center color-fff class="chat"> Chat <img m-l-3 square-12 src="@/assets/images/fly.webp" /> </div>
-                        <NImage width="262" height="420" preview-disabled object-fit="cover" :src="item.introduce_image" />
+                        <!-- 图片 -->
+                        <NImage v-if="item.introduce_image" width="262" height="420" preview-disabled object-fit="cover" :src="item.introduce_image" />
+                        <!-- 视频 -->
+                        <video-player
+                            v-if="item.introduce_video"
+                            class="c-video-player"
+                            :ref="e => handle$ref(e, item)"
+                            :width="262"
+                            :height="420"
+                            :src="item.introduce_video"
+                            :poster="item.introduce_video_cover"
+                            :autoplay="true"
+                            :muted="true"
+                            :loop="true"
+                        />
                         <div class="bg" position-absolute w-100p left-0 p-b-16 bottom-0 p-x-15 color-ffffff>
                             <img class="play" w-62 src="@/assets/images/paly.webp" />
                             <div fs-21 font-weight-bold m-b-12 line-height-20>
@@ -233,5 +255,13 @@
         -webkit-box-orient: vertical; /* 垂直方向展示 */
         overflow: hidden; /* 超出部分隐藏 */
         text-overflow: ellipsis; /* 显示省略号 */
+    }
+    .c-video-player {
+        ::v-deep img {
+            object-fit: cover;
+        }
+        ::v-deep video {
+            object-fit: cover;
+        }
     }
 </style>

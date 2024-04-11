@@ -32,6 +32,10 @@ export const useHomeStore = defineStore({
                                     this.list.push(element);
                                     this.loading = false;
                                 });
+                                // // @todo：mock 数据，待删除!
+                                // this.list[0].introduce_video = 'https://cdn-mate.matelink.com/video/source/video_feb6e9f61f0140c399a0a5478a.mp4';
+                                // this.list[0].introduce_video_cover = 'https://cdn-mate.matelink.com/image/avatar/image_7aa7af63bd2041059dcb95b91c.png';
+                                // this.list[0].introduce_image = '';
                             }
 
                             resolve(response);

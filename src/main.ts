@@ -8,6 +8,10 @@ import GoogleSignInPlugin from 'vue3-google-signin';
 import { senSorsInit } from '@/utils/sensors';
 import './assets/main.css';
 import '@/utils/fb';
+
+import VideoPlayer from '@videojs-player/vue'
+import 'video.js/dist/video-js.css'
+
 const { VITE_GOOGLE_ID } = import.meta.env;
 const app = createApp(App);
 app.config.globalProperties.$sensors = senSorsInit();
@@ -18,4 +22,5 @@ app.use(router);
 app.use(GoogleSignInPlugin, {
     clientId: VITE_GOOGLE_ID,
 });
+app.use(VideoPlayer)
 app.mount('#app');
