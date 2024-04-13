@@ -115,8 +115,6 @@
                         @click="toDetails(item)"
                     >
                         <div position-absolute w-76 h-34 r-18 t-18 fs-14 center color-fff class="chat"> Chat <img m-l-3 square-12 src="@/assets/images/fly.webp" /> </div>
-                        <!-- 图片 -->
-                        <NImage v-if="item.introduce_image" width="262" height="420" preview-disabled object-fit="cover" :src="item.introduce_image" />
                         <!-- 视频 -->
                         <video-player
                             v-if="item.introduce_video"
@@ -130,6 +128,8 @@
                             :muted="true"
                             :loop="true"
                         />
+                        <!-- 图片 -->
+                        <NImage v-else-if="item.introduce_image" width="262" height="420" preview-disabled object-fit="cover" :src="item.introduce_image" />
                         <div class="bg" position-absolute w-100p left-0 p-b-16 bottom-0 p-x-15 color-ffffff>
                             <img class="play" w-62 src="@/assets/images/paly.webp" />
                             <div fs-21 font-weight-bold m-b-12 line-height-20>
