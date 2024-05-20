@@ -39,7 +39,7 @@
         }
     };
     const gotoDevin = () => {
-        const devin = homeStore.list.find((item: any) => item.ai_uid === 24399);
+        const devin = homeStore.list.find((item: any) => item.ai_uid === 'ai_user_f9f55d887c3c453ebf4b00f7');
         if (!devin) return;
         toDetails(devin);
     };
