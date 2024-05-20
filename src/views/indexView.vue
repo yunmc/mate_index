@@ -12,10 +12,11 @@
     const ChatStore = useChatStore();
     const app = getCurrentInstance();
     const sensors = app?.appContext.config.globalProperties.$sensors;
+    
     const toDetails = (item: any) => {
         if (!userStore.Token) {
             userStore.isPopupLogin = true;
-        } else {
+        } else if (item) {
             ChatStore.setAiInfo(item);
             sensors.track('h5_AI_node_click', {
                 node_name: 'AI聊天',
@@ -36,6 +37,11 @@
                 });
             }, 300);
         }
+    };
+    const gotoDevin = () => {
+        const devin = homeStore.list.find((item: any) => item.ai_uid === 24399);
+        if (!devin) return;
+        toDetails(devin);
     };
 
     onMounted(() => {
@@ -97,7 +103,13 @@
             <source :src="audioUrl" type="audio/mpeg" />
         </audio>
         <div max-w-1120 m-a>
-            <img v-if="router.currentRoute.value.query.to === 'devinai'" src="@/assets/images/banner_devin.webp" w-100p m-b-18 />
+            <img 
+                v-if="router.currentRoute.value.query.to === 'devinai'" 
+                src="@/assets/images/banner_devin.webp" 
+                w-100p 
+                m-b-18 
+                @click="gotoDevin()"
+            />
             <img v-else src="@/assets/images/banner.webp" w-100p m-b-18 />
             <div d-grid justify-content-space-between style="grid-template-columns: repeat(auto-fill, 262px)">
                 <div v-for="item in homeStore.list" :key="item.name">
