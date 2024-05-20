@@ -97,7 +97,8 @@
             <source :src="audioUrl" type="audio/mpeg" />
         </audio>
         <div max-w-1120 m-a>
-            <img w-100p src="@/assets/images/banner.webp" m-b-18 />
+            <img v-if="router.currentRoute.value.query.to === 'devinai'" src="@/assets/images/banner_devin.webp" w-100p m-b-18 />
+            <img v-else src="@/assets/images/banner.webp" w-100p m-b-18 />
             <div d-grid justify-content-space-between style="grid-template-columns: repeat(auto-fill, 262px)">
                 <div v-for="item in homeStore.list" :key="item.name">
                     <div
