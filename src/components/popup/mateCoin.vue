@@ -4,21 +4,29 @@
     import { useChatStore } from '@/stores/chat';
     import { useUserStore } from '@/stores/user';
     import { useOrderStore } from '@/stores/order';
+    import { useRouter } from 'vue-router';
+
     const app = getCurrentInstance();
     const sensors = app?.appContext.config.globalProperties.$sensors;
     const userStore = useUserStore();
     const ChatStore = useChatStore();
     const oredrStore = useOrderStore();
     const show = ref(false);
+
+    const router = useRouter();
+    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
+    
     watch(
         () => ChatStore.isPopupCoin,
         () => {
             if (ChatStore.isPopupCoin) {
                 sensors.track('h5_my_node_click', {
                     node_name: 'matecoin',
+                    ref_name: refName,
                 });
                 sensors.track('h5_pay_pop_show', {
                     entrance_source: '首页钱包',
+                    ref_name: refName,
                 });
             }
             if (oredrStore.list == '') {
@@ -39,6 +47,7 @@
     const setConins = (index: any, coins: any) => {
         sensors.track('h5_pay_node_click', {
             node_name: coins.usd_price + '/' + coins.coins + '/paypal',
+            ref_name: refName,
         });
         oredrStore.current = index;
         oredrStore.payCoin = coins;

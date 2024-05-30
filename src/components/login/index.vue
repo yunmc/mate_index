@@ -5,6 +5,7 @@
     import { NModal, useMessage, NSpin } from 'naive-ui';
     import { useUserStore } from '@/stores/user';
     // import { getUrlParams, GenerateKey } from '@/utils/common';
+
     const { VITE_USER_NODE_ENV } = import.meta.env;
     const userStore = useUserStore();
     const router = useRouter();
@@ -13,12 +14,15 @@
     const app = getCurrentInstance();
     const sensors = app?.appContext.config.globalProperties.$sensors;
 
+    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
+
     watch(
         () => userStore.isPopupLogin,
         () => {
             if (userStore.isPopupLogin) {
                 sensors.track('h5_login_page_view', {
                     entrance_source: '首页登录',
+                    ref_name: refName,
                 });
             }
         },
@@ -43,12 +47,14 @@
         show.value = true;
         sensors.track('h5_loginpop_click', {
             node_name: 'Google',
+            ref_name: refName,
         });
     };
 
     const faceLogin = () => {
         sensors.track('h5_loginpop_click', {
             node_name: 'Facebook',
+            ref_name: refName,
         });
         // @ts-ignore
         // eslint-disable-next-line no-undef
@@ -117,6 +123,7 @@
             is_success: is_success,
             fail_reason: fail_reason,
             is_first_log: is_first_log == '' ? false : true,
+            ref_name: refName,
         });
     };
 </script>

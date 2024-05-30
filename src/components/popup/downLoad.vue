@@ -2,15 +2,22 @@
     import { NModal } from 'naive-ui';
     import { useChatStore } from '@/stores/chat';
     import { getCurrentInstance } from 'vue';
+    import { useRouter } from 'vue-router';
+
     const ChatStore = useChatStore();
     const app = getCurrentInstance();
     const sensors = app?.appContext.config.globalProperties.$sensors;
+
+    const router = useRouter();
+    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
+
     const handleClick = () => {
         ChatStore.isPopupDl = false;
     };
     const DownloadUrl = () => {
         sensors.track('h5_download_pop_click', {
             node_name: 'MateLink App',
+            ref_name: refName,
         });
         window.open('https://app.adjust.com/17i7dbt8');
     };

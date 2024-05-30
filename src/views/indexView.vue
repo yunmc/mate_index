@@ -6,12 +6,15 @@
     import { useChatStore } from '@/stores/chat';
     import { useRouter } from 'vue-router';
     import { getUrlParams } from '@/utils/common';
+
     const router = useRouter();
     const userStore = useUserStore();
     const homeStore = useHomeStore();
     const ChatStore = useChatStore();
     const app = getCurrentInstance();
     const sensors = app?.appContext.config.globalProperties.$sensors;
+
+    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
     
     const toDetails = (item: any) => {
         if (!userStore.Token) {
@@ -22,11 +25,13 @@
                 node_name: 'AI聊天',
                 ai_name: item.name,
                 ai_id: item.ai_uid,
+                ref_name: refName,
             });
             sensors.track('h5_chat_page_view', {
                 entrance_source: '首页',
                 ai_name: item.name,
                 ai_id: item.ai_uid,
+                ref_name: refName,
             });
             setTimeout(() => {
                 router.push(`/chat`);
@@ -34,6 +39,7 @@
                     node_name: 'AI详情',
                     ai_name: item.name,
                     ai_id: item.ai_uid,
+                    ref_name: refName,
                 });
             }, 300);
         }
@@ -51,7 +57,9 @@
         if (getUrlParams('type')) {
             userStore.payType = true;
         }
-        sensors.track('h5_homepage_view', {});
+        sensors.track('h5_homepage_view', {
+            ref_name: refName,
+        });
     });
     const mainRef = ref(null);
     const handleScroll = (event: any) => {

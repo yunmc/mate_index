@@ -2,9 +2,15 @@
     import { NCarousel } from 'naive-ui';
     import { useChatStore } from '@/stores/chat';
     import { getCurrentInstance, watch } from 'vue';
+    import { useRouter } from 'vue-router';
+    
     const app = getCurrentInstance();
     const sensors = app?.appContext.config.globalProperties.$sensors;
     const ChatStore = useChatStore();
+
+    const router = useRouter();
+    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
+
     watch(
         () => ChatStore.aiInfo,
         () => {
@@ -14,6 +20,7 @@
                         entrance_source: 'AI详情页',
                         ai_name: ChatStore.aiInfo.name,
                         ai_id: ChatStore.aiInfo.ai_uid,
+                        ref_name: refName,
                     });
                 }
             }

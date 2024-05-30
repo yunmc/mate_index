@@ -3,11 +3,15 @@
     import { useChatStore } from '@/stores/chat';
     import { useUserStore } from '@/stores/user';
     import { getCurrentInstance } from 'vue';
+    import { useRouter } from 'vue-router';
 
     const app = getCurrentInstance();
     const sensors = app?.appContext.config.globalProperties.$sensors;
     const userStore = useUserStore();
     const ChatStore = useChatStore();
+
+    const router = useRouter();
+    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
 
     const handleClick = () => {
         userStore.isPopupInfo = false;
@@ -16,6 +20,7 @@
     const toLink = (name: any) => {
         sensors.track('h5_my_node_click', {
             node_name: name,
+            ref_name: refName,
         });
     };
 </script>

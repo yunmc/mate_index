@@ -4,6 +4,8 @@
     import { useChatStore } from '@/stores/chat';
     import { randomRange } from '@/utils/common';
     import { useUserStore } from '@/stores/user';
+    import { useRouter } from 'vue-router';
+
     const app = getCurrentInstance();
     const sensors = app?.appContext.config.globalProperties.$sensors;
     const userStore = useUserStore();
@@ -11,23 +13,31 @@
     const message = ref('');
     const useMsg = useMessage();
     const iskey = ref(false);
+
+    const router = useRouter();
+    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
+
     const openApp = (name: string) => {
         if (name != '') {
             sensors.track('h5_AI_function_click', {
                 node_name: name,
                 ai_name: ChatStore.aiInfo.name,
                 ai_id: ChatStore.aiInfo.ai_uid,
+                ref_name: refName,
             });
             sensors.track('h5_download_pop', {
                 entrance_source: name,
+                ref_name: refName,
             });
         } else {
             sensors.track('h5_AI_chat_msg_voice', {
                 ai_name: ChatStore.aiInfo.name,
                 ai_id: ChatStore.aiInfo.ai_uid,
+                ref_name: refName,
             });
             sensors.track('h5_download_pop', {
                 entrance_source: 'chat',
+                ref_name: refName,
             });
         }
         if (name != 'Selfie') {
