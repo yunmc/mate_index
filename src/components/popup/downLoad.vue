@@ -9,7 +9,10 @@
     const sensors = app?.appContext.config.globalProperties.$sensors;
 
     const router = useRouter();
-    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
+    let refName = router.currentRoute.value.query.ref; // 合作渠道名称
+    if (!refName) {
+        refName = window.location.href.match(/[?&]ref=([^=?&\/#]+)/)?.[1] ?? '';
+    }
 
     const handleClick = () => {
         ChatStore.isPopupDl = false;

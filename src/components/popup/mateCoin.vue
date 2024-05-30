@@ -14,7 +14,10 @@
     const show = ref(false);
 
     const router = useRouter();
-    const refName = router.currentRoute.value.query.ref; // 合作渠道名称
+    let refName = router.currentRoute.value.query.ref; // 合作渠道名称
+    if (!refName) {
+        refName = window.location.href.match(/[?&]ref=([^=?&\/#]+)/)?.[1] ?? '';
+    }
     
     watch(
         () => ChatStore.isPopupCoin,
