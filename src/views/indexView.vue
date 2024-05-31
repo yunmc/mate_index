@@ -18,6 +18,11 @@
     if (!refName) {
         refName = window.location.href.match(/[?&]ref=([^=?&\/#]+)/)?.[1] ?? '';
     }
+
+    // @tips：更新一下 user profile。
+    if (refName) {
+        sensors.setProfile({ ref_name: refName });
+    }
     
     const toDetails = (item: any) => {
         if (!userStore.Token) {
