@@ -112,6 +112,7 @@
         show.value = false;
         if (data.code == 200) {
             message.success('Login success');
+            sensors.login(data.data.uid);
             loginPlatform(platform, true, '', true);
         } else {
             message.error('Login error');
@@ -120,7 +121,7 @@
     };
 
     const loginPlatform = (platform: any, is_success: any, fail_reason: any, is_first_log: any) => {
-        console.log('xxx', platform, is_success, fail_reason, is_first_log);
+        // console.log('xxx', platform, is_success, fail_reason, is_first_log);
         sensors.track('h5_LoginPlatformClick', {
             platform_name: platform,
             is_success: is_success,
