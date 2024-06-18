@@ -251,12 +251,12 @@
         </NScrollbar>
     </div>
     <div class="send" position-absolute left-0 bottom-0 w-100p p-b-25 bg-13102b p-10 z-10>
-        <div d-flex m-b-10>
+        <!-- <div d-flex m-b-10>
             <img @click="sendSelfie(), openApp('Selfie')" h-26 m-r-5 c-p src="@/assets/images/fig_icon_1.webp" />
             <img v-if="ChatStore.aiInfo.generate_photo_btn" h-26 m-r-5 c-p src="@/assets/images/fig_icon_2.webp" @click="openApp('Generate Photo')" />
             <img v-if="ChatStore.aiInfo.role_play_btn" h-26 m-r-5 c-p src="@/assets/images/fig_icon_3.webp" @click="openApp('Role Play')" />
             <img v-if="ChatStore.aiInfo.private_date_btn" h-26 m-r-5 c-p src="@/assets/images/fig_icon_4.webp" @click="openApp('Date')" />
-        </div>
+        </div> -->
         <div position-relative>
             <NConfigProvider preflight-style-disabled>
                 <NInput
